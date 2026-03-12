@@ -1,0 +1,254 @@
+:root {
+  --bg-color: #F7F7F5;
+  --text-main: #2D2A26;
+  --text-muted: #6B6862;
+  --accent-bg: #EAEAE6;
+
+  --font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --spacing-unit: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glassmorphism utility */
+.glass-nav {
+  background: rgba(247, 247, 245, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Floating Navigation */
+nav {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  z-index: 100;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.nav-pill {
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nav-pill:not(.active):hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.nav-pill.active {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Floating Badge (Alex Puliatti) */
+.floating-badge {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  /* purely decorative now in this placement */
+}
+
+/* Main Container */
+main {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Masonry Gallery */
+.masonry-gallery {
+  column-count: 4;
+  column-gap: 1.25rem;
+  padding: 6rem 1.5rem 8rem 1.5rem;
+}
+
+@media (max-width: 1200px) {
+  .masonry-gallery {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 800px) {
+  .masonry-gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 500px) {
+  .masonry-gallery {
+    column-count: 1;
+  }
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--accent-bg);
+  cursor: pointer;
+}
+
+.masonry-item img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.02);
+}
+
+.masonry-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-main);
+  pointer-events: none;
+}
+
+.masonry-arrow {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+/* Loading Spinner */
+.loading-indicator {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* About Page Columns */
+.about-container {
+  padding: 8rem 4rem 8rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-wrapper {
+  display: flex;
+  gap: 4rem;
+}
+
+.about-left {
+  flex: 1;
+}
+
+.about-left h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.about-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.about-section h2 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.about-section p,
+.about-section ul {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  list-style: none;
+}
+
+.about-section li {
+  margin-bottom: 0.5rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav {
+    width: 90%;
+    justify-content: center;
+  }
+
+  .about-container {
+    padding: 6rem 1.5rem 6rem;
+  }
+
+  .about-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
