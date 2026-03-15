@@ -840,21 +840,61 @@ body.overlay-active .glass-cursor::after {
   align-items: flex-start;
 }
 
+.project-detail-grid .grid-image-wrapper {
+  width: 100%;
+}
+
 .project-detail-grid .grid-image-wrapper img {
   max-height: 50vh;
 }
 
-/* Lightweight CSS fade-in for detail grid items (replaces per-item Framer scroll hooks) */
+/* Lightweight CSS fade-in for detail grid items */
 .detail-fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.detail-fade-in.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* LQIP blur-up image loading */
+.lqip-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.lqip-thumb {
+  width: 100%;
+  max-height: 50vh;
+  object-fit: contain;
+  display: block;
+  filter: blur(20px);
+  transform: scale(1.1);
+  transition: opacity 0.4s ease;
+}
+
+.lqip-thumb.lqip-hidden {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.lqip-full {
+  width: 100%;
+  max-height: 50vh;
+  object-fit: contain;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.lqip-full.lqip-visible {
+  opacity: 1;
+  position: relative;
 }
 
 /* ─── Responsive: Photography ─── */
