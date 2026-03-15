@@ -1,6 +1,13 @@
 @font-face {
-  font-family: 'Pilgrim';
-  src: url('./assets/fonts/PilgrimLT-Roman.ttf') format('truetype');
+  font-family: 'Arrow';
+  src: url('./assets/fonts/Arrow Font Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./assets/fonts/Geist-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -8,7 +15,7 @@
 :root {
   --bg-color: #030303;
   --text-main: #FAFAFA;
-  --font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 
@@ -155,7 +162,7 @@ body.overlay-active .glass-cursor::after {
 }
 
 .topbar-logo {
-  font-family: 'Pilgrim', "Times New Roman", Times, serif;
+  font-family: 'Arrow', sans-serif;
   font-size: 1.1rem;
   font-weight: 400;
   color: #fff;
