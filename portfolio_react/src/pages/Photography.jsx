@@ -9,7 +9,7 @@ const getThumbPath = (src) => {
     return src.substring(0, dotIdx) + '_thumb.jpg';
 };
 
-const STATIC_GRADIENT = 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.08) 40%, rgba(255,255,255,0.12) 100%)';
+const STATIC_GRADIENT = 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.15) 30%, rgba(255,255,255,0.3) 100%)';
 
 // ─── Detail Grid Item with LQIP blur-up loading ───
 const DetailGridItem = ({ src, onClick }) => {
@@ -329,30 +329,19 @@ export function Photography() {
                 )}
             </AnimatePresence>
 
-            {/* ─── Fullscreen Image Overlay ─── */}
-            <AnimatePresence>
-                {enlargedImage && (
-                    <motion.div
-                        key="fullscreen"
-                        className="fullscreen-overlay"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2, exit: { duration: 0 } }}
-                        onClick={() => setEnlargedImage(null)}
-                    >
-                        <motion.img
-                            src={`${import.meta.env.BASE_URL}${enlargedImage}`}
-                            alt="Expanded detail"
-                            initial={{ scale: 0.95, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2, exit: { duration: 0 } }}
-                            onClick={(e) => e.stopPropagation()}
-                        />
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            {/* ─── Fullscreen Image Overlay (CSS-only, no exit animation = no flash) ─── */}
+            {enlargedImage && (
+                <div
+                    className="fullscreen-overlay"
+                    onClick={() => setEnlargedImage(null)}
+                >
+                    <img
+                        src={`${import.meta.env.BASE_URL}${enlargedImage}`}
+                        alt="Expanded detail"
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                </div>
+            )}
         </main>
     );
 }
