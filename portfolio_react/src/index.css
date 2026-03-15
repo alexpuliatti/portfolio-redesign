@@ -840,10 +840,6 @@ body.overlay-active .glass-cursor::after {
   align-items: flex-start;
 }
 
-.project-detail-grid .grid-image-wrapper {
-  width: 100%;
-}
-
 .project-detail-grid .grid-image-wrapper img {
   max-height: 50vh;
 }

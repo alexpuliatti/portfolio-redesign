@@ -4,22 +4,18 @@ import photographyProjects, { getImagePath } from '../photographyData';
 
 // Helper to compute the thumbnail path from a full image path
 const getThumbPath = (src) => {
-    // src like "photography/slug/filename.jpg" → "photography/slug/filename_thumb.jpg"
     const dotIdx = src.lastIndexOf('.');
     if (dotIdx === -1) return src;
     return src.substring(0, dotIdx) + '_thumb.jpg';
 };
 
+const STATIC_GRADIENT = 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.08) 40%, rgba(255,255,255,0.12) 100%)';
+
 // ─── Detail Grid Item with LQIP blur-up loading ───
-// Shows a tiny blurred placeholder (0.4KB) instantly, then crossfades
-// to the full-res image once decoded. Zero scroll listeners.
 const DetailGridItem = ({ src, onClick }) => {
     const containerRef = useRef(null);
     const [visible, setVisible] = useState(false);
     const [imageLoaded, setImageLoaded] = useState(false);
-    const [dynamicGradient, setDynamicGradient] = useState(
-        'linear-gradient(to bottom, transparent, rgba(255,255,255,0.1))'
-    );
 
     const thumbSrc = getThumbPath(src);
 
@@ -41,37 +37,13 @@ const DetailGridItem = ({ src, onClick }) => {
         return () => observer.disconnect();
     }, []);
 
-    const handleImageLoad = (e) => {
-        setImageLoaded(true);
-        try {
-            const img = e.target;
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d', { willReadFrequently: true });
-            canvas.width = 1;
-            canvas.height = 3;
-            ctx.drawImage(img, 0, 0, 1, 3);
-
-            const c1 = ctx.getImageData(0, 0, 1, 1).data;
-            const c2 = ctx.getImageData(0, 1, 1, 1).data;
-            const c3 = ctx.getImageData(0, 2, 1, 1).data;
-
-            const rgb1 = `rgb(${c1[0]}, ${c1[1]}, ${c1[2]})`;
-            const rgb2 = `rgb(${c2[0]}, ${c2[1]}, ${c2[2]})`;
-            const rgb3 = `rgb(${c3[0]}, ${c3[1]}, ${c3[2]})`;
-
-            setDynamicGradient(
-                `linear-gradient(to bottom, transparent, ${rgb1} 25%, ${rgb2} 60%, ${rgb3} 100%)`
-            );
-        } catch (err) {}
-    };
-
     return (
-        <div className="grid-item" ref={containerRef}>
-            <div className="grid-image-wrapper detail-fade-in revealed">
+        <div className="grid-item" ref={containerRef} style={{ contentVisibility: 'auto' }}>
+            <div className="grid-image-wrapper">
                 <div
                     className="grid-vertical-line left-line"
                     style={{
-                        background: dynamicGradient,
+                        background: STATIC_GRADIENT,
                         transformOrigin: 'top',
                         transform: `scaleY(${imageLoaded ? 1 : 0})`,
                         transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
@@ -80,13 +52,12 @@ const DetailGridItem = ({ src, onClick }) => {
                 <div
                     className="grid-vertical-line right-line"
                     style={{
-                        background: dynamicGradient,
+                        background: STATIC_GRADIENT,
                         transformOrigin: 'top',
                         transform: `scaleY(${imageLoaded ? 1 : 0})`,
                         transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
                     }}
                 />
-                {/* LQIP: blurred tiny thumbnail shown immediately */}
                 <div className="lqip-container" onClick={() => imageLoaded && onClick(src)}>
                     <img
                         src={`${import.meta.env.BASE_URL}${thumbSrc}`}
@@ -94,16 +65,14 @@ const DetailGridItem = ({ src, onClick }) => {
                         className={`lqip-thumb ${imageLoaded ? 'lqip-hidden' : ''}`}
                         aria-hidden="true"
                     />
-                    {/* Full image loaded async behind the blur */}
                     {visible && (
                         <img
                             src={`${import.meta.env.BASE_URL}${src}`}
                             alt="Project detail"
                             loading="lazy"
                             decoding="async"
-                            crossOrigin="anonymous"
                             className={`lqip-full ${imageLoaded ? 'lqip-visible' : ''}`}
-                            onLoad={handleImageLoad}
+                            onLoad={() => setImageLoaded(true)}
                         />
                     )}
                 </div>
@@ -369,7 +338,7 @@ export function Photography() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.15 }}
+                        transition={{ duration: 0.2, exit: { duration: 0 } }}
                         onClick={() => setEnlargedImage(null)}
                     >
                         <motion.img
@@ -377,8 +346,8 @@ export function Photography() {
                             alt="Expanded detail"
                             initial={{ scale: 0.95, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.95, opacity: 0 }}
-                            transition={{ duration: 0.15 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2, exit: { duration: 0 } }}
                             onClick={(e) => e.stopPropagation()}
                         />
                     </motion.div>
