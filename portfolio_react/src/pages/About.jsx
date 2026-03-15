@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const lineGradient = 'linear-gradient(to bottom, transparent 0%, #6b7b8d 30%, #a0785a 60%, #8a6d5e 100%)';
+
 export function About() {
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -24,6 +26,13 @@ export function About() {
 
     return (
         <main className="about-gallery-wrapper">
+            {/* Gradient line leading into about section */}
+            <div className="section-divider-wrapper">
+                <div
+                    className="section-divider"
+                    style={{ background: lineGradient }}
+                />
+            </div>
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
@@ -44,6 +53,8 @@ export function About() {
                     <a href="mailto:a@puliatti.com" className="hover-link">a@puliatti.com</a>
                     <br />
                     <a href="https://www.instagram.com/alexpuliatti" target="_blank" rel="noopener noreferrer" className="hover-link">@alexpuliatti</a>
+                    <br />
+                    <a href="https://www.are.na/alex-puliatti" target="_blank" rel="noopener noreferrer" className="hover-link">are.na</a>
                 </motion.div>
 
                 {/* Accolades Block */}
@@ -87,6 +98,14 @@ export function About() {
                 </motion.div>
 
             </motion.div>
+
+            {/* Gradient line trailing out */}
+            <div className="section-divider-wrapper section-divider-bottom">
+                <div
+                    className="section-divider"
+                    style={{ background: lineGradient, transform: 'translateX(-50%) rotate(180deg)' }}
+                />
+            </div>
         </main>
     );
 }

@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 
-export function useSmoothScroll() {
+export function useSmoothScroll(isLocked = false) {
+    const lenisRef = useRef(null);
+
     useEffect(() => {
         const lenis = new Lenis({
             duration: 1.5,
@@ -14,6 +16,8 @@ export function useSmoothScroll() {
             touchMultiplier: 2,
             infinite: false,
         });
+        
+        lenisRef.current = lenis;
 
         function raf(time) {
             lenis.raf(time);
@@ -24,6 +28,16 @@ export function useSmoothScroll() {
 
         return () => {
             lenis.destroy();
+            lenisRef.current = null;
         };
     }, []);
+
+    useEffect(() => {
+        if (!lenisRef.current) return;
+        if (isLocked) {
+            lenisRef.current.stop();
+        } else {
+            lenisRef.current.start();
+        }
+    }, [isLocked]);
 }

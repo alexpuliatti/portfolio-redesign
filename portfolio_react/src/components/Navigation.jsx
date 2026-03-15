@@ -2,8 +2,15 @@ import React from 'react';
 
 export function Navigation({ activeTab, setActiveTab }) {
     return (
-        <>
-            <nav className="glass-nav">
+        <header className="site-topbar">
+            <div 
+                className="topbar-logo"
+                onClick={() => setActiveTab('Photography')}
+            >
+                ALEX PULIATTI
+            </div>
+
+            <nav className="topbar-nav">
                 <button
                     className={`nav-pill ${activeTab === 'Photography' ? 'active' : ''}`}
                     onClick={() => setActiveTab('Photography')}
@@ -11,10 +18,10 @@ export function Navigation({ activeTab, setActiveTab }) {
                     Photography
                 </button>
                 <button
-                    className={`nav-pill ${activeTab === 'Writings' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('Writings')}
+                    className={`nav-pill ${activeTab?.startsWith('Design') ? 'active' : ''}`}
+                    onClick={() => setActiveTab('Design')}
                 >
-                    Writings
+                    Design
                 </button>
                 <button
                     className={`nav-pill ${activeTab === 'About' ? 'active' : ''}`}
@@ -23,10 +30,6 @@ export function Navigation({ activeTab, setActiveTab }) {
                     About
                 </button>
             </nav>
-
-            <div className="floating-badge glass-nav">
-                Alex Puliatti
-            </div>
-        </>
+        </header>
     );
 }

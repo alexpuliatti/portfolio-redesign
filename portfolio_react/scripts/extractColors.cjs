@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 
-const directoryPath = path.join(__dirname, '../public/asia-stillz');
+const directoryPath = path.join(__dirname, '../public/scraped');
 const outputPath = path.join(__dirname, '../src/imageData.json');
 
 /**
@@ -77,7 +77,7 @@ async function extractPalette(filePath, numColors = 5) {
 
 async function extractColors() {
     try {
-        const files = fs.readdirSync(directoryPath).filter(file => file.endsWith('.png') || file.endsWith('.jpg'));
+        const files = fs.readdirSync(directoryPath).filter(file => file.endsWith('.webp'));
         const imagesData = [];
 
         console.log(`Processing ${files.length} images...`);
@@ -95,7 +95,7 @@ async function extractColors() {
                 : '#ffffff';
 
             imagesData.push({
-                src: file,
+                src: 'scraped/' + file,
                 color: mainColor,
                 palette: palette,
             });

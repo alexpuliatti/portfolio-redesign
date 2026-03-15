@@ -1,239 +1,328 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import photographyProjects, { getImagePath } from '../photographyData';
 
-const allImages = [
-    "Still 2026-02-27 211449_1.1.2.png", "Still 2026-02-27 211449_1.10.1.png",
-    "Still 2026-02-27 211449_1.11.1.png", "Still 2026-02-27 211449_1.12.1.png",
-    "Still 2026-02-27 211449_1.13.1.png", "Still 2026-02-27 211449_1.14.1.png",
-    "Still 2026-02-27 211449_1.15.1.png", "Still 2026-02-27 211449_1.16.1.png",
-    "Still 2026-02-27 211449_1.17.1.png", "Still 2026-02-27 211449_1.18.1.png",
-    "Still 2026-02-27 211449_1.19.1.png", "Still 2026-02-27 211449_1.2.1.png",
-    "Still 2026-02-27 211449_1.20.1.png", "Still 2026-02-27 211449_1.21.1.png",
-    "Still 2026-02-27 211449_1.22.1.png", "Still 2026-02-27 211449_1.23.1.png",
-    "Still 2026-02-27 211449_1.24.1.png", "Still 2026-02-27 211449_1.25.1.png",
-    "Still 2026-02-27 211449_1.26.1.png", "Still 2026-02-27 211449_1.27.1.png",
-    "Still 2026-02-27 211449_1.28.1.png", "Still 2026-02-27 211449_1.29.1.png",
-    "Still 2026-02-27 211449_1.3.1.png", "Still 2026-02-27 211449_1.30.1.png",
-    "Still 2026-02-27 211449_1.31.1.png", "Still 2026-02-27 211449_1.4.1.png",
-    "Still 2026-02-27 211449_1.5.1.png", "Still 2026-02-27 211449_1.6.1.png",
-    "Still 2026-02-27 211449_1.7.1.png", "Still 2026-02-27 211449_1.8.1.png",
-    "Still 2026-02-27 211449_1.9.1.png"
-];
+// ─── Detail Grid Item with side gradient lines ───
+const DetailGridItem = ({ src, onClick }) => {
+    const containerRef = useRef(null);
+    const [dynamicGradient, setDynamicGradient] = useState(
+        'linear-gradient(to bottom, transparent, rgba(255,255,255,0.1))'
+    );
 
-const mockProjectNames = ['Archive', 'Campaign', 'Still', 'Portrait', 'Editorial', 'Object', 'Space'];
-
-// Hardcode the recently cropped varied-aspect-ratio images
-const croppedVertical = [
-    "Still 2026-02-27 211449_1.1.2_vertical.png",
-    "Still 2026-02-27 211449_1.10.1_vertical.png",
-    "Still 2026-02-27 211449_1.11.1_vertical.png",
-    "Still 2026-02-27 211449_1.12.1_vertical.png",
-    "Still 2026-02-27 211449_1.13.1_vertical.png",
-];
-
-const croppedSquare = [
-    "Still 2026-02-27 211449_1.14.1_square.png",
-    "Still 2026-02-27 211449_1.15.1_square.png",
-    "Still 2026-02-27 211449_1.16.1_square.png",
-    "Still 2026-02-27 211449_1.17.1_square.png",
-    "Still 2026-02-27 211449_1.18.1_square.png",
-];
-
-// Rebuild the categorizedImages array to mix originals with the new aspect ratios
-let categorizedImages = [];
-let idCounter = 0;
-
-// Helper to push with modular project assignment
-const pushImage = (src, isCropped = false) => {
-    const basePath = isCropped ? '/asia-stillz-cropped' : '/asia-stillz';
-    categorizedImages.push({
-        src: `${basePath}/${src}`,
-        project: mockProjectNames[idCounter % mockProjectNames.length],
-        id: `img-${idCounter++}`
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start 90%", "center center"],
     });
-};
 
-// Start by injecting some mixed ratios, then fall back to the rest of the standard horizontals
-pushImage(croppedVertical[0], true);
-pushImage(allImages[0]);
-pushImage(croppedSquare[0], true);
-pushImage(allImages[1]);
-pushImage(croppedVertical[1], true);
-pushImage(allImages[2]);
-pushImage(croppedSquare[1], true);
-pushImage(croppedVertical[2], true);
-pushImage(allImages[3]);
-pushImage(croppedSquare[2], true);
-pushImage(allImages[4]);
-pushImage(croppedVertical[3], true);
-pushImage(allImages[5]);
-pushImage(croppedSquare[3], true);
-pushImage(croppedVertical[4], true);
-pushImage(allImages[6]);
-pushImage(croppedSquare[4], true);
+    const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+    const opacity = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
+    const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
 
-// Add the rest of the standard horizontals
-for (let i = 7; i < allImages.length; i++) {
-    pushImage(allImages[i]);
-}
+    const handleImageLoad = (e) => {
+        try {
+            const img = e.target;
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            canvas.width = 1;
+            canvas.height = 3;
+            ctx.drawImage(img, 0, 0, 1, 3);
 
-export function Photography() {
-    const [activeFilter, setActiveFilter] = useState('All');
-    const [images, setImages] = useState([]);
-    const [page, setPage] = useState(1);
-    const [hoveredId, setHoveredId] = useState(null);
-    const [selectedImage, setSelectedImage] = useState(null);
+            const c1 = ctx.getImageData(0, 0, 1, 1).data;
+            const c2 = ctx.getImageData(0, 1, 1, 1).data;
+            const c3 = ctx.getImageData(0, 2, 1, 1).data;
 
-    const itemsPerPage = 8;
-    const loaderRef = useRef(null);
+            const rgb1 = `rgb(${c1[0]}, ${c1[1]}, ${c1[2]})`;
+            const rgb2 = `rgb(${c2[0]}, ${c2[1]}, ${c2[2]})`;
+            const rgb3 = `rgb(${c3[0]}, ${c3[1]}, ${c3[2]})`;
 
-    const filteredData = activeFilter === 'All'
-        ? categorizedImages
-        : categorizedImages.filter(img => img.project === activeFilter);
-
-    // Initial load or filter change
-    useEffect(() => {
-        setPage(1);
-        setImages(filteredData.slice(0, itemsPerPage));
-    }, [activeFilter]);
-
-    // Infinite Scroll Intersection Observer
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            const target = entries[0];
-            if (target.isIntersecting) {
-                setPage((prev) => prev + 1);
-            }
-        });
-
-        if (loaderRef.current) observer.observe(loaderRef.current);
-
-        return () => {
-            if (loaderRef.current) observer.unobserve(loaderRef.current);
-        };
-    }, []);
-
-    // Compute slice based on page
-    useEffect(() => {
-        if (page > 1) {
-            setImages(filteredData.slice(0, page * itemsPerPage));
-        }
-    }, [page, filteredData]);
-
-    // Handle Escape key to close full screen
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (e.key === 'Escape') setSelectedImage(null);
-        }
-        window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, []);
+            setDynamicGradient(
+                `linear-gradient(to bottom, transparent, ${rgb1} 25%, ${rgb2} 60%, ${rgb3} 100%)`
+            );
+        } catch (err) {}
+    };
 
     return (
-        <main>
+        <div className="grid-item" ref={containerRef}>
+            <motion.div className="grid-image-wrapper" style={{ opacity, y }}>
+                <motion.div
+                    className="grid-vertical-line left-line"
+                    style={{ scaleY, background: dynamicGradient, transformOrigin: 'top' }}
+                />
+                <motion.div
+                    className="grid-vertical-line right-line"
+                    style={{ scaleY, background: dynamicGradient, transformOrigin: 'top' }}
+                />
+                <img
+                    src={`${import.meta.env.BASE_URL}${src}`}
+                    alt="Project detail"
+                    loading="lazy"
+                    crossOrigin="anonymous"
+                    onLoad={handleImageLoad}
+                    onClick={() => onClick(src)}
+                    style={{ cursor: 'pointer' }}
+                />
+            </motion.div>
+        </div>
+    );
+};
 
-            {/* Sub-Navigation for Projects Filter */}
-            <div className="filter-nav glass-card">
-                <button
-                    className={`filter-btn ${activeFilter === 'All' ? 'active' : ''}`}
-                    onClick={() => setActiveFilter('All')}
-                >
-                    All
-                </button>
-                {mockProjectNames.map(proj => (
-                    <button
-                        key={proj}
-                        className={`filter-btn ${activeFilter === proj ? 'active' : ''}`}
-                        onClick={() => setActiveFilter(proj)}
-                    >
-                        {proj}
-                    </button>
-                ))}
-            </div>
+// ─── Vertical Connecting Line using next image's colors ───
+const ConnectingLine = ({ nextImageSrc, className = '' }) => {
+    const [gradient, setGradient] = useState('transparent');
+    const lineRef = useRef(null);
 
-            <section className="masonry-gallery">
-                <AnimatePresence mode="popLayout">
-                    {images.map((img) => {
-                        const isHovered = hoveredId === img.id;
-                        const isAnyHovered = hoveredId !== null;
-                        const opacity = isAnyHovered && !isHovered ? 0.4 : 1;
+    // Extract gradient from next image
+    useEffect(() => {
+        if (!nextImageSrc) return;
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.src = `${import.meta.env.BASE_URL}${nextImageSrc}`;
+        img.onload = () => {
+            try {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d', { willReadFrequently: true });
+                canvas.width = 1;
+                canvas.height = 3;
+                ctx.drawImage(img, 0, 0, 1, 3);
+                
+                const c1 = ctx.getImageData(0, 0, 1, 1).data;
+                const c2 = ctx.getImageData(0, 1, 1, 1).data;
+                const c3 = ctx.getImageData(0, 2, 1, 1).data;
+                
+                const rgb1 = `rgb(${c1[0]}, ${c1[1]}, ${c1[2]})`;
+                const rgb2 = `rgb(${c2[0]}, ${c2[1]}, ${c2[2]})`;
+                const rgb3 = `rgb(${c3[0]}, ${c3[1]}, ${c3[2]})`;
+                
+                setGradient(`linear-gradient(to bottom, transparent 0%, ${rgb1} 30%, ${rgb2} 60%, ${rgb3} 100%)`);
+            } catch(e) {}
+        };
+    }, [nextImageSrc]);
 
-                        return (
-                            <motion.article
-                                layoutId={`container-${img.id}`}
-                                className="masonry-item"
-                                key={img.id}
-                                onMouseEnter={() => setHoveredId(img.id)}
-                                onMouseLeave={() => setHoveredId(null)}
-                                onClick={() => setSelectedImage(img)}
-                                style={{ opacity, transition: 'opacity 0.3s ease' }}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: isAnyHovered && !isHovered ? 0.4 : 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.4 }}
-                            >
-                                <motion.img
-                                    layoutId={`image-${img.id}`}
-                                    src={img.src}
-                                    alt={img.project}
-                                    loading="lazy"
-                                />
+    // Scroll effect identical to old App.jsx logic
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!lineRef.current) return;
+            const wrapper = lineRef.current.parentElement;
+            if (!wrapper) return;
 
-                                <AnimatePresence>
-                                    {isHovered && (
-                                        <motion.div
-                                            key="tag"
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: 10 }}
-                                            className="masonry-tag glass-nav"
-                                        >
-                                            {img.project}
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
+            const wrapperRect = wrapper.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
 
-                            </motion.article>
-                        );
-                    })}
-                </AnimatePresence>
-            </section>
+            const gapSize = parseFloat(getComputedStyle(lineRef.current).height);
+            const distFromViewportBottom = viewportHeight - wrapperRect.bottom;
+            const progress = distFromViewportBottom / (gapSize + viewportHeight * 0.8);
+            const scale = Math.max(0, Math.min(1, 1 - Math.max(0, progress - 0.4) * 1.2));
+            
+            lineRef.current.style.transform = `translateX(-50%) scaleY(${scale})`;
+            lineRef.current.style.transformOrigin = 'bottom center';
+        };
 
-            {images.length < filteredData.length && (
-                <div ref={loaderRef} className="loading-indicator">
-                    Loading...
-                </div>
-            )}
+        const scroller = () => requestAnimationFrame(handleScroll);
+        window.addEventListener('scroll', scroller, { passive: true });
+        scroller();
+        return () => window.removeEventListener('scroll', scroller);
+    }, []);
 
-            {/* Full Screen Lightbox using Framer Motion Shared Layouts */}
+    return <div className={`connecting-line ${className}`} ref={lineRef} style={{ background: gradient }} />;
+};
+
+// ─── Build a flat gallery of all SHOWCASE images across all projects ───
+const buildGalleryItems = () => {
+    const items = [];
+    photographyProjects.forEach((project) => {
+        project.showcaseImages.forEach((img, idx) => {
+            items.push({
+                id: `${project.id}-showcase-${idx}`,
+                projectId: project.id,
+                title: project.title,
+                slug: project.slug,
+                // Compressed image generated via sharp for the main gallery fast loading
+                src: getImagePath(project.slug, img.replace(/\.(jpg|jpeg|png)$/i, '_compressed.jpg')),
+                // Original massive image kept for the expanded view
+                originalSrc: getImagePath(project.slug, img),
+                order: project.order,
+                showcaseIdx: idx,
+            });
+        });
+    });
+    items.sort((a, b) => a.order - b.order || a.showcaseIdx - b.showcaseIdx);
+    return items;
+};
+
+const galleryItems = buildGalleryItems();
+
+export function Photography() {
+    const [selectedProject, setSelectedProject] = useState(null);
+    const [selectedShowcaseSrc, setSelectedShowcaseSrc] = useState(null);
+    const [enlargedImage, setEnlargedImage] = useState(null);
+    const expandedRef = useRef(null);
+    const scrollPositionRef = useRef(0);
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') {
+                if (enlargedImage) {
+                    setEnlargedImage(null);
+                } else {
+                    setSelectedProject(null);
+                    setSelectedShowcaseSrc(null);
+                }
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [enlargedImage]);
+
+    useEffect(() => {
+        if (selectedProject) {
+            // Reset scroll position to top when opening a project
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            if (expandedRef.current) {
+                expandedRef.current.scrollTop = 0;
+            }
+        }
+    }, [selectedProject]);
+
+    const handleImageClick = (item) => {
+        const project = photographyProjects.find((p) => p.id === item.projectId);
+        if (project) {
+            scrollPositionRef.current = window.scrollY;
+            setSelectedProject(project);
+            setSelectedShowcaseSrc(item.originalSrc);
+        }
+    };
+
+    const handleClose = () => {
+        setSelectedProject(null);
+        setSelectedShowcaseSrc(null);
+    };
+
+    return (
+        <main className="photography-page">
+            {/* ─── Main View: Vertical List with Connecting Lines ─── */}
+            <motion.div
+                initial="visible"
+                animate={selectedProject ? 'hidden' : 'visible'}
+                variants={{
+                    visible: { opacity: 1, display: 'flex' },
+                    hidden: { opacity: 0, transitionEnd: { display: 'none' } },
+                }}
+                transition={{ duration: 0.4 }}
+                style={{ width: '100%', flexDirection: 'column', alignItems: 'center' }}
+            >
+                        {/* Dynamic top gradient line connected to the first image */}
+                        <div className="intro-divider-wrapper" style={{ marginTop: '5vh' }}>
+                            {galleryItems.length > 0 && (
+                                <ConnectingLine className="top-line" nextImageSrc={galleryItems[0].src} />
+                            )}
+                        </div>
+
+                        <div className="image-list">
+                            {galleryItems.map((item, idx) => {
+                                const isLast = idx === galleryItems.length - 1;
+                                const nextImageSrc = !isLast ? galleryItems[idx + 1].src : null;
+
+                                return (
+                                    <div key={item.id} className="image-wrapper">
+                                        <motion.img
+                                            layoutId={`project-image-${item.id}`}
+                                            src={`${import.meta.env.BASE_URL}${item.src}`}
+                                            alt={item.title}
+                                            loading="lazy"
+                                            onClick={() => handleImageClick(item)}
+                                            onContextMenu={(e) => e.preventDefault()}
+                                        />
+                                        {!isLast && <ConnectingLine nextImageSrc={nextImageSrc} />}
+                                    </div>
+                                );
+                            })}
+                        </div>
+            </motion.div>
+
+            {/* ─── Expanded Project View ─── */}
             <AnimatePresence>
-                {selectedImage && (
+                {selectedProject && (
                     <motion.div
-                        className="fullscreen-overlay"
+                        key="expanded"
+                        className="project-expanded"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        onClick={() => setSelectedImage(null)}
+                        transition={{ duration: 0.4 }}
+                        onAnimationStart={() => {
+                            // Ensure window gets snapped to the top of the expanded view so user doesn't stay at y=5000px
+                            if (selectedProject) {
+                                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                            }
+                        }}
                     >
-                        <motion.div
-                            layoutId={`container-${selectedImage.id}`}
-                            className="fullscreen-image-wrapper"
-                            onClick={(e) => e.stopPropagation()} // Prevent close when clicking image
-                        >
-                            <motion.img
-                                layoutId={`image-${selectedImage.id}`}
-                                src={selectedImage.src}
-                                alt="Full screen"
-                            />
-                            <button className="close-btn" onClick={() => setSelectedImage(null)}>
-                                &times;
-                            </button>
-                        </motion.div>
+                        <button className="back-btn project-back-btn" onClick={handleClose}>
+                            &larr; BACK
+                        </button>
+
+                        <div className="project-expanded-layout">
+                            {/* Left: Main showcase image, sticky with layoutId */}
+                            <div className="project-showcase-side">
+                                <div className="project-showcase-sticky">
+                                    <motion.img
+                                        layoutId={`project-image-${galleryItems.find(i => i.src === selectedShowcaseSrc)?.id}`}
+                                        src={`${import.meta.env.BASE_URL}${selectedShowcaseSrc}`}
+                                        alt={selectedProject.title}
+                                        className="project-showcase-image"
+                                        onClick={() => setEnlargedImage(selectedShowcaseSrc)}
+                                        style={{ cursor: 'pointer' }}
+                                    />
+                                    <motion.h2 
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3 }}
+                                        className="project-showcase-title"
+                                    >
+                                        {selectedProject.title}
+                                    </motion.h2>
+                                </div>
+                            </div>
+
+                            {/* Right: Scrollable detail grid with gradient lines */}
+                            <div className="project-detail-side" ref={expandedRef}>
+                                <div className="project-detail-grid">
+                                    {selectedProject.detailImages.map((img, idx) => (
+                                        <DetailGridItem
+                                            key={idx}
+                                            src={getImagePath(selectedProject.slug, img)}
+                                            onClick={(src) => setEnlargedImage(src)}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
+            {/* ─── Fullscreen Image Overlay ─── */}
+            <AnimatePresence>
+                {enlargedImage && (
+                    <motion.div
+                        key="fullscreen"
+                        className="fullscreen-overlay"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setEnlargedImage(null)}
+                    >
+                        <motion.img
+                            src={`${import.meta.env.BASE_URL}${enlargedImage}`}
+                            alt="Expanded detail"
+                            initial={{ scale: 0.95 }}
+                            animate={{ scale: 1 }}
+                            exit={{ scale: 0.95 }}
+                            transition={{ duration: 0.3, ease: 'easeOut' }}
+                            onClick={(e) => e.stopPropagation()}
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </main>
     );
 }

@@ -8,28 +8,28 @@ const mockArticles = [
         title: "Light & brutalism in modern architecture",
         date: "March 2026",
         excerpt: "Exploring how heavy concrete textures play against soft, diffused natural lighting in contemporary gallery spaces.",
-        image: "/asia-stillz/Still 2026-02-27 211449_1.21.1.png"
+        image: `${import.meta.env.BASE_URL}asia-stillz/Still 2026-02-27 211449_1.21.1.webp`
     },
     {
         id: 2,
         title: "The evolution of the standard",
         date: "February 2026",
         excerpt: "A diary entry chronicling the process of removing excess visual noise to achieve a more pure execution of concept.",
-        image: "/asia-stillz/Still 2026-02-27 211449_1.6.1.png"
+        image: `${import.meta.env.BASE_URL}asia-stillz/Still 2026-02-27 211449_1.6.1.webp`
     },
     {
         id: 3,
         title: "Designing the new transparent device",
         date: "January 2026",
         excerpt: "Behind the scenes on our OEM care device collaboration. Finding the harmony between industrial engineering and soft aesthetics.",
-        image: "/asia-stillz/Still 2026-02-27 211449_1.13.1.png"
+        image: `${import.meta.env.BASE_URL}asia-stillz/Still 2026-02-27 211449_1.13.1.webp`
     },
     {
         id: 4,
         title: "Visual vocabulary: glassmorphism",
         date: "December 2025",
         excerpt: "Why transparent and translucent UI layers create psychological depth in digital experiences.",
-        image: "/asia-stillz/Still 2026-02-27 211449_1.2.1.png"
+        image: `${import.meta.env.BASE_URL}asia-stillz/Still 2026-02-27 211449_1.2.1.webp`
     }
 ];
 

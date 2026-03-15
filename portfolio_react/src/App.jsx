@@ -1,120 +1,111 @@
-import React, { useEffect, useRef } from 'react';
-import imageData from './imageData.json';
+import React, { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
+import { Navigation } from './components/Navigation';
+import { Photography } from './pages/Photography';
+import { Design } from './pages/Design';
+import { DesignSubpage } from './pages/DesignSubpage';
+import { About } from './pages/About';
 
 function App() {
-  useSmoothScroll();
-  const lineRefs = useRef([]);
+  const [activeTab, setActiveTab] = useState('Photography');
+  const cursorRef = useRef(null);
+  
+  useSmoothScroll(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      lineRefs.current.forEach((lineEl) => {
-        if (!lineEl) return;
-
-        const wrapper = lineEl.parentElement;
-        if (!wrapper) return;
-
-        const wrapperRect = wrapper.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-
-        // The gap starts at the bottom of this wrapper's image
-        // and ends at the top of the next wrapper's image.
-        // As the next image approaches the viewport, the line should shrink.
-
-        // wrapperRect.bottom = bottom edge of the current image
-        // When wrapperRect.bottom is at the top of the viewport, 
-        // the line should be fully retracted (height = 0).
-        // When wrapperRect.bottom is well above the viewport center,
-        // the line should be at full height.
-
-        const gapSize = parseFloat(getComputedStyle(lineEl).height);
-        
-        // How far the bottom of the image is from the bottom of the viewport
-        // When this is large (image is high up), line should be at full length
-        // When this approaches 0 (image bottom at viewport bottom), line starts shrinking
-        // When negative (image has scrolled past), line should be very short
-        
-        const distFromViewportBottom = viewportHeight - wrapperRect.bottom;
-        
-        // Normalize: line should be fully visible when the gap is centered in the viewport
-        // and shrink to 0 as the next image enters
-        const totalGapPx = gapSize; // This is the CSS height
-        
-        // Progress: 0 = gap just started appearing, 1 = next image is fully in view
-        // We want the line to start retracting when the gap is about 60% scrolled
-        const progress = distFromViewportBottom / (totalGapPx + viewportHeight * 0.8);
-        
-        // Clamp the scale factor — slower retraction, finishes later
-        const scale = Math.max(0, Math.min(1, 1 - Math.max(0, progress - 0.4) * 1.2));
-        
-        lineEl.style.transform = `translateX(-50%) scaleY(${scale})`;
-        lineEl.style.transformOrigin = 'bottom center';
-      });
+    const moveCursor = (e) => {
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
+      }
+    };
+    
+    const handleMouseEnter = () => {
+      if (cursorRef.current) cursorRef.current.style.opacity = '1';
+    };
+    const handleMouseLeave = () => {
+      if (cursorRef.current) cursorRef.current.style.opacity = '0';
+    };
+    
+    const handleMouseOver = (e) => {
+      if (!cursorRef.current) return;
+      if (e.target.closest('a') || e.target.classList.contains('nav-link')) {
+        cursorRef.current.classList.add('cursor-link');
+      } else if (e.target.tagName.toLowerCase() === 'img' && !e.target.closest('.fullscreen-overlay')) {
+        cursorRef.current.classList.add('cursor-image');
+      }
+    };
+    
+    const handleMouseOut = (e) => {
+      if (!cursorRef.current) return;
+      if (e.target.closest('a') || e.target.classList.contains('nav-link')) {
+        cursorRef.current.classList.remove('cursor-link');
+      } else if (e.target.tagName.toLowerCase() === 'img' && !e.target.closest('.fullscreen-overlay')) {
+        cursorRef.current.classList.remove('cursor-image');
+      }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial call
+    window.addEventListener('mousemove', moveCursor);
+    document.documentElement.addEventListener('mouseenter', handleMouseEnter);
+    document.documentElement.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseout', handleMouseOut);
     
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('mousemove', moveCursor);
+      document.documentElement.removeEventListener('mouseenter', handleMouseEnter);
+      document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('mouseover', handleMouseOver);
+      document.removeEventListener('mouseout', handleMouseOut);
+    };
   }, []);
+
+  // Scroll to top when switching tabs
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [activeTab]);
+
+  const pageTransition = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+    exit: { opacity: 0, transition: { duration: 0.3, ease: 'easeIn' } }
+  };
 
   return (
     <div className="portfolio-container">
-      {/* Sleek unified header: monogram left, nav right */}
-      <header className="site-header">
-        <span className="header-monogram">AP</span>
-        <nav className="header-nav">
-          <a href="#" className="nav-link active">Photography</a>
-          <span className="nav-dot">·</span>
-          <a href="#" className="nav-link">Writings</a>
-          <span className="nav-dot">·</span>
-          <a href="#" className="nav-link">About</a>
-        </nav>
-      </header>
-      
-      <div className="image-list">
-        {imageData.map((item, idx) => {
-          const isLast = idx === imageData.length - 1;
-          const currentColor = item.color;
-          
-          // Build the gradient from the NEXT image's palette
-          const nextPalette = !isLast && imageData[idx + 1].palette 
-            ? imageData[idx + 1].palette 
-            : [];
+      <div className="glass-cursor" ref={cursorRef} style={{ opacity: 0 }} />
+      <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
-          // Build a multi-stop gradient string from the palette
-          const buildGradient = (palette) => {
-            if (palette.length === 0) return 'transparent';
-            if (palette.length === 1) {
-              return `linear-gradient(to bottom, transparent 0%, ${palette[0]} 50%, ${palette[0]} 100%)`;
-            }
-            const stops = palette.map((color, i) => {
-              const percent = 15 + (i / (palette.length - 1)) * 85;
-              return `${color} ${percent.toFixed(0)}%`;
-            });
-            return `linear-gradient(to bottom, transparent 0%, ${stops.join(', ')})`;
-          };
-          
-          return (
-            <div key={idx} className="image-wrapper">
-              <img 
-                src={`/asia-stillz/${item.src}`} 
-                alt={`portfolio piece ${idx}`} 
-                loading="lazy" 
-              />
-              {!isLast && (
-                <div 
-                  className="connecting-line"
-                  ref={el => lineRefs.current[idx] = el}
-                  style={{
-                    background: buildGradient(nextPalette),
-                  }}
-                />
-              )}
-            </div>
-          );
-        })}
-      </div>
+      <div className="page-spacer" />
+
+      <AnimatePresence mode="wait">
+        {activeTab === 'Photography' && (
+          <motion.div key="photography" {...pageTransition} style={{ width: '100%' }}>
+            <Photography />
+          </motion.div>
+        )}
+
+        {activeTab === 'Design' && (
+          <motion.div key="design" {...pageTransition}>
+            <Design setActiveTab={setActiveTab} />
+          </motion.div>
+        )}
+
+        {activeTab?.startsWith('Design-') && (
+          <motion.div key="design-sub" {...pageTransition}>
+            <DesignSubpage 
+              type={activeTab.split('-')[1]} 
+              setActiveTab={setActiveTab} 
+            />
+          </motion.div>
+        )}
+
+        {activeTab === 'About' && (
+          <motion.div key="about" {...pageTransition}>
+            <About />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
