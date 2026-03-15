@@ -786,12 +786,12 @@ body.overlay-active .glass-cursor::after {
   width: 45%;
   flex-shrink: 0;
   padding: 2vw;
-  padding-top: 8vh;
+  padding-top: 15vh;
 }
 
 .project-showcase-sticky {
   position: sticky;
-  top: 10vh;
+  top: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -818,7 +818,7 @@ body.overlay-active .glass-cursor::after {
 /* Right side: scrollable detail grid */
 .project-detail-side {
   flex: 1;
-  padding: 8vh 3vw 10vh 1vw;
+  padding: 15vh 3vw 10vh 1vw;
 }
 
 .project-detail-grid {
