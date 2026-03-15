@@ -103,7 +103,7 @@ export function About() {
             <div className="section-divider-wrapper section-divider-bottom">
                 <div
                     className="section-divider"
-                    style={{ background: lineGradient, transform: 'translateX(-50%) rotate(180deg)' }}
+                    style={{ background: lineGradient }}
                 />
             </div>
         </main>

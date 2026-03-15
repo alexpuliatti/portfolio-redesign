@@ -7,26 +7,20 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const photographyDir = path.join(__dirname, '../public/photography');
-const THUMB_WIDTH = 60; // Slightly larger to prevent JPEG macroblock artifacts through blur
+const THUMB_WIDTH = 200; // Large enough for smooth blur-up LQIP (no blocky artifacts)
 
 async function generateThumbnail(inputPath) {
     const parsed = path.parse(inputPath);
-    // Skip files that are already thumbnails or compressed showcase copies
-    if (parsed.name.endsWith('_thumb') || parsed.name.endsWith('_compressed')) return;
+    // Skip files that are already thumbnails, compressed, or mobile variants
+    if (parsed.name.endsWith('_thumb') || parsed.name.endsWith('_compressed') || parsed.name.endsWith('_mobile')) return;
 
     const thumbPath = path.join(parsed.dir, `${parsed.name}_thumb.jpg`);
-
-    // Skip if thumbnail already exists
-    try {
-        await fs.access(thumbPath);
-        return; // already generated
-    } catch (_) {}
 
     try {
         await sharp(inputPath)
             .rotate() // respect EXIF orientation
-            .resize({ width: 60 })
-            .jpeg({ quality: 70 })
+            .resize({ width: THUMB_WIDTH })
+            .jpeg({ quality: 60 })
             .toFile(thumbPath);
 
         const inputStats = await fs.stat(inputPath);

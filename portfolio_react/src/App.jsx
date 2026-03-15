@@ -10,7 +10,8 @@ import { About } from './pages/About';
 function App() {
   const [activeTab, setActiveTab] = useState(() => {
     const hash = window.location.hash.replace('#', '');
-    return hash || 'Photography';
+    // Extract base tab — e.g. "Photography/charlotte-taylor" → "Photography"
+    return (hash ? hash.split('/')[0] : '') || 'Photography';
   });
   const cursorRef = useRef(null);
   
@@ -68,7 +69,9 @@ function App() {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
       if (hash) {
-        setActiveTab(hash);
+        // Extract base tab — e.g. "Photography/charlotte-taylor" → "Photography"
+        const baseTab = hash.split('/')[0];
+        setActiveTab(baseTab);
       } else {
         setActiveTab('Photography');
       }

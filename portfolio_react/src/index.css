@@ -278,7 +278,7 @@ body.overlay-active .glass-cursor::after {
   align-items: center;
   width: 100%;
   /* Large gap between images for the line to be visible */
-  gap: 30vh; 
+  gap: 35vh; 
 }
 
 .image-wrapper {
@@ -350,22 +350,26 @@ body.overlay-active .glass-cursor::after {
 */
 .connecting-line {
   position: absolute;
-  bottom: -30vh; /* Position it in the gap below the current image */
+  bottom: -35vh; /* Position it in the gap below the current image */
   left: 50%; 
-  transform: translateX(-50%);
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: bottom center;
   width: 4px; /* Thicker for better visibility */
-  height: 30vh; /* Exactly the gap size */
+  height: 35vh; /* Exactly the gap size */
   z-index: 1; 
-  opacity: 1; 
+  opacity: 0; 
   will-change: transform, opacity; 
-  transition: none; 
+  transition: opacity 0.8s ease;
+}
+
+.connecting-line.line-revealed {
+  opacity: 1;
   animation: subtleGlow 5s ease-in-out infinite;
-  filter: brightness(1.8) saturate(1.5); /* Boost brightness of extracted colors */
 }
 
 @keyframes subtleGlow {
-  0%, 100% { opacity: 0.85; }
-  50% { opacity: 1; }
+  0%, 100% { filter: brightness(1.8) saturate(1.5); }
+  50% { filter: brightness(2.2) saturate(1.7); }
 }
 
 
@@ -380,19 +384,48 @@ body.overlay-active .glass-cursor::after {
 }
 
 .section-divider-wrapper.section-divider-bottom {
-  margin-top: 4rem;
+  margin-top: 0;
 }
 
 .section-divider {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top center;
   top: 0;
   bottom: 0;
   width: 3px;
   z-index: 1;
-  animation: subtleGlow 5s ease-in-out infinite;
+  opacity: 0;
   filter: brightness(1.8) saturate(1.5);
+  animation: sectionDividerEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+.section-divider-bottom .section-divider {
+  transform-origin: bottom center;
+  animation: sectionDividerEntranceBottom 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+
+@keyframes sectionDividerEntrance {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+@keyframes sectionDividerEntranceBottom {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scaleY(0) rotate(180deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scaleY(1) rotate(180deg);
+  }
 }
 
 /* ===== Design Page ===== */
@@ -642,12 +675,12 @@ body.overlay-active .glass-cursor::after {
   }
   
   .image-list {
-    gap: 20vh;
+    gap: 25vh;
   }
 
   .connecting-line {
-    bottom: -20vh;
-    height: 20vh; 
+    bottom: -25vh;
+    height: 25vh; 
   }
 
   .site-topbar {
@@ -692,8 +725,9 @@ body.overlay-active .glass-cursor::after {
     gap: 15vh;
   }
   .grid-vertical-line {
-    /* on mobile, place it to the left edge of the screen to separate stacked items */
-    left: -2vw;
+    width: 1px;
+    box-shadow: none;
+    border-radius: 0;
   }
   .subpage-header {
     margin: 10vh auto;
@@ -859,21 +893,21 @@ body.overlay-active .glass-cursor::after {
 }
 
 .lqip-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-height: 50vh;
+  height: 100%;
   object-fit: contain;
   display: block;
   filter: blur(20px);
-  transform: scale(1.1);
   transition: opacity 0.4s ease;
+  z-index: 1;
 }
 
 .lqip-thumb.lqip-hidden {
   opacity: 0;
   pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .lqip-full {
@@ -883,14 +917,12 @@ body.overlay-active .glass-cursor::after {
   display: block;
   opacity: 0;
   transition: opacity 0.4s ease;
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  z-index: 0;
 }
 
 .lqip-full.lqip-visible {
   opacity: 1;
-  position: relative;
 }
 
 /* ─── Responsive: Photography ─── */

@@ -9,6 +9,15 @@ const getThumbPath = (src) => {
     return src.substring(0, dotIdx) + '_thumb.jpg';
 };
 
+// Helper to compute the mobile-optimised path from a full image path
+const getMobilePath = (src) => {
+    const dotIdx = src.lastIndexOf('.');
+    if (dotIdx === -1) return src;
+    return src.substring(0, dotIdx) + '_mobile.jpg';
+};
+
+const isMobile = () => typeof window !== 'undefined' && window.innerWidth <= 900;
+
 const STATIC_GRADIENT = 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.15) 30%, rgba(255,255,255,0.3) 100%)';
 
 // ─── Detail Grid Item with LQIP blur-up loading ───
@@ -18,6 +27,8 @@ const DetailGridItem = ({ src, onClick }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
 
     const thumbSrc = getThumbPath(src);
+    // On mobile, load the lightweight _mobile.jpg variant instead of the full original
+    const displaySrc = isMobile() ? getMobilePath(src) : src;
 
     useEffect(() => {
         const el = containerRef.current;
@@ -46,7 +57,8 @@ const DetailGridItem = ({ src, onClick }) => {
                         background: STATIC_GRADIENT,
                         transformOrigin: 'top',
                         transform: `scaleY(${imageLoaded ? 1 : 0})`,
-                        transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
+                        transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, opacity 0.6s ease',
+                        opacity: visible ? 1 : 0,
                     }}
                 />
                 <div
@@ -55,7 +67,8 @@ const DetailGridItem = ({ src, onClick }) => {
                         background: STATIC_GRADIENT,
                         transformOrigin: 'top',
                         transform: `scaleY(${imageLoaded ? 1 : 0})`,
-                        transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
+                        transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, opacity 0.6s ease',
+                        opacity: visible ? 1 : 0,
                     }}
                 />
                 <div className="lqip-container" onClick={() => imageLoaded && onClick(src)}>
@@ -67,7 +80,7 @@ const DetailGridItem = ({ src, onClick }) => {
                     />
                     {visible && (
                         <img
-                            src={`${import.meta.env.BASE_URL}${src}`}
+                            src={`${import.meta.env.BASE_URL}${displaySrc}`}
                             alt="Project detail"
                             loading="lazy"
                             decoding="async"
@@ -84,7 +97,27 @@ const DetailGridItem = ({ src, onClick }) => {
 // ─── Vertical Connecting Line using next image's colors ───
 const ConnectingLine = ({ nextImageSrc, className = '' }) => {
     const [gradient, setGradient] = useState('transparent');
+    const [revealed, setRevealed] = useState(false);
     const lineRef = useRef(null);
+
+    // Reveal line when it enters the viewport
+    useEffect(() => {
+        const el = lineRef.current;
+        if (!el) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setRevealed(true);
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: '100px 0px' }
+        );
+
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
 
     // Extract gradient from next image
     useEffect(() => {
@@ -113,8 +146,10 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
         };
     }, [nextImageSrc]);
 
-    // Scroll effect identical to old App.jsx logic
+    // Scroll effect — only runs after line has been revealed
     useEffect(() => {
+        if (!revealed) return;
+
         const handleScroll = () => {
             if (!lineRef.current) return;
             const wrapper = lineRef.current.parentElement;
@@ -136,9 +171,15 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
         window.addEventListener('scroll', scroller, { passive: true });
         scroller();
         return () => window.removeEventListener('scroll', scroller);
-    }, []);
+    }, [revealed]);
 
-    return <div className={`connecting-line ${className}`} ref={lineRef} style={{ background: gradient }} />;
+    return (
+        <div
+            className={`connecting-line ${className} ${revealed ? 'line-revealed' : ''}`}
+            ref={lineRef}
+            style={{ background: gradient }}
+        />
+    );
 };
 
 // ─── Build a flat gallery of all SHOWCASE images across all projects ───
@@ -180,7 +221,6 @@ const ShowcaseGridItem = ({ item, onClick }) => {
                 alt=""
                 className={`lqip-thumb ${imageLoaded ? 'lqip-hidden' : ''}`}
                 aria-hidden="true"
-                style={{ position: imageLoaded ? 'absolute' : 'relative', zIndex: 0 }}
             />
             <motion.img
                 layoutId={`project-image-${item.projectId}-${item.showcaseIdx}`}
@@ -189,7 +229,6 @@ const ShowcaseGridItem = ({ item, onClick }) => {
                 loading="lazy"
                 decoding="async"
                 className={`lqip-full ${imageLoaded ? 'lqip-visible' : ''}`}
-                style={{ position: imageLoaded ? 'relative' : 'absolute', zIndex: 1 }}
                 onLoad={() => setImageLoaded(true)}
                 onContextMenu={(e) => e.preventDefault()}
             />
@@ -204,26 +243,33 @@ export function Photography() {
     const expandedRef = useRef(null);
     const scrollPositionRef = useRef(0);
 
+    // Close project helper (shared by back button, Escape, popstate)
+    const closeProject = () => {
+        setSelectedProject(null);
+        setSelectedShowcaseSrc(null);
+    };
+
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === 'Escape') {
                 if (enlargedImage) {
                     setEnlargedImage(null);
-                } else {
-                    setSelectedProject(null);
-                    setSelectedShowcaseSrc(null);
+                } else if (selectedProject) {
+                    // Use history.back() so the popstate handler fires
+                    window.history.back();
                 }
             }
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [enlargedImage]);
+    }, [enlargedImage, selectedProject]);
 
     // Listen for topbar logo click to completely reset to main gallery
     useEffect(() => {
         const handleReset = () => {
-            setSelectedProject(null);
-            setSelectedShowcaseSrc(null);
+            closeProject();
+            // Replace the hash back to Photography
+            window.history.replaceState(null, '', '#Photography');
             window.scrollTo({ top: 0, behavior: 'instant' });
             if (window.lenis) {
                 window.lenis.scrollTo(0, { immediate: true });
@@ -231,6 +277,19 @@ export function Photography() {
         };
         window.addEventListener('reset-photography', handleReset);
         return () => window.removeEventListener('reset-photography', handleReset);
+    }, []);
+
+    // Handle browser back/forward for project sub-URLs
+    useEffect(() => {
+        const handlePopState = () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash === 'Photography' || !hash.startsWith('Photography/')) {
+                // User pressed back, close the project
+                closeProject();
+            }
+        };
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
     }, []);
 
     useEffect(() => {
@@ -249,12 +308,14 @@ export function Photography() {
             scrollPositionRef.current = window.scrollY;
             setSelectedProject(project);
             setSelectedShowcaseSrc(item.originalSrc);
+            // Push sub-URL so browser back returns to gallery
+            window.history.pushState({ projectSlug: project.slug }, '', `#Photography/${project.slug}`);
         }
     };
 
     const handleClose = () => {
-        setSelectedProject(null);
-        setSelectedShowcaseSrc(null);
+        // Use history.back() so the popstate handler fires and URL updates
+        window.history.back();
     };
 
     return (
