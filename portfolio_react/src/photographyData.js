@@ -48,7 +48,7 @@ const photographyProjects = [
         order: 4,
         title: 'Alessandro Florio',
         slug: 'alessandro-florio',
-        showcaseImages: ['SHOWCASE_1.jpg', 'SHOWCASE_2.jpg'],
+        showcaseImages: ['SHOWCASE_1.jpg'],
         detailImages: [
             '017_HIGH_01_XXX.jpg', '022_HIGH_01_XXX.jpg', '027_HIGH_01_XXX.jpg',
             '030_HIGH_01_XXX.jpg', '032_HIGH_01_XXX.jpg', '036_HIGH_01_XXX.jpg',
