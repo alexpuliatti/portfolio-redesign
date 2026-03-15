@@ -18,6 +18,7 @@ export function useSmoothScroll(isLocked = false) {
         });
         
         lenisRef.current = lenis;
+        window.lenis = lenis;
 
         function raf(time) {
             lenis.raf(time);
@@ -29,6 +30,9 @@ export function useSmoothScroll(isLocked = false) {
         return () => {
             lenis.destroy();
             lenisRef.current = null;
+            if (window.lenis === lenis) {
+                delete window.lenis;
+            }
         };
     }, []);
 

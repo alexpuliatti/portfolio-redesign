@@ -208,7 +208,18 @@ export function Photography() {
                     hidden: { opacity: 0, transitionEnd: { display: 'none' } },
                 }}
                 transition={{ duration: 0.4 }}
-                style={{ width: '100%', flexDirection: 'column', alignItems: 'center' }}
+                style={{ width: '100%', flexDirection: 'column', alignItems: 'center', position: 'relative' }}
+                onAnimationStart={() => {
+                    // Restore scroll position when returning to gallery
+                    if (!selectedProject && scrollPositionRef.current > 0) {
+                        setTimeout(() => {
+                            window.scrollTo({ top: scrollPositionRef.current, left: 0, behavior: 'instant' });
+                            if (window.lenis) {
+                                window.lenis.scrollTo(scrollPositionRef.current, { immediate: true });
+                            }
+                        }, 50);
+                    }
+                }}
             >
                         {/* Dynamic top gradient line connected to the first image */}
                         <div className="intro-divider-wrapper" style={{ marginTop: '5vh' }}>
@@ -253,6 +264,9 @@ export function Photography() {
                             // Ensure window gets snapped to the top of the expanded view so user doesn't stay at y=5000px
                             if (selectedProject) {
                                 window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                                if (window.lenis) {
+                                    window.lenis.scrollTo(0, { immediate: true });
+                                }
                             }
                         }}
                     >
