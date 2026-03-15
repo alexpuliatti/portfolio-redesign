@@ -223,9 +223,9 @@ export function Photography() {
                                 const nextImageSrc = !isLast ? galleryItems[idx + 1].src : null;
 
                                 return (
-                                    <div key={item.id} className="image-wrapper">
+                                    <div key={`${item.projectId}-${item.showcaseIdx}-${idx}`} className="image-wrapper">
                                         <motion.img
-                                            layoutId={`project-image-${item.id}`}
+                                            layoutId={`project-image-${item.projectId}-${item.showcaseIdx}`}
                                             src={`${import.meta.env.BASE_URL}${item.src}`}
                                             alt={item.title}
                                             loading="lazy"
@@ -265,7 +265,7 @@ export function Photography() {
                             <div className="project-showcase-side">
                                 <div className="project-showcase-sticky">
                                     <motion.img
-                                        layoutId={`project-image-${galleryItems.find(i => i.src === selectedShowcaseSrc)?.id}`}
+                                        layoutId={`project-image-${selectedProject.id}-${galleryItems.find(i => i.src === selectedShowcaseSrc)?.showcaseIdx}`}
                                         src={`${import.meta.env.BASE_URL}${selectedShowcaseSrc}`}
                                         alt={selectedProject.title}
                                         className="project-showcase-image"
