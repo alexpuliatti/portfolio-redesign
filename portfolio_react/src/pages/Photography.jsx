@@ -166,6 +166,37 @@ const buildGalleryItems = () => {
 
 const galleryItems = buildGalleryItems();
 
+// ─── Showcase Grid Item with LQIP blur-up loading ───
+const ShowcaseGridItem = ({ item, onClick }) => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+    
+    // Construct the thumb src
+    const thumbSrc = item.src.replace('_compressed.jpg', '_thumb_compressed.jpg');
+
+    return (
+        <div className="lqip-container" onClick={() => onClick(item)}>
+            <img
+                src={`${import.meta.env.BASE_URL}${thumbSrc}`}
+                alt=""
+                className={`lqip-thumb ${imageLoaded ? 'lqip-hidden' : ''}`}
+                aria-hidden="true"
+                style={{ position: imageLoaded ? 'absolute' : 'relative', zIndex: 0 }}
+            />
+            <motion.img
+                layoutId={`project-image-${item.projectId}-${item.showcaseIdx}`}
+                src={`${import.meta.env.BASE_URL}${item.src}`}
+                alt={item.title}
+                loading="lazy"
+                decoding="async"
+                className={`lqip-full ${imageLoaded ? 'lqip-visible' : ''}`}
+                style={{ position: imageLoaded ? 'relative' : 'absolute', zIndex: 1 }}
+                onLoad={() => setImageLoaded(true)}
+                onContextMenu={(e) => e.preventDefault()}
+            />
+        </div>
+    );
+};
+
 export function Photography() {
     const [selectedProject, setSelectedProject] = useState(null);
     const [selectedShowcaseSrc, setSelectedShowcaseSrc] = useState(null);
@@ -264,14 +295,7 @@ export function Photography() {
 
                                 return (
                                     <div key={`${item.projectId}-${item.showcaseIdx}-${idx}`} className="image-wrapper">
-                                        <motion.img
-                                            layoutId={`project-image-${item.projectId}-${item.showcaseIdx}`}
-                                            src={`${import.meta.env.BASE_URL}${item.src}`}
-                                            alt={item.title}
-                                            loading="lazy"
-                                            onClick={() => handleImageClick(item)}
-                                            onContextMenu={(e) => e.preventDefault()}
-                                        />
+                                        <ShowcaseGridItem item={item} onClick={handleImageClick} />
                                         {!isLast && <ConnectingLine nextImageSrc={nextImageSrc} />}
                                     </div>
                                 );

@@ -43,8 +43,8 @@ export function About() {
                 {/* Floating Bio Card */}
                 <motion.div variants={itemVariants} className="gallery-element liquid-glass gallery-bio">
                     <p>
-                        Photographer & Art Director based in London.<br /><br />
-                        Focused on the intersection of industrial design, light, and modern brutalism.
+                        Experimenti.<br />
+                        Based in London
                     </p>
                 </motion.div>
 

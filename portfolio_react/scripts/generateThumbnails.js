@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const photographyDir = path.join(__dirname, '../public/photography');
-const THUMB_WIDTH = 30; // Tiny — just enough for a blurred placeholder
+const THUMB_WIDTH = 60; // Slightly larger to prevent JPEG macroblock artifacts through blur
 
 async function generateThumbnail(inputPath) {
     const parsed = path.parse(inputPath);
@@ -24,8 +24,9 @@ async function generateThumbnail(inputPath) {
 
     try {
         await sharp(inputPath)
-            .resize({ width: THUMB_WIDTH })
-            .jpeg({ quality: 50 })
+            .rotate() // respect EXIF orientation
+            .resize({ width: 60 })
+            .jpeg({ quality: 70 })
             .toFile(thumbPath);
 
         const inputStats = await fs.stat(inputPath);

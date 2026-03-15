@@ -29,6 +29,7 @@ async function processDirectory(dir) {
             console.log(`Compressing ${entry.name}...`);
             try {
                 await sharp(fullPath)
+                    .rotate() // Auto-rotate based on EXIF before resizing
                     .resize({ width: MAX_WIDTH, withoutEnlargement: true })
                     .jpeg({ quality: QUALITY, progressive: true })
                     .toFile(outputPath);

@@ -8,7 +8,10 @@ import { DesignSubpage } from './pages/DesignSubpage';
 import { About } from './pages/About';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('Photography');
+  const [activeTab, setActiveTab] = useState(() => {
+    const hash = window.location.hash.replace('#', '');
+    return hash || 'Photography';
+  });
   const cursorRef = useRef(null);
   
   useSmoothScroll(false);
@@ -60,6 +63,29 @@ function App() {
     };
   }, []);
 
+  // Sync state to URL hash and listen for browser back/forward navigation
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        setActiveTab(hash);
+      } else {
+        setActiveTab('Photography');
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Update hash when tab changes (without triggering a jump)
+  useEffect(() => {
+    if (activeTab) {
+      // Use replaceState to avoid jumping to ID anchors if they existed
+      window.history.replaceState(null, '', `#${activeTab}`);
+    }
+  }, [activeTab]);
+
   // Scroll to top when switching tabs
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -73,7 +99,7 @@ function App() {
 
   return (
     <div className="portfolio-container">
-      <div className="glass-cursor" ref={cursorRef} style={{ opacity: 0 }} />
+      <div className="glass-cursor" ref={cursorRef} style={{ opacity: 1 }} />
       <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <div className="page-spacer" />
