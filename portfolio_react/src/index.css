@@ -844,6 +844,19 @@ body.overlay-active .glass-cursor::after {
   max-height: 50vh;
 }
 
+/* Lightweight CSS fade-in for detail grid items (replaces per-item Framer scroll hooks) */
+.detail-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.detail-fade-in.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ─── Responsive: Photography ─── */
 @media (max-width: 900px) {
   .masonry-gallery {

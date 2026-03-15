@@ -1,42 +1,38 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import photographyProjects, { getImagePath } from '../photographyData';
 
 // ─── Detail Grid Item with side gradient lines ───
+// Uses a single IntersectionObserver + CSS transitions instead of per-item
+// Framer Motion useScroll hooks to avoid 50+ scroll listeners killing perf.
 const DetailGridItem = ({ src, onClick }) => {
     const containerRef = useRef(null);
-    const [inView, setInView] = useState(false);
+    const [visible, setVisible] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
     const [dynamicGradient, setDynamicGradient] = useState(
         'linear-gradient(to bottom, transparent, rgba(255,255,255,0.1))'
     );
 
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start 90%", "center center"],
-    });
-
-    const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
-    const opacity = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
-    const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
-
     useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    setInView(true);
+                    setVisible(true);
                     observer.disconnect();
                 }
             },
-            { rootMargin: '600px 0px' } // Load images when they are within 600px of scrolling into view
+            { rootMargin: '200px 0px' }
         );
-        
-        if (containerRef.current) {
-            observer.observe(containerRef.current);
-        }
+
+        observer.observe(el);
         return () => observer.disconnect();
     }, []);
 
     const handleImageLoad = (e) => {
+        setImageLoaded(true);
         try {
             const img = e.target;
             const canvas = document.createElement('canvas');
@@ -59,31 +55,43 @@ const DetailGridItem = ({ src, onClick }) => {
         } catch (err) {}
     };
 
+    const isRevealed = visible && imageLoaded;
+
     return (
-        <div className="grid-item" ref={containerRef} style={{ minHeight: '30vh' }}>
-            <motion.div className="grid-image-wrapper" style={{ opacity, y }}>
-                {inView && (
-                    <>
-                        <motion.div
-                            className="grid-vertical-line left-line"
-                            style={{ scaleY, background: dynamicGradient, transformOrigin: 'top' }}
-                        />
-                        <motion.div
-                            className="grid-vertical-line right-line"
-                            style={{ scaleY, background: dynamicGradient, transformOrigin: 'top' }}
-                        />
-                        <img
-                            src={`${import.meta.env.BASE_URL}${src}`}
-                            alt="Project detail"
-                            loading="lazy"
-                            crossOrigin="anonymous"
-                            onLoad={handleImageLoad}
-                            onClick={() => onClick(src)}
-                            style={{ cursor: 'pointer' }}
-                        />
-                    </>
+        <div className="grid-item" ref={containerRef}>
+            <div
+                className={`grid-image-wrapper detail-fade-in ${isRevealed ? 'revealed' : ''}`}
+            >
+                <div
+                    className="grid-vertical-line left-line"
+                    style={{
+                        background: dynamicGradient,
+                        transformOrigin: 'top',
+                        transform: `scaleY(${isRevealed ? 1 : 0})`,
+                        transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
+                    }}
+                />
+                <div
+                    className="grid-vertical-line right-line"
+                    style={{
+                        background: dynamicGradient,
+                        transformOrigin: 'top',
+                        transform: `scaleY(${isRevealed ? 1 : 0})`,
+                        transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s',
+                    }}
+                />
+                {visible && (
+                    <img
+                        src={`${import.meta.env.BASE_URL}${src}`}
+                        alt="Project detail"
+                        loading="lazy"
+                        crossOrigin="anonymous"
+                        onLoad={handleImageLoad}
+                        onClick={() => onClick(src)}
+                        style={{ cursor: 'pointer' }}
+                    />
                 )}
-            </motion.div>
+            </div>
         </div>
     );
 };
