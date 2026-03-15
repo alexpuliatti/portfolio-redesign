@@ -5,7 +5,10 @@ export function Navigation({ activeTab, setActiveTab }) {
         <header className="site-topbar">
             <div 
                 className="topbar-logo"
-                onClick={() => setActiveTab('Photography')}
+                onClick={() => {
+                    setActiveTab('Photography');
+                    window.dispatchEvent(new CustomEvent('reset-photography'));
+                }}
             >
                 ALEX PULIATTI
             </div>

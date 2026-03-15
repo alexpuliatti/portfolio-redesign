@@ -38,7 +38,7 @@ const DetailGridItem = ({ src, onClick }) => {
     }, []);
 
     return (
-        <div className="grid-item" ref={containerRef} style={{ contentVisibility: 'auto' }}>
+        <div className="grid-item" ref={containerRef}>
             <div className="grid-image-wrapper">
                 <div
                     className="grid-vertical-line left-line"
@@ -187,6 +187,20 @@ export function Photography() {
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [enlargedImage]);
+
+    // Listen for topbar logo click to completely reset to main gallery
+    useEffect(() => {
+        const handleReset = () => {
+            setSelectedProject(null);
+            setSelectedShowcaseSrc(null);
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            if (window.lenis) {
+                window.lenis.scrollTo(0, { immediate: true });
+            }
+        };
+        window.addEventListener('reset-photography', handleReset);
+        return () => window.removeEventListener('reset-photography', handleReset);
+    }, []);
 
     useEffect(() => {
         if (selectedProject) {
