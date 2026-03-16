@@ -6,12 +6,12 @@ const subpageData = {
         title: "SPEAKER",
         description: "This is the first iteration of my design for a brushed steel speakers set featuring a custom horn.",
         images: [
-            "/speaker/IMG_6773.webp",
-            "/speaker/horn.webp",
-            "/speaker/IMG_6759.webp",
-            "/speaker/IMG_6787.webp",
-            "/speaker/9B2Q5EBIHeWja6oZyRsO0_2SG2bW8n.webp",
-            "/speaker/speakers_vertical.webp"
+            "/speaker/1.webp",
+            "/speaker/2_vertical.webp",
+            "/speaker/3.webp",
+            "/speaker/4.webp",
+            "/speaker/5.webp",
+            "/speaker/6.webp"
         ],
         palette: ['#6b7b8d', '#a0785a']
     },
