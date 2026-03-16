@@ -909,7 +909,7 @@ body.overlay-active .glass-cursor::after {
 }
 
 .lqip-thumb {
-  position: absolute;
+  position: absolute !important;
   top: 0;
   left: 0;
   width: 100%;

@@ -207,7 +207,7 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
             
             cachedDims = {
                 wrapperBottom: absoluteY + rect.height,
-                gapSize: rect.height * 0.3,
+                gapSize: window.innerHeight * (window.innerWidth <= 900 ? 0.2 : 0.3), // Matches 20vh / 30vh CSS logic 
                 viewportHeight: window.innerHeight,
             };
             
