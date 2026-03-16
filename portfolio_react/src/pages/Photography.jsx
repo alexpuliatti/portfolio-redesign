@@ -141,7 +141,7 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
                 const rgb2 = `rgb(${c2[0]}, ${c2[1]}, ${c2[2]})`;
                 const rgb3 = `rgb(${c3[0]}, ${c3[1]}, ${c3[2]})`;
                 
-                setGradient(`linear-gradient(to bottom, transparent 0%, ${rgb1} 30%, ${rgb2} 60%, ${rgb3} 100%)`);
+                setGradient(`linear-gradient(to bottom, ${rgb1} 0%, ${rgb2} 50%, ${rgb3} 100%)`);
             } catch(e) {}
         };
     }, [nextImageSrc]);
@@ -162,7 +162,6 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
             const distFromViewportBottom = viewportHeight - wrapperRect.bottom;
             const progress = distFromViewportBottom / (gapSize + viewportHeight * 0.8);
             const scale = Math.max(0, Math.min(1, 1 - Math.max(0, progress - 0.4) * 1.2));
-            
             lineRef.current.style.transform = `translateX(-50%) scaleY(${scale})`;
             lineRef.current.style.transformOrigin = 'bottom center';
         };
@@ -215,7 +214,7 @@ const ShowcaseGridItem = ({ item, onClick }) => {
     const thumbSrc = item.src.replace('_compressed.jpg', '_thumb_compressed.jpg');
 
     return (
-        <div className="lqip-container" onClick={() => onClick(item)}>
+        <div className="lqip-container showcase-lqip" onClick={() => onClick(item)}>
             <img
                 src={`${import.meta.env.BASE_URL}${thumbSrc}`}
                 alt=""
@@ -343,7 +342,7 @@ export function Photography() {
                 }}
             >
                         {/* Dynamic top gradient line connected to the first image */}
-                        <div className="intro-divider-wrapper" style={{ marginTop: '5vh' }}>
+                        <div className="intro-divider-wrapper">
                             {galleryItems.length > 0 && (
                                 <ConnectingLine className="top-line" nextImageSrc={galleryItems[0].src} />
                             )}
