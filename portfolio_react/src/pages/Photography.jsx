@@ -309,9 +309,32 @@ export function Photography() {
     const [enlargedImage, setEnlargedImage] = useState(null);
     const expandedRef = useRef(null);
     const scrollPositionRef = useRef(0);
+    const mainGalleryRef = useRef(null);
+    const projectContainerRef = useRef(null);
 
     // Close project helper (shared by back button, Escape, popstate)
     const closeProject = () => {
+        // Freeze the expanded project view exactly where it currently is scrolled
+        if (projectContainerRef.current) {
+            projectContainerRef.current.style.position = 'fixed';
+            projectContainerRef.current.style.top = `-${window.scrollY}px`;
+            projectContainerRef.current.style.width = '100%';
+        }
+        // Unlock the main gallery
+        // Unlock the main gallery. Since we no longer use display: none, the DOM 
+        // heights are perfectly preserved in memory and instantly re-apply to layout.
+        if (mainGalleryRef.current) {
+            mainGalleryRef.current.style.position = '';
+            mainGalleryRef.current.style.top = '';
+        }
+        
+        // Synchronously jump the real window back to the original place
+        if (window.lenis) {
+            window.lenis.resize(); // Force Lenis to update its internal bounds synchronously
+            window.lenis.scrollTo(scrollPositionRef.current, { immediate: true });
+        }
+        window.scrollTo({ top: scrollPositionRef.current, left: 0, behavior: 'instant' });
+
         setSelectedProject(null);
         setSelectedShowcaseSrc(null);
     };
@@ -361,8 +384,6 @@ export function Photography() {
 
     useEffect(() => {
         if (selectedProject) {
-            // Reset scroll position to top when opening a project
-            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
             if (expandedRef.current) {
                 expandedRef.current.scrollTop = 0;
             }
@@ -373,6 +394,26 @@ export function Photography() {
         const project = photographyProjects.find((p) => p.id === item.projectId);
         if (project) {
             scrollPositionRef.current = window.scrollY;
+
+            // Freeze main gallery exactly where it is so it fades out without jumping to 0
+            if (mainGalleryRef.current) {
+                mainGalleryRef.current.style.position = 'fixed';
+                mainGalleryRef.current.style.top = `-${scrollPositionRef.current}px`;
+                mainGalleryRef.current.style.width = '100%';
+            }
+            // Unlock the expanded gallery container if it was frozen
+            if (projectContainerRef.current) {
+                projectContainerRef.current.style.position = '';
+                projectContainerRef.current.style.top = '';
+            }
+            
+            // Synchronously immediately jump real scroll to 0 for the expanding project view
+            if (window.lenis) {
+                window.lenis.resize();
+                window.lenis.scrollTo(0, { immediate: true });
+            }
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
             setSelectedProject(project);
             setSelectedShowcaseSrc(item.originalSrc);
             // Push sub-URL so browser back returns to gallery
@@ -389,25 +430,15 @@ export function Photography() {
         <main className="photography-page">
             {/* ─── Main View: Vertical List with Connecting Lines ─── */}
             <motion.div
+                ref={mainGalleryRef}
                 initial="visible"
                 animate={selectedProject ? 'hidden' : 'visible'}
                 variants={{
-                    visible: { opacity: 1, display: 'flex' },
-                    hidden: { opacity: 0, transitionEnd: { display: 'none' } },
+                    visible: { opacity: 1, pointerEvents: 'auto' },
+                    hidden: { opacity: 0, pointerEvents: 'none' },
                 }}
                 transition={{ duration: 0.4 }}
-                style={{ width: '100%', flexDirection: 'column', alignItems: 'center', position: 'relative' }}
-                onAnimationStart={() => {
-                    // Restore scroll position when returning to gallery
-                    if (!selectedProject && scrollPositionRef.current > 0) {
-                        setTimeout(() => {
-                            window.scrollTo({ top: scrollPositionRef.current, left: 0, behavior: 'instant' });
-                            if (window.lenis) {
-                                window.lenis.scrollTo(scrollPositionRef.current, { immediate: true });
-                            }
-                        }, 50);
-                    }
-                }}
+                style={{ width: '100%', flexDirection: 'column', alignItems: 'center', display: 'flex' }}
             >
                         {/* Dynamic top gradient line connected to the first image */}
                         <div className="intro-divider-wrapper">
@@ -435,21 +466,13 @@ export function Photography() {
             <AnimatePresence>
                 {selectedProject && (
                     <motion.div
+                        ref={projectContainerRef}
                         key="expanded"
                         className="project-expanded"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.4 }}
-                        onAnimationStart={() => {
-                            // Ensure window gets snapped to the top of the expanded view so user doesn't stay at y=5000px
-                            if (selectedProject) {
-                                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                                if (window.lenis) {
-                                    window.lenis.scrollTo(0, { immediate: true });
-                                }
-                            }
-                        }}
                     >
                         <button className="back-btn project-back-btn" onClick={handleClose}>
                             &larr; BACK

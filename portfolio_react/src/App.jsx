@@ -18,6 +18,12 @@ function App() {
   useSmoothScroll(false);
 
   useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  useEffect(() => {
     const moveCursor = (e) => {
       if (cursorRef.current) {
         cursorRef.current.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
