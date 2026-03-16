@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const subpageData = {
     speaker: {
         title: "SPEAKER",
-        description: "Exploring acoustic forms and material resonance. The speaker design focuses on minimal geometry and maximized acoustic performance.",
+        description: "This is the first iteration of my design for a brushed steel speakers set featuring a custom horn.",
         images: [
             "/asia-stillz/Still 2026-02-27 211449_1.1.2.webp",
             "/asia-stillz-cropped/Still 2026-02-27 211449_1.10.1_vertical.webp",
