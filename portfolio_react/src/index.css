@@ -696,6 +696,12 @@ body.overlay-active .glass-cursor::after {
     height: 20vh; 
   }
 
+  /* Disable continuous filter animation on mobile to save GPU/compositor thread for smooth scrolling */
+  .connecting-line.line-revealed {
+    animation: none;
+    filter: brightness(1.8) saturate(1.5);
+  }
+
   .site-topbar {
     padding: 1rem 4vw;
   }

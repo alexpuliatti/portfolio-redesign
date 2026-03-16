@@ -146,25 +146,44 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
         };
     }, [nextImageSrc]);
 
-    // Scroll effect — only runs after line has been revealed
+    // Scroll effect — optimized for zero layout thrashing on mobile
     useEffect(() => {
         if (!revealed) return;
 
         let ticking = false;
-        let lastScrollY = window.scrollY;
+        let cachedDims = null;
 
-        const performAnimation = () => {
+        const updateDimensions = () => {
             if (!lineRef.current) return;
             const wrapper = lineRef.current.parentElement;
             if (!wrapper) return;
 
-            const wrapperRect = wrapper.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
+            // Cache all measurements to avoid layout thrashing during scroll
+            const rect = wrapper.getBoundingClientRect();
+            // offsetTop tells us exactly where this element sits in the document
+            const absoluteY = window.scrollY + rect.top;
             
-            // Getting computed style here can cause layout thrashing
-            // Use offsetHeight or cache it if possible, but for dynamic scaling we need robust measurements
-            const gapSize = wrapperRect.height * 0.3; // Approx 30vh gap 
-            const distFromViewportBottom = viewportHeight - wrapperRect.bottom;
+            cachedDims = {
+                wrapperTop: absoluteY,
+                wrapperBottom: absoluteY + rect.height,
+                wrapperHeight: rect.height,
+                gapSize: rect.height * 0.3, // Approx 30vh gap
+                viewportHeight: window.innerHeight,
+            };
+            
+            // Initial paint immediately after dimension update
+            performAnimation();
+        };
+
+        const performAnimation = () => {
+            if (!lineRef.current || !cachedDims) return;
+            
+            const { wrapperBottom, gapSize, viewportHeight } = cachedDims;
+            
+            // Calculate distance based purely on scrollY
+            const currentScrollBottom = window.scrollY + viewportHeight;
+            const distFromViewportBottom = currentScrollBottom - wrapperBottom;
+            
             const progress = distFromViewportBottom / (gapSize + viewportHeight * 0.8);
             
             // Smoother clamping
@@ -179,18 +198,22 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
         };
 
         const handleScroll = () => {
-            lastScrollY = window.scrollY;
             if (!ticking) {
                 window.requestAnimationFrame(performAnimation);
                 ticking = true;
             }
         };
 
-        // Initial paint
-        performAnimation();
+        // Initialize dimensions
+        updateDimensions();
         
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        window.addEventListener('resize', updateDimensions, { passive: true });
+        
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', updateDimensions);
+        };
     }, [revealed]);
 
     return (
