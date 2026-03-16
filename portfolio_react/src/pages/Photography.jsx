@@ -94,11 +94,44 @@ const DetailGridItem = ({ src, onClick }) => {
     );
 };
 
+// ─── Shared scroll manager (desktop only) ───
+// One scroll listener drives all ConnectingLine animations instead of N separate ones.
+const scrollUpdaters = new Set();
+let scrollListenerActive = false;
+let scrollTicking = false;
+
+const sharedScrollHandler = () => {
+    if (!scrollTicking) {
+        window.requestAnimationFrame(() => {
+            scrollUpdaters.forEach((fn) => fn());
+            scrollTicking = false;
+        });
+        scrollTicking = true;
+    }
+};
+
+const registerScrollUpdater = (fn) => {
+    scrollUpdaters.add(fn);
+    if (!scrollListenerActive) {
+        window.addEventListener('scroll', sharedScrollHandler, { passive: true });
+        scrollListenerActive = true;
+    }
+};
+
+const unregisterScrollUpdater = (fn) => {
+    scrollUpdaters.delete(fn);
+    if (scrollUpdaters.size === 0 && scrollListenerActive) {
+        window.removeEventListener('scroll', sharedScrollHandler);
+        scrollListenerActive = false;
+    }
+};
+
 // ─── Vertical Connecting Line using next image's colors ───
 const ConnectingLine = ({ nextImageSrc, className = '' }) => {
     const [gradient, setGradient] = useState('transparent');
     const [revealed, setRevealed] = useState(false);
     const lineRef = useRef(null);
+    const mobile = isMobile();
 
     // Reveal line when it enters the viewport
     useEffect(() => {
@@ -119,19 +152,30 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
         return () => observer.disconnect();
     }, []);
 
-    // Extract gradient from next image
+    // Extract gradient from next image — use thumbnail on mobile for speed
     useEffect(() => {
         if (!nextImageSrc) return;
+        // Use the tiny _thumb_compressed version for color sampling (no resolution needed for a 1×3 canvas)
+        const thumbSrc = nextImageSrc.replace('_compressed.jpg', '_thumb_compressed.jpg');
         const img = new Image();
         img.crossOrigin = 'anonymous';
-        img.src = `${import.meta.env.BASE_URL}${nextImageSrc}`;
-        img.onload = () => {
+        img.src = `${import.meta.env.BASE_URL}${thumbSrc}`;
+        img.onerror = () => {
+            // Fallback to the original source if thumb doesn't exist
+            const fallback = new Image();
+            fallback.crossOrigin = 'anonymous';
+            fallback.src = `${import.meta.env.BASE_URL}${nextImageSrc}`;
+            fallback.onload = () => extractColors(fallback);
+        };
+        img.onload = () => extractColors(img);
+
+        function extractColors(loadedImg) {
             try {
                 const canvas = document.createElement('canvas');
                 const ctx = canvas.getContext('2d', { willReadFrequently: true });
                 canvas.width = 1;
                 canvas.height = 3;
-                ctx.drawImage(img, 0, 0, 1, 3);
+                ctx.drawImage(loadedImg, 0, 0, 1, 3);
                 
                 const c1 = ctx.getImageData(0, 0, 1, 1).data;
                 const c2 = ctx.getImageData(0, 1, 1, 1).data;
@@ -143,14 +187,14 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
                 
                 setGradient(`linear-gradient(to bottom, ${rgb1} 0%, ${rgb2} 50%, ${rgb3} 100%)`);
             } catch(e) {}
-        };
+        }
     }, [nextImageSrc]);
 
-    // Scroll effect — optimized for zero layout thrashing on mobile
+    // Desktop-only: scroll-driven retraction effect via the shared scroll manager
     useEffect(() => {
-        if (!revealed) return;
+        // On mobile, skip entirely — lines stay at full scale after reveal (CSS handles it)
+        if (mobile || !revealed) return;
 
-        let ticking = false;
         let cachedDims = null;
 
         const updateDimensions = () => {
@@ -158,20 +202,15 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
             const wrapper = lineRef.current.parentElement;
             if (!wrapper) return;
 
-            // Cache all measurements to avoid layout thrashing during scroll
             const rect = wrapper.getBoundingClientRect();
-            // offsetTop tells us exactly where this element sits in the document
             const absoluteY = window.scrollY + rect.top;
             
             cachedDims = {
-                wrapperTop: absoluteY,
                 wrapperBottom: absoluteY + rect.height,
-                wrapperHeight: rect.height,
-                gapSize: rect.height * 0.3, // Approx 30vh gap
+                gapSize: rect.height * 0.3,
                 viewportHeight: window.innerHeight,
             };
             
-            // Initial paint immediately after dimension update
             performAnimation();
         };
 
@@ -179,42 +218,27 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
             if (!lineRef.current || !cachedDims) return;
             
             const { wrapperBottom, gapSize, viewportHeight } = cachedDims;
-            
-            // Calculate distance based purely on scrollY
             const currentScrollBottom = window.scrollY + viewportHeight;
             const distFromViewportBottom = currentScrollBottom - wrapperBottom;
             
             const progress = distFromViewportBottom / (gapSize + viewportHeight * 0.8);
-            
-            // Smoother clamping
             const rawScale = 1 - Math.max(0, progress - 0.4) * 1.2;
             const scale = Math.max(0, Math.min(1, rawScale));
             
-            // Enforce hardware acceleration
             lineRef.current.style.transform = `translate3d(-50%, 0, 0) scaleY(${scale})`;
-            lineRef.current.style.transformOrigin = 'bottom center';
-            lineRef.current.style.willChange = 'transform, opacity';
-            ticking = false;
         };
 
-        const handleScroll = () => {
-            if (!ticking) {
-                window.requestAnimationFrame(performAnimation);
-                ticking = true;
-            }
-        };
-
-        // Initialize dimensions
         updateDimensions();
+        registerScrollUpdater(performAnimation);
         
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('resize', updateDimensions, { passive: true });
+        const handleResize = () => updateDimensions();
+        window.addEventListener('resize', handleResize, { passive: true });
         
         return () => {
-            window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', updateDimensions);
+            unregisterScrollUpdater(performAnimation);
+            window.removeEventListener('resize', handleResize);
         };
-    }, [revealed]);
+    }, [revealed, mobile]);
 
     return (
         <div

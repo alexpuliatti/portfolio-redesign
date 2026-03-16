@@ -273,7 +273,6 @@ body.overlay-active .glass-cursor::after {
   width: 100%;
   min-height: 100vh;
   position: relative;
-  padding-bottom: 20vh;
 }
 
 /* Centralized Image Gallery */
@@ -412,8 +411,8 @@ body.overlay-active .glass-cursor::after {
 }
 
 .section-divider-bottom .section-divider {
-  transform-origin: bottom center;
-  animation: sectionDividerEntranceBottom 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+  transform-origin: top center;
+  animation: sectionDividerEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
 }
 
 @keyframes sectionDividerEntrance {
@@ -427,17 +426,6 @@ body.overlay-active .glass-cursor::after {
   }
 }
 
-@keyframes sectionDividerEntranceBottom {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) scaleY(0) rotate(180deg);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) scaleY(1) rotate(180deg);
-  }
-}
-
 /* ===== Design Page ===== */
 .design-page {
   display: flex;
@@ -445,8 +433,8 @@ body.overlay-active .glass-cursor::after {
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: calc(100vh - 12vh);
-  padding-bottom: 12vh;
+  height: 100vh;
+  overflow: hidden; /* Ensure this page specifically never scrolls */
 }
 
 .design-icons-row {
@@ -454,7 +442,8 @@ body.overlay-active .glass-cursor::after {
   align-items: center;
   justify-content: center;
   gap: 6vw;
-  padding: 2rem 4vw;
+  padding: 0 4vw;
+  flex: 1;
 }
 
 .design-icon-wrapper {
@@ -482,7 +471,7 @@ body.overlay-active .glass-cursor::after {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0 4vw;
+  padding: 0 4vw 20vh;
 }
 
 .about-gallery {
@@ -693,13 +682,16 @@ body.overlay-active .glass-cursor::after {
   .connecting-line {
     top: 100%;
     bottom: auto;
-    height: 20vh; 
+    height: 20vh;
+    /* Isolate repaints so line rendering doesn't block scroll compositor */
+    contain: layout style paint;
   }
 
-  /* Disable continuous filter animation on mobile to save GPU/compositor thread for smooth scrolling */
+  /* On mobile JS does NOT animate scaleY — show at full scale immediately on reveal */
   .connecting-line.line-revealed {
     animation: none;
     filter: brightness(1.8) saturate(1.5);
+    transform: translate3d(-50%, 0, 0) scaleY(1);
   }
 
   .site-topbar {
@@ -760,6 +752,7 @@ body.overlay-active .glass-cursor::after {
 .photography-page {
   width: 100%;
   min-height: 100vh;
+  padding-bottom: 20vh;
 }
 
 /* ─── Masonry Gallery ─── */

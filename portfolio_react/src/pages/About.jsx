@@ -43,7 +43,8 @@ export function About() {
                 {/* Floating Bio Card */}
                 <motion.div variants={itemVariants} className="gallery-element liquid-glass gallery-bio">
                     <p>
-                        Experimenti.<br />
+                        Photographer and creative technologist<br />
+                        <br />
                         Based in London
                     </p>
                 </motion.div>

@@ -88,7 +88,7 @@ export function Design({ setActiveTab }) {
             <div className="section-divider-wrapper section-divider-bottom">
                 <div
                     className="section-divider"
-                    style={{ background: lineGradient }}
+                    style={{ background: 'linear-gradient(to top, transparent 0%, #6b7b8d 30%, #a0785a 60%, #8a6d5e 100%)' }}
                 />
             </div>
         </main>

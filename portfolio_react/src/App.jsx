@@ -105,7 +105,7 @@ function App() {
       <div className="glass-cursor" ref={cursorRef} style={{ opacity: 1 }} />
       <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      <div className="page-spacer" />
+      {!activeTab?.startsWith('Design') && <div className="page-spacer" />}
 
       <AnimatePresence mode="wait">
         {activeTab === 'Photography' && (
