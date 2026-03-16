@@ -31,13 +31,18 @@ html, body, *, *::before, *::after,
 }
 
 /* Hide scrollbars globally */
-body::-webkit-scrollbar {
+body::-webkit-scrollbar,
+html::-webkit-scrollbar,
+*::-webkit-scrollbar {
   display: none;
 }
 
+body, html, * {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+
 body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
   overflow-x: hidden; /* Hide horizontal overflow */
   background-color: var(--bg-color);
   color: var(--text-main);
@@ -437,8 +442,10 @@ body.overlay-active .glass-cursor::after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  min-height: 60vh;
+  min-height: calc(100vh - 12vh);
+  padding-bottom: 12vh;
 }
 
 .design-icons-row {
