@@ -361,13 +361,14 @@ body.overlay-active .glass-cursor::after {
   position: absolute;
   top: 100%; /* Anchor exactly to the bottom edge of the image */
   left: 50%; 
-  transform: translateX(-50%) scaleY(0);
+  transform: translate3d(-50%, 0, 0) scaleY(0);
   transform-origin: bottom center; /* Grow upwards from the next image */
   width: 4px; /* Thicker for better visibility */
   height: 30vh; /* Exactly the gap size */
   z-index: 1; 
   opacity: 0; 
   will-change: transform, opacity; 
+  /* DO NOT transition transform, JS handles it via requestAnimationFrame */
   transition: opacity 0.8s ease;
 }
 

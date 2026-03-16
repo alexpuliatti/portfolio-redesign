@@ -150,26 +150,47 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
     useEffect(() => {
         if (!revealed) return;
 
-        const handleScroll = () => {
+        let ticking = false;
+        let lastScrollY = window.scrollY;
+
+        const performAnimation = () => {
             if (!lineRef.current) return;
             const wrapper = lineRef.current.parentElement;
             if (!wrapper) return;
 
             const wrapperRect = wrapper.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
-
-            const gapSize = parseFloat(getComputedStyle(lineRef.current).height);
+            
+            // Getting computed style here can cause layout thrashing
+            // Use offsetHeight or cache it if possible, but for dynamic scaling we need robust measurements
+            const gapSize = wrapperRect.height * 0.3; // Approx 30vh gap 
             const distFromViewportBottom = viewportHeight - wrapperRect.bottom;
             const progress = distFromViewportBottom / (gapSize + viewportHeight * 0.8);
-            const scale = Math.max(0, Math.min(1, 1 - Math.max(0, progress - 0.4) * 1.2));
-            lineRef.current.style.transform = `translateX(-50%) scaleY(${scale})`;
+            
+            // Smoother clamping
+            const rawScale = 1 - Math.max(0, progress - 0.4) * 1.2;
+            const scale = Math.max(0, Math.min(1, rawScale));
+            
+            // Enforce hardware acceleration
+            lineRef.current.style.transform = `translate3d(-50%, 0, 0) scaleY(${scale})`;
             lineRef.current.style.transformOrigin = 'bottom center';
+            lineRef.current.style.willChange = 'transform, opacity';
+            ticking = false;
         };
 
-        const scroller = () => requestAnimationFrame(handleScroll);
-        window.addEventListener('scroll', scroller, { passive: true });
-        scroller();
-        return () => window.removeEventListener('scroll', scroller);
+        const handleScroll = () => {
+            lastScrollY = window.scrollY;
+            if (!ticking) {
+                window.requestAnimationFrame(performAnimation);
+                ticking = true;
+            }
+        };
+
+        // Initial paint
+        performAnimation();
+        
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
     }, [revealed]);
 
     return (
