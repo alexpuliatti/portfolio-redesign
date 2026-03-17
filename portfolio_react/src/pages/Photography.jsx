@@ -140,9 +140,13 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
 
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    setRevealed(true);
-                    observer.disconnect();
+                if (mobile) {
+                    setRevealed(entry.isIntersecting);
+                } else {
+                    if (entry.isIntersecting) {
+                        setRevealed(true);
+                        observer.disconnect();
+                    }
                 }
             },
             // Wait until the line is 25% up the screen before triggering the CSS reveal transition on mobile
@@ -193,17 +197,7 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
 
     // Scroll-driven retraction effect via the shared scroll manager
     useEffect(() => {
-        if (!revealed) return;
-
-        // --- MOBILE LOGIC (Hardware Accelerated CSS) ---
-        if (mobile) {
-            // Apply the transition classes and let CSS handle the smooth reveal
-            if (lineRef.current) {
-                lineRef.current.style.transition = 'clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1)';
-                lineRef.current.style.clipPath = 'inset(0px 0px 0% 0px)';
-            }
-            return;
-        }
+        if (!revealed || mobile) return;
 
         // --- DESKTOP LOGIC (JS Scroll-driven Lerp Tween) ---
         const performAnimation = () => {
@@ -247,7 +241,9 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
             style={{ 
                 background: gradient,
                 // On mobile, start hidden with clip-path so the CSS transition can reveal it smoothly
-                clipPath: mobile ? 'inset(0px 0px 100% 0px)' : undefined,
+                clipPath: mobile ? (revealed ? 'inset(0px 0px 0% 0px)' : 'inset(0px 0px 100% 0px)') : undefined,
+                // Include both the clip-path animation and the CSS opacity fade
+                transition: mobile ? 'clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease' : undefined,
                 // Ensure desktop scaleY transform origin remains at the bottom
                 transformOrigin: mobile ? undefined : 'bottom center'
             }}
