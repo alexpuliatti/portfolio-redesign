@@ -145,8 +145,8 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
                     observer.disconnect();
                 }
             },
-            // Trigger slightly *after* the line enters the viewport so the user sees the start of the CSS transition
-            { rootMargin: mobile ? '-50px 0px 0px 0px' : '0px' }
+            // Wait until the line is 25% up the screen before triggering the CSS reveal transition on mobile
+            { rootMargin: mobile ? '-25% 0px 0px 0px' : '0px' }
         );
 
         observer.observe(el);
