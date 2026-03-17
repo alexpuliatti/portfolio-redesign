@@ -194,6 +194,17 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
     useEffect(() => {
         if (!revealed) return;
 
+        // --- MOBILE LOGIC (Hardware Accelerated CSS) ---
+        if (mobile) {
+            // Apply the transition classes and let CSS handle the smooth reveal
+            if (lineRef.current) {
+                lineRef.current.style.transition = 'clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                lineRef.current.style.clipPath = 'inset(0px 0px 0% 0px)';
+            }
+            return;
+        }
+
+        // --- DESKTOP LOGIC (JS Scroll-driven Lerp Tween) ---
         let cachedDims = null;
 
         const updateDimensions = () => {
@@ -206,7 +217,7 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
             
             cachedDims = {
                 wrapperBottom: absoluteY + rect.height,
-                gapSize: window.innerHeight * (window.innerWidth <= 900 ? 0.2 : 0.3), // Matches 20vh / 30vh CSS logic 
+                gapSize: window.innerHeight * 0.3, 
                 viewportHeight: window.innerHeight,
             };
             
@@ -243,7 +254,13 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
         <div
             className={`connecting-line ${className} ${revealed ? 'line-revealed' : ''}`}
             ref={lineRef}
-            style={{ background: gradient }}
+            style={{ 
+                background: gradient,
+                // On mobile, start hidden with clip-path so the CSS transition can reveal it smoothly
+                clipPath: mobile ? 'inset(0px 0px 100% 0px)' : undefined,
+                // Ensure desktop scaleY transform origin remains at the bottom
+                transformOrigin: mobile ? undefined : 'bottom center'
+            }}
         />
     );
 };

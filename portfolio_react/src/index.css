@@ -687,8 +687,7 @@ body.overlay-active .glass-cursor::after {
     top: 100%;
     bottom: auto;
     height: 20vh;
-    /* Isolate repaints so line rendering doesn't block scroll compositor */
-    contain: layout style paint;
+    transform: translateX(-50%) !important;
   }
 
 
