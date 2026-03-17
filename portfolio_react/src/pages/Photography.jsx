@@ -145,7 +145,8 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
                     observer.disconnect();
                 }
             },
-            { rootMargin: '100px 0px' }
+            // Trigger slightly *after* the line enters the viewport so the user sees the start of the CSS transition
+            { rootMargin: mobile ? '-50px 0px 0px 0px' : '0px' }
         );
 
         observer.observe(el);
@@ -232,7 +233,8 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
             const distFromViewportBottom = currentScrollBottom - wrapperBottom;
             
             const progress = distFromViewportBottom / (gapSize + viewportHeight * 0.8);
-            const rawScale = 1 - Math.max(0, progress - 0.4) * 1.2;
+            // Relax the threshold so the line starts scaling earlier, fixing the first couple of items on desktop
+            const rawScale = 1 - Math.max(0, progress - 0.15) * 1.5;
             const scale = Math.max(0, Math.min(1, rawScale));
             
             lineRef.current.style.transform = `translate3d(-50%, 0, 0) scaleY(${scale})`;
