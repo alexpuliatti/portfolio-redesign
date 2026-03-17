@@ -190,10 +190,9 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
         }
     }, [nextImageSrc]);
 
-    // Desktop-only: scroll-driven retraction effect via the shared scroll manager
+    // Scroll-driven retraction effect via the shared scroll manager
     useEffect(() => {
-        // On mobile, skip entirely — lines stay at full scale after reveal (CSS handles it)
-        if (mobile || !revealed) return;
+        if (!revealed) return;
 
         let cachedDims = null;
 

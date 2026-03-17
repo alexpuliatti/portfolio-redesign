@@ -691,12 +691,6 @@ body.overlay-active .glass-cursor::after {
     contain: layout style paint;
   }
 
-  /* On mobile JS does NOT animate scaleY — show at full scale immediately on reveal */
-  .connecting-line.line-revealed {
-    animation: none;
-    filter: brightness(1.8) saturate(1.5);
-    transform: translate3d(-50%, 0, 0) scaleY(1);
-  }
 
   .site-topbar {
     padding: 1rem 4vw;
