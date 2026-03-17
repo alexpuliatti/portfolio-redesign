@@ -243,7 +243,7 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
                 // On mobile, start hidden with clip-path so the CSS transition can reveal it smoothly
                 clipPath: mobile ? (revealed ? 'inset(0px 0px 0% 0px)' : 'inset(0px 0px 100% 0px)') : undefined,
                 // Include both the clip-path animation and the CSS opacity fade
-                transition: mobile ? 'clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease' : undefined,
+                transition: mobile ? 'clip-path 2.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease' : undefined,
                 // Ensure desktop scaleY transform origin remains at the bottom
                 transformOrigin: mobile ? undefined : 'bottom center'
             }}
