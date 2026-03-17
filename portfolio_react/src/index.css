@@ -715,31 +715,6 @@ body.overlay-active .glass-cursor::after {
     height: 8vh;
   }
 
-  /* Extend top lines all the way to absolute top edge on mobile */
-  .top-line {
-    top: -8vh !important;
-  }
-  
-  .about-gallery-wrapper .section-divider-wrapper:first-child .section-divider {
-    top: -8vh !important;
-  }
-
-  .design-page {
-    position: relative;
-  }
-  
-  .design-page .section-divider-wrapper:first-child {
-    position: absolute;
-    top: 0;
-    height: 15vh;
-  }
-  
-  .design-page .section-divider-wrapper:last-child {
-    position: absolute;
-    bottom: 0;
-    height: 15vh;
-  }
-
   /* Design page responsive */
   .design-icons-row {
     gap: 8vw;
