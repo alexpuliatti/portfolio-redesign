@@ -199,7 +199,7 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
         if (mobile) {
             // Apply the transition classes and let CSS handle the smooth reveal
             if (lineRef.current) {
-                lineRef.current.style.transition = 'clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+                lineRef.current.style.transition = 'clip-path 1.4s cubic-bezier(0.16, 1, 0.3, 1)';
                 lineRef.current.style.clipPath = 'inset(0px 0px 0% 0px)';
             }
             return;
