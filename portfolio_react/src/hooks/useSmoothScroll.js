@@ -11,8 +11,10 @@ export function useSmoothScroll(isLocked = false) {
             direction: 'vertical',
             gestureDirection: 'vertical',
             smooth: true,
+            smoothWheel: true,
             mouseMultiplier: 1,
-            smoothTouch: false,
+            syncTouch: true,
+            smoothTouch: true,
             touchMultiplier: 2,
             infinite: false,
         });
