@@ -206,33 +206,24 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
         }
 
         // --- DESKTOP LOGIC (JS Scroll-driven Lerp Tween) ---
-        let cachedDims = null;
-
-        const updateDimensions = () => {
+        const performAnimation = () => {
             if (!lineRef.current) return;
             const wrapper = lineRef.current.parentElement;
             if (!wrapper) return;
 
+            // Live layout measurement avoids all issues with images loading above
+            // and shifting the absoluteY coordinate.
             const rect = wrapper.getBoundingClientRect();
-            const absoluteY = window.scrollY + rect.top;
+            const viewportHeight = window.innerHeight;
+            const gapSize = viewportHeight * 0.3; // 30vh gap exactly as in CSS
             
-            cachedDims = {
-                wrapperBottom: absoluteY + rect.height,
-                gapSize: window.innerHeight * 0.3, 
-                viewportHeight: window.innerHeight,
-            };
+            // rect.bottom is the distance from the top of the viewport to the bottom of the image wrapper.
+            // window.innerHeight - rect.bottom is 0 when the bottom of the Image hits the bottom of the screen.
+            const distFromViewportBottom = viewportHeight - rect.bottom;
             
-            performAnimation();
-        };
-
-        const performAnimation = () => {
-            if (!lineRef.current || !cachedDims) return;
-            
-            const { wrapperBottom, gapSize, viewportHeight } = cachedDims;
-            const currentScrollBottom = window.scrollY + viewportHeight;
-            const distFromViewportBottom = currentScrollBottom - wrapperBottom;
-            
+            // Calculate progress through the gap
             const progress = distFromViewportBottom / (gapSize + viewportHeight * 0.8);
+            
             // Relax the threshold so the line starts scaling earlier, fixing the first couple of items on desktop
             const rawScale = 1 - Math.max(0, progress - 0.15) * 1.5;
             const scale = Math.max(0, Math.min(1, rawScale));
@@ -240,15 +231,12 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
             lineRef.current.style.transform = `translate3d(-50%, 0, 0) scaleY(${scale})`;
         };
 
-        updateDimensions();
+        // Initialize immediately
+        performAnimation();
         registerScrollUpdater(performAnimation);
-        
-        const handleResize = () => updateDimensions();
-        window.addEventListener('resize', handleResize, { passive: true });
         
         return () => {
             unregisterScrollUpdater(performAnimation);
-            window.removeEventListener('resize', handleResize);
         };
     }, [revealed, mobile]);
 
