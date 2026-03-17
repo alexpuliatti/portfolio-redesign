@@ -42,6 +42,10 @@ body, html, * {
   scrollbar-width: none;    /* Firefox */
 }
 
+html, body {
+  overscroll-behavior: none; /* Prevents native mobile rubber-banding/flickering with Lenis syncTouch */
+}
+
 body {
   overflow-x: hidden; /* Hide horizontal overflow */
   background-color: var(--bg-color);
