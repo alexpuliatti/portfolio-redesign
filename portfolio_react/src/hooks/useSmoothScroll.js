@@ -13,7 +13,7 @@ export function useSmoothScroll(isLocked = false) {
             smooth: true,
             smoothWheel: true,
             mouseMultiplier: 1,
-            syncTouch: true,
+            syncTouch: false,
             syncTouchLerp: 0.05,
             touchInertiaExponent: 0.92,
             touchMultiplier: 0.85,
