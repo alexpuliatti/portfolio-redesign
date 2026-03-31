@@ -474,8 +474,24 @@ body.overlay-active .glass-cursor::after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 0 4vw 20vh;
+  min-height: calc(100vh - 12vh); /* subtract page-spacer */
+  padding: 4vh 4vw;
+  position: relative;
+}
+
+.about-gradient-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top center;
+  z-index: 0;
+  filter: brightness(1.8) saturate(1.5);
+  animation: sectionDividerEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
 }
 
 .about-gallery {
@@ -485,6 +501,8 @@ body.overlay-active .glass-cursor::after {
   gap: 2rem;
   max-width: 680px;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .gallery-element {
@@ -616,6 +634,22 @@ body.overlay-active .glass-cursor::after {
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
+}
+
+.wip-message {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+}
+
+.wip-message h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .grid-item {

@@ -11,28 +11,33 @@ const subpageData = {
             "/speaker/3.webp",
             "/speaker/4.webp",
             "/speaker/5.webp",
-            "/speaker/6.webp"
+            "/speaker/6.webp",
+            "/speaker/7.webp",
+            "/speaker/8.webp"
         ],
         palette: ['#6b7b8d', '#a0785a']
     },
     vanity: {
         title: "VANITY",
-        description: "A study in reflection and daily rituals. Integrating seamless storage with brutalist surface selections.",
+        description: "",
         images: [
-            "/asia-stillz-cropped/Still 2026-02-27 211449_1.14.1_square.webp",
-            "/asia-stillz/Still 2026-02-27 211449_1.2.1.webp",
-            "/asia-stillz-cropped/Still 2026-02-27 211449_1.12.1_vertical.webp"
+            "/vanity/1.webp",
+            "/vanity/2.webp",
+            "/vanity/3.webp",
+            "/vanity/4.webp",
+            "/vanity/5.webp",
+            "/vanity/6.webp",
+            "/vanity/7.webp",
+            "/vanity/8.webp",
+            "/vanity/9.webp"
         ],
         palette: ['#8a6d5e', '#6b7b8d']
     },
     shelf: {
         title: "SHELF",
         description: "Modular resting spaces for objects of importance. Emphasizing verticality and intersecting planes.",
-        images: [
-            "/asia-stillz/Still 2026-02-27 211449_1.9.1.webp",
-            "/asia-stillz-cropped/Still 2026-02-27 211449_1.16.1_square.webp",
-            "/asia-stillz/Still 2026-02-27 211449_1.25.1.webp"
-        ],
+        images: [],
+        wip: true,
         palette: ['#a0785a', '#8a6d5e']
     }
 };
@@ -126,13 +131,18 @@ export function DesignSubpage({ type, setActiveTab }) {
             </div>
 
             <div className="subpage-grid">
-                {/* Image grid items */}
-                {data.images.map((src, idx) => (
-                    <GridItem 
-                        key={idx} 
-                        src={src} 
-                    />
-                ))}
+                {data.wip ? (
+                    <div className="wip-message">
+                        <h2>WIP</h2>
+                    </div>
+                ) : (
+                    data.images.map((src, idx) => (
+                        <GridItem 
+                            key={idx} 
+                            src={src} 
+                        />
+                    ))
+                )}
             </div>
         </main>
     );

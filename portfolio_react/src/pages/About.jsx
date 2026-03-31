@@ -26,13 +26,9 @@ export function About() {
 
     return (
         <main className="about-gallery-wrapper">
-            {/* Gradient line leading into about section */}
-            <div className="section-divider-wrapper">
-                <div
-                    className="section-divider"
-                    style={{ background: lineGradient }}
-                />
-            </div>
+            {/* Full-height gradient line behind content */}
+            <div className="about-gradient-line" style={{ background: lineGradient }} />
+
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
@@ -99,14 +95,6 @@ export function About() {
                 </motion.div>
 
             </motion.div>
-
-            {/* Gradient line trailing out */}
-            <div className="section-divider-wrapper section-divider-bottom">
-                <div
-                    className="section-divider"
-                    style={{ background: lineGradient }}
-                />
-            </div>
         </main>
     );
 }
