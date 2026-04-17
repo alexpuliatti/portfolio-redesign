@@ -185,47 +185,140 @@ body.overlay-active .glass-cursor::after {
   opacity: 1;
 }
 
-/* Liquid Glass Navbar */
-.topbar-nav {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  padding: 4px;
-  border-radius: 100px;
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(20px) saturate(1.4);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 4px 24px rgba(0, 0, 0, 0.3);
-}
-
-.nav-pill {
+/* Navigation CTA */
+.menu-cta {
   background: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.5);
   font-family: var(--font-family);
-  font-size: 0.65rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 8px 20px;
-  border-radius: 100px;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  position: relative;
-}
-
-.nav-pill:hover {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.nav-pill.active {
   color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    0 2px 8px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1rem;
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  text-transform: uppercase;
+  cursor: none;
+}
+
+.menu-cta:active {
+  transform: scale(0.95);
+}
+
+/* Liquid Glass Centered Modal */
+.floating-menu-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.floating-menu {
+  width: 380px;
+  max-width: 90vw;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 0 20px rgba(255, 255, 255, 0.02), 0 10px 40px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0.95) translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10001; /* Ensure above backdrop */
+}
+
+.floating-menu-overlay.open .floating-menu {
+  pointer-events: auto;
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Dark subtle backdrop to catch clicks outside */
+.floating-menu-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.floating-menu-overlay.open .floating-menu-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.floating-header {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.floating-header-title {
+  font-family: 'Arrow', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.4);
+}
+
+.floating-close {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  padding: 0;
+  cursor: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-close:hover {
+  transform: scale(1.1) rotate(90deg);
+  color: #fff;
+}
+
+.floating-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.floating-nav-item {
+  position: relative;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  font-family: var(--font-family);
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  cursor: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.floating-nav-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  transform: scale(1.02);
+}
+
+.floating-nav-item.active {
+  color: #fff;
 }
 
 /* Spacer to push content below fixed topbar */
