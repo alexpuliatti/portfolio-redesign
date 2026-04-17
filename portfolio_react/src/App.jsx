@@ -9,9 +9,14 @@ import { About } from './pages/About';
 
 function App() {
   const [activeTab, setActiveTab] = useState(() => {
-    const hash = window.location.hash.replace('#', '');
-    // Extract base tab — e.g. "Photography/charlotte-taylor" → "Photography"
-    return (hash ? hash.split('/')[0] : '') || 'Photography';
+    const path = window.location.pathname.replace(/^\/+/g, '');
+    if (!path) return 'Photography';
+    const segments = path.split('/');
+    let baseTab = segments[0].charAt(0).toUpperCase() + segments[0].slice(1);
+    if (baseTab.toLowerCase() === 'design' && segments.length > 1) {
+        return `Design-${segments[1]}`;
+    }
+    return baseTab;
   });
   const cursorRef = useRef(null);
   
@@ -70,28 +75,37 @@ function App() {
     };
   }, []);
 
-  // Sync state to URL hash and listen for browser back/forward navigation
+  // Sync state to URL path and listen for browser back/forward navigation
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '');
-      if (hash) {
-        // Extract base tab — e.g. "Photography/charlotte-taylor" → "Photography"
-        const baseTab = hash.split('/')[0];
-        setActiveTab(baseTab);
-      } else {
+    const handlePopState = () => {
+      const path = window.location.pathname.replace(/^\/+/g, '');
+      if (!path) {
         setActiveTab('Photography');
+        return;
+      }
+      const segments = path.split('/');
+      let baseTab = segments[0].charAt(0).toUpperCase() + segments[0].slice(1);
+      if (baseTab.toLowerCase() === 'design' && segments.length > 1) {
+          setActiveTab(`Design-${segments[1]}`);
+      } else {
+          setActiveTab(baseTab);
       }
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Update hash when tab changes (without triggering a jump)
+  // Update path when tab changes
   useEffect(() => {
     if (activeTab) {
-      // Use replaceState to avoid jumping to ID anchors if they existed
-      window.history.replaceState(null, '', `#${activeTab}`);
+      let newPath = `/${activeTab.toLowerCase()}`;
+      if (activeTab.startsWith('Design-')) {
+          newPath = `/design/${activeTab.split('-')[1].toLowerCase()}`;
+      }
+      if (window.location.pathname !== newPath) {
+        window.history.pushState(null, '', newPath);
+      }
     }
   }, [activeTab]);
 
@@ -136,7 +150,7 @@ function App() {
         )}
 
         {activeTab === 'About' && (
-          <motion.div key="about" {...pageTransition}>
+          <motion.div key="about" {...pageTransition} style={{ width: '100%' }}>
             <About />
           </motion.div>
         )}
