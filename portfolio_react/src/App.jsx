@@ -6,6 +6,7 @@ import { Photography } from './pages/Photography';
 import { Design } from './pages/Design';
 import { DesignSubpage } from './pages/DesignSubpage';
 import { About } from './pages/About';
+import { LoadingScreen } from './components/LoadingScreen';
 
 function App() {
   const [activeTab, setActiveTab] = useState(() => {
@@ -18,6 +19,7 @@ function App() {
     }
     return baseTab;
   });
+  const [isLoading, setIsLoading] = useState(true);
   const cursorRef = useRef(null);
   
   useSmoothScroll(false);
@@ -121,41 +123,56 @@ function App() {
   };
 
   return (
-    <div className="portfolio-container">
-      <div className="glass-cursor" ref={cursorRef} style={{ opacity: 1 }} />
-      <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
-
-      {!activeTab?.startsWith('Design') && <div className="page-spacer" />}
-
-      <AnimatePresence mode="wait">
-        {activeTab === 'Photography' && (
-          <motion.div key="photography" {...pageTransition} style={{ width: '100%' }}>
-            <Photography />
-          </motion.div>
-        )}
-
-        {activeTab === 'Design' && (
-          <motion.div key="design" {...pageTransition}>
-            <Design setActiveTab={setActiveTab} />
-          </motion.div>
-        )}
-
-        {activeTab?.startsWith('Design-') && (
-          <motion.div key="design-sub" {...pageTransition}>
-            <DesignSubpage 
-              type={activeTab.split('-')[1]} 
-              setActiveTab={setActiveTab} 
-            />
-          </motion.div>
-        )}
-
-        {activeTab === 'About' && (
-          <motion.div key="about" {...pageTransition} style={{ width: '100%' }}>
-            <About />
-          </motion.div>
+    <>
+      <AnimatePresence>
+        {isLoading && (
+          <LoadingScreen key="loading" onComplete={() => setIsLoading(false)} />
         )}
       </AnimatePresence>
-    </div>
+
+      <div 
+        className="portfolio-container" 
+        style={{ 
+          opacity: isLoading ? 0 : 1, 
+          pointerEvents: isLoading ? 'none' : 'auto',
+          transition: 'opacity 0.8s ease'
+        }}
+      >
+        <div className="glass-cursor" ref={cursorRef} style={{ opacity: 1 }} />
+        <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
+
+        {!activeTab?.startsWith('Design') && <div className="page-spacer" />}
+
+        <AnimatePresence mode="wait">
+          {activeTab === 'Photography' && (
+            <motion.div key="photography" {...pageTransition} style={{ width: '100%' }}>
+              <Photography />
+            </motion.div>
+          )}
+
+          {activeTab === 'Design' && (
+            <motion.div key="design" {...pageTransition}>
+              <Design setActiveTab={setActiveTab} />
+            </motion.div>
+          )}
+
+          {activeTab?.startsWith('Design-') && (
+            <motion.div key="design-sub" {...pageTransition}>
+              <DesignSubpage 
+                type={activeTab.split('-')[1]} 
+                setActiveTab={setActiveTab} 
+              />
+            </motion.div>
+          )}
+
+          {activeTab === 'About' && (
+            <motion.div key="about" {...pageTransition} style={{ width: '100%' }}>
+              <About />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </>
   );
 }
 
