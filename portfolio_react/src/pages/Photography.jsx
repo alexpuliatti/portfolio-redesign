@@ -128,7 +128,7 @@ const unregisterScrollUpdater = (fn) => {
 
 // ─── Vertical Connecting Line using next image's colors ───
 const ConnectingLine = ({ nextImageSrc, className = '' }) => {
-    const [gradient, setGradient] = useState('transparent');
+    const [gradient, setGradient] = useState('linear-gradient(to bottom, transparent, rgba(255,255,255,0.12) 40%, rgba(255,255,255,0.25) 100%)');
     const [revealed, setRevealed] = useState(false);
     const lineRef = useRef(null);
     const mobile = isMobile();

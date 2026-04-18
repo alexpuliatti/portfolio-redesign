@@ -141,11 +141,11 @@ function App() {
         <div className="glass-cursor" ref={cursorRef} style={{ opacity: 1 }} />
         <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
-        {!activeTab?.startsWith('Design') && <div className="page-spacer" />}
 
         <AnimatePresence mode="wait">
           {activeTab === 'Photography' && (
             <motion.div key="photography" {...pageTransition} style={{ width: '100%' }}>
+              <div className="page-spacer" />
               <Photography />
             </motion.div>
           )}
@@ -167,6 +167,7 @@ function App() {
 
           {activeTab === 'About' && (
             <motion.div key="about" {...pageTransition} style={{ width: '100%' }}>
+              <div className="page-spacer" />
               <About />
             </motion.div>
           )}

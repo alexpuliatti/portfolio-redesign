@@ -69,26 +69,21 @@ body {
   z-index: 100000;
   will-change: transform;
   
-  /* liquid glass frosty dot */
-  /* liquid glass frosty dot */
-  /* Using a subtle sepia/contrast mix to create a nice color gamma on text beneath without ruining legibility */
-  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.0) 60%);
-  backdrop-filter: blur(1.5px) contrast(1.15) saturate(1.4) sepia(0.15) hue-rotate(15deg);
-  -webkit-backdrop-filter: blur(1.5px) contrast(1.15) saturate(1.4) sepia(0.15) hue-rotate(15deg);
+  /* liquid glass frosty dot — keep compositing lightweight for scroll perf */
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.06), transparent 60%);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 
     inset 0 0 10px rgba(255, 255, 255, 0.08),
     inset 1px 1px 3px rgba(255, 255, 255, 0.12),
     0 4px 15px rgba(0, 0, 0, 0.2);
-  mix-blend-mode: luminosity; /* Keeps the text sharp but gives the cursor body */
   
   transition: width 0.35s cubic-bezier(0.25, 1, 0.5, 1), 
               height 0.35s cubic-bezier(0.25, 1, 0.5, 1), 
               background 0.35s ease,
               border 0.35s ease,
-              opacity 0.3s ease,
-              backdrop-filter 0.3s ease,
-              -webkit-backdrop-filter 0.3s ease;
+              opacity 0.3s ease;
               
   display: flex;
   align-items: center;
@@ -185,140 +180,47 @@ body.overlay-active .glass-cursor::after {
   opacity: 1;
 }
 
-/* Navigation CTA */
-.menu-cta {
+/* Liquid Glass Navbar */
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 4px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.nav-pill {
   background: transparent;
   border: none;
+  color: rgba(255, 255, 255, 0.5);
   font-family: var(--font-family);
-  font-size: 0.9rem;
+  font-size: 0.65rem;
   font-weight: 500;
-  color: #fff;
-  letter-spacing: 0.05em;
-  padding: 0.5rem 1rem;
-  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
   text-transform: uppercase;
-  cursor: none;
-}
-
-.menu-cta:active {
-  transform: scale(0.95);
-}
-
-/* Liquid Glass Centered Modal */
-.floating-menu-overlay {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  z-index: 10000;
-}
-
-.floating-menu {
-  width: 380px;
-  max-width: 90vw;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(24px) saturate(1.5);
-  -webkit-backdrop-filter: blur(24px) saturate(1.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 0 20px rgba(255, 255, 255, 0.02), 0 10px 40px rgba(0,0,0,0.5);
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transform: scale(0.95) translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 10001; /* Ensure above backdrop */
-}
-
-.floating-menu-overlay.open .floating-menu {
-  pointer-events: auto;
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-/* Dark subtle backdrop to catch clicks outside */
-.floating-menu-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.floating-menu-overlay.open .floating-menu-backdrop {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.floating-header {
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.floating-header-title {
-  font-family: 'Arrow', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.4);
-}
-
-.floating-close {
-  background: transparent;
-  border: none;
-  color: rgba(255,255,255,0.6);
-  padding: 0;
-  cursor: none;
-  transition: transform 0.2s ease, color 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.floating-close:hover {
-  transform: scale(1.1) rotate(90deg);
-  color: #fff;
-}
-
-.floating-nav {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 1rem 0;
-}
-
-.floating-nav-item {
+  letter-spacing: 0.08em;
+  padding: 8px 20px;
+  border-radius: 100px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   position: relative;
-  background: transparent;
-  border: none;
-  color: rgba(255,255,255,0.6);
-  font-family: var(--font-family);
-  font-size: 1.1rem;
-  font-weight: 400;
-  text-align: center;
-  padding: 1rem 1.5rem;
-  width: 100%;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-  cursor: none;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
-.floating-nav-item:hover {
-  background: rgba(255,255,255,0.05);
-  color: #fff;
-  transform: scale(1.02);
+.nav-pill:hover {
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.floating-nav-item.active {
+.nav-pill.active {
   color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Spacer to push content below fixed topbar */
@@ -341,6 +243,7 @@ body.overlay-active .glass-cursor::after {
   height: auto !important; /* Allow top/bottom to determine height */
   transform: translateX(-50%) !important; /* Override JS scaleY so it stays full */
   transform-origin: top center !important;
+  opacity: 1 !important; /* Always visible — bypasses IntersectionObserver reveal */
 }
 
 .intro-section {
@@ -463,19 +366,15 @@ body.overlay-active .glass-cursor::after {
   height: 30vh; /* Exactly the gap size */
   z-index: 1; 
   opacity: 0; 
-  will-change: transform, opacity; 
+  will-change: transform; 
   /* DO NOT transition transform, JS handles it via requestAnimationFrame */
   transition: opacity 0.8s ease;
 }
 
 .connecting-line.line-revealed {
   opacity: 1;
-  animation: subtleGlow 5s ease-in-out infinite;
-}
-
-@keyframes subtleGlow {
-  0%, 100% { filter: brightness(1.8) saturate(1.5); }
-  50% { filter: brightness(2.2) saturate(1.7); }
+  /* Static filter instead of infinite animation — avoids constant repaints during scroll */
+  filter: brightness(2) saturate(1.6);
 }
 
 
@@ -1410,4 +1309,23 @@ body.overlay-active .glass-cursor::after {
   z-index: 50;
   pointer-events: none;
   transition: width 0.1s linear;
+}
+
+/* Loading Screen Mobile Responsiveness */
+@media (max-width: 768px) {
+  .loading-split-container {
+    flex-direction: row;
+    gap: 1.5vw;
+  }
+  
+  .loading-text {
+    font-size: 11vw;
+  }
+  
+  .loading-image-container {
+    width: 12vw;
+    height: 12vw;
+    min-width: 30px; /* Crucial: removes the 80px min-constraint that broke horizontal scaling */
+    min-height: 30px;
+  }
 }

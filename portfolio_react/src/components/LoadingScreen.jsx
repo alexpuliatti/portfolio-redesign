@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Using Vite's import.meta.glob to dynamically import images in the folder
@@ -8,6 +8,38 @@ const images = Object.values(imageModules).map(mod => mod.default);
 export function LoadingScreen({ onComplete }) {
   const [progress, setProgress] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const canvasRef = useRef(null);
+
+  // Update canvas for pixel effect
+  useEffect(() => {
+    if (images.length === 0 || !canvasRef.current) return;
+    
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    // Keep it blocky
+    ctx.imageSmoothingEnabled = false;
+
+    const img = new Image();
+    img.src = images[currentImageIndex];
+    
+    const drawPixelArt = () => {
+      const targetSize = 32; 
+      const scale = Math.max(targetSize / img.naturalWidth, targetSize / img.naturalHeight);
+      const w = img.naturalWidth * scale;
+      const h = img.naturalHeight * scale;
+      const x = (targetSize - w) / 2;
+      const y = (targetSize - h) / 2;
+      
+      ctx.clearRect(0, 0, targetSize, targetSize);
+      ctx.drawImage(img, x, y, w, h);
+    };
+
+    if (img.complete && img.naturalWidth > 0) {
+      drawPixelArt();
+    } else {
+      img.onload = drawPixelArt;
+    }
+  }, [currentImageIndex]);
 
   useEffect(() => {
     // Prevent scrolling while loading
@@ -62,10 +94,12 @@ export function LoadingScreen({ onComplete }) {
           
           <div className="loading-image-container">
             {images.length > 0 ? (
-              <img 
-                src={images[currentImageIndex]} 
-                alt="Loading" 
+              <canvas 
+                ref={canvasRef} 
+                width={32}
+                height={32}
                 className="loading-image"
+                style={{ imageRendering: 'pixelated' }}
               />
             ) : (
               <div className="loading-image bg-placeholder" />
