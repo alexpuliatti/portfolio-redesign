@@ -305,14 +305,9 @@ body.overlay-active .glass-cursor::after {
   display: block;
   object-fit: contain;
   margin: 0 auto;
-  border-radius: 4px; /* subtle rounding */
+  border-radius: 4px;
   position: relative;
-  z-index: 2; /* Image must be above the connecting absolute line */
-  transition: transform 0.4s ease;
-}
-
-.image-wrapper img:hover {
-  transform: scale(1.02);
+  z-index: 2;
 }
 
 /* Blur overlay for full-res image */
@@ -373,8 +368,6 @@ body.overlay-active .glass-cursor::after {
 
 .connecting-line.line-revealed {
   opacity: 1;
-  /* Static filter instead of infinite animation — avoids constant repaints during scroll */
-  filter: brightness(2) saturate(1.6);
 }
 
 
@@ -1152,7 +1145,6 @@ body.overlay-active .glass-cursor::after {
   height: 100%;
   object-fit: contain;
   display: block;
-  filter: blur(20px);
   transition: opacity 0.4s ease;
   z-index: 1;
 }
@@ -1252,24 +1244,25 @@ body.overlay-active .glass-cursor::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2vw; /* Spacing between text and image */
+  gap: 2vw;
   white-space: nowrap;
+  padding: 0 4vw;
 }
 
 .loading-text {
   font-family: 'Arrow', sans-serif;
-  font-size: 13vw; /* Adjusted to fit the whole phrase and image */
+  font-size: 11vw;
   font-weight: normal;
   line-height: 1;
-  color: #fff; /* Light text on dark background */
+  color: #fff;
   letter-spacing: -0.01em;
   margin: 0;
 }
 
 .loading-image-container {
   position: relative;
-  width: 14vw; /* Match roughly the height of the font */
-  height: 14vw; 
+  width: 12vw;
+  height: 12vw; 
   min-width: 80px;
   min-height: 80px;
   overflow: hidden;

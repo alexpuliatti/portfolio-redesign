@@ -291,8 +291,7 @@ const ShowcaseGridItem = ({ item, onClick }) => {
                 className={`lqip-thumb ${imageLoaded ? 'lqip-hidden' : ''}`}
                 aria-hidden="true"
             />
-            <motion.img
-                layoutId={`project-image-${item.projectId}-${item.showcaseIdx}`}
+            <img
                 src={`${import.meta.env.BASE_URL}${item.src}`}
                 alt={item.title}
                 loading="lazy"
@@ -481,11 +480,10 @@ export function Photography() {
                         </button>
 
                         <div className="project-expanded-layout">
-                            {/* Left: Main showcase image, sticky with layoutId */}
+                            {/* Left: Main showcase image, sticky */}
                             <div className="project-showcase-side">
                                 <div className="project-showcase-sticky">
-                                    <motion.img
-                                        layoutId={`project-image-${selectedProject.id}-${galleryItems.find(i => i.src === selectedShowcaseSrc)?.showcaseIdx}`}
+                                    <img
                                         src={`${import.meta.env.BASE_URL}${selectedShowcaseSrc}`}
                                         alt={selectedProject.title}
                                         className="project-showcase-image"
