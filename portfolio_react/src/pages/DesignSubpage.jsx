@@ -7,7 +7,7 @@ const subpageData = {
         description: "This is the first iteration of my design for a brushed steel speakers set featuring a custom horn.",
         images: [
             "/speaker/1.webp",
-            "/speaker/2_vertical.webp",
+            "/speaker/2.webp",
             "/speaker/3.webp",
             "/speaker/4.webp",
             "/speaker/5.webp",

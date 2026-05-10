@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { Navigation } from './components/Navigation';
@@ -8,19 +8,26 @@ import { DesignSubpage } from './pages/DesignSubpage';
 import { About } from './pages/About';
 import { LoadingScreen } from './components/LoadingScreen';
 
+// Resolve the initial tab from the URL path
+const resolveTabFromPath = () => {
+  const path = window.location.pathname.replace(/^\/+/g, '');
+  if (!path) return 'Photography';
+  const segments = path.split('/');
+  let baseTab = segments[0].charAt(0).toUpperCase() + segments[0].slice(1);
+  if (baseTab.toLowerCase() === 'design' && segments.length > 1) {
+    return `Design-${segments[1]}`;
+  }
+  return baseTab;
+};
+
 function App() {
-  const [activeTab, setActiveTab] = useState(() => {
-    const path = window.location.pathname.replace(/^\/+/g, '');
-    if (!path) return 'Photography';
-    const segments = path.split('/');
-    let baseTab = segments[0].charAt(0).toUpperCase() + segments[0].slice(1);
-    if (baseTab.toLowerCase() === 'design' && segments.length > 1) {
-        return `Design-${segments[1]}`;
-    }
-    return baseTab;
-  });
+  const [activeTab, setActiveTab] = useState(resolveTabFromPath);
   const [isLoading, setIsLoading] = useState(true);
   const cursorRef = useRef(null);
+
+  // Track which pages have been visited so we can lazy-mount them.
+  // Once mounted, they stay in the DOM (keep-alive) to avoid expensive re-mounts.
+  const [visitedTabs, setVisitedTabs] = useState(() => new Set([resolveTabFromPath()]));
   
   useSmoothScroll(false);
 
@@ -114,13 +121,26 @@ function App() {
   // Scroll to top when switching tabs
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { immediate: true });
+    }
   }, [activeTab]);
 
-  const pageTransition = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
-    exit: { opacity: 0, transition: { duration: 0.3, ease: 'easeIn' } }
-  };
+  // Mark newly-visited tabs so they get lazy-mounted
+  useEffect(() => {
+    setVisitedTabs((prev) => {
+      if (prev.has(activeTab)) return prev;
+      const next = new Set(prev);
+      next.add(activeTab);
+      return next;
+    });
+  }, [activeTab]);
+
+  // Derive which "base" category group is active for the Design sub-pages
+  const isDesignSub = activeTab?.startsWith('Design-');
+  const isPhotography = activeTab === 'Photography';
+  const isDesign = activeTab === 'Design';
+  const isAbout = activeTab === 'About';
 
   return (
     <>
@@ -142,36 +162,51 @@ function App() {
         <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
 
-        <AnimatePresence mode="wait">
-          {activeTab === 'Photography' && (
-            <motion.div key="photography" {...pageTransition} style={{ width: '100%' }}>
-              <div className="page-spacer" />
-              <Photography />
-            </motion.div>
-          )}
+        {/* ── Keep-alive page slots ──
+             Pages are lazy-mounted on first visit and then stay in the DOM.
+             Inactive pages are hidden via CSS (opacity + pointer-events + position).
+             This completely eliminates the expensive unmount/remount cycle for
+             heavy pages like Photography (22+ IntersectionObservers, canvas ops, etc).
+        */}
 
-          {activeTab === 'Design' && (
-            <motion.div key="design" {...pageTransition}>
-              <Design setActiveTab={setActiveTab} />
-            </motion.div>
-          )}
+        {visitedTabs.has('Photography') && (
+          <div
+            className={`page-slot ${isPhotography ? 'page-slot--active' : 'page-slot--hidden'}`}
+            style={{ width: '100%' }}
+          >
+            <div className="page-spacer" />
+            <Photography />
+          </div>
+        )}
 
-          {activeTab?.startsWith('Design-') && (
-            <motion.div key="design-sub" {...pageTransition}>
-              <DesignSubpage 
-                type={activeTab.split('-')[1]} 
-                setActiveTab={setActiveTab} 
-              />
-            </motion.div>
-          )}
+        {visitedTabs.has('Design') && (
+          <div
+            className={`page-slot ${isDesign ? 'page-slot--active' : 'page-slot--hidden'}`}
+          >
+            <Design setActiveTab={setActiveTab} />
+          </div>
+        )}
 
-          {activeTab === 'About' && (
-            <motion.div key="about" {...pageTransition} style={{ width: '100%' }}>
-              <div className="page-spacer" />
-              <About />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {visitedTabs.has(activeTab) && isDesignSub && (
+          <div
+            className={`page-slot ${isDesignSub ? 'page-slot--active' : 'page-slot--hidden'}`}
+          >
+            <DesignSubpage 
+              type={activeTab.split('-')[1]} 
+              setActiveTab={setActiveTab} 
+            />
+          </div>
+        )}
+
+        {visitedTabs.has('About') && (
+          <div
+            className={`page-slot ${isAbout ? 'page-slot--active' : 'page-slot--hidden'}`}
+            style={{ width: '100%' }}
+          >
+            <div className="page-spacer" />
+            <About />
+          </div>
+        )}
       </div>
     </>
   );

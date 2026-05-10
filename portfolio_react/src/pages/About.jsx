@@ -8,7 +8,7 @@ const archiveData = [
     { category: "In-house", title: "SIGNATURE AI", date: "2024" },
     { category: "Talk", title: "APEX LAB - ISSUE 1 - Talk", date: "2024" },
     { category: "Client", title: "A-COLD-WALL", date: "2024" },
-    { category: "Talk", title: "Royal College of Art - Public Lecture", date: "2024", content: { type: "youtube", videoId: "XhVnsLeFkwI" } },
+    { category: "Talk", title: "Royal College of Art - Public Lecture", date: "2024" },
     { category: "Talk", title: "King's College Lecture", date: "2024" },
     { category: "Personal", title: "Zurich53", date: "2024" },
     { category: "Client", title: "OREE NYC - Small Hours Mag", date: "2023" },

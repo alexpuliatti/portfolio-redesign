@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import photographyProjects, { getImagePath } from '../photographyData';
 
@@ -21,14 +21,15 @@ const isMobile = () => typeof window !== 'undefined' && window.innerWidth <= 900
 const STATIC_GRADIENT = 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.15) 30%, rgba(255,255,255,0.3) 100%)';
 
 // ─── Detail Grid Item with LQIP blur-up loading ───
-const DetailGridItem = ({ src, onClick }) => {
+const DetailGridItem = memo(({ src, onClick }) => {
     const containerRef = useRef(null);
     const [visible, setVisible] = useState(false);
     const [imageLoaded, setImageLoaded] = useState(false);
 
     const thumbSrc = getThumbPath(src);
-    // On mobile, load the lightweight _mobile.jpg variant instead of the full original
-    const displaySrc = isMobile() ? getMobilePath(src) : src;
+    // Load the lightweight _mobile.jpg (1200px width) variant for all grid items 
+    // to optimize load time on both desktop and mobile.
+    const displaySrc = getMobilePath(src);
 
     useEffect(() => {
         const el = containerRef.current;
@@ -92,7 +93,7 @@ const DetailGridItem = ({ src, onClick }) => {
             </div>
         </div>
     );
-};
+});
 
 // ─── Shared scroll manager (desktop only) ───
 // One scroll listener drives all ConnectingLine animations instead of N separate ones.
@@ -126,8 +127,12 @@ const unregisterScrollUpdater = (fn) => {
     }
 };
 
+// ─── Module-level gradient cache ───
+// Stores extracted gradient strings by image src so we never re-extract for the same image.
+const gradientCache = new Map();
+
 // ─── Vertical Connecting Line using next image's colors ───
-const ConnectingLine = ({ nextImageSrc, className = '' }) => {
+const ConnectingLine = memo(({ nextImageSrc, className = '' }) => {
     const [gradient, setGradient] = useState('linear-gradient(to bottom, transparent, rgba(255,255,255,0.12) 40%, rgba(255,255,255,0.25) 100%)');
     const [revealed, setRevealed] = useState(false);
     const lineRef = useRef(null);
@@ -157,9 +162,17 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
         return () => observer.disconnect();
     }, []);
 
-    // Extract gradient from next image — use thumbnail on mobile for speed
+    // Extract gradient from next image — check cache first
     useEffect(() => {
         if (!nextImageSrc) return;
+
+        // Check cache before doing any image loading / canvas work
+        const cached = gradientCache.get(nextImageSrc);
+        if (cached) {
+            setGradient(cached);
+            return;
+        }
+
         // Use the tiny _thumb_compressed version for color sampling (no resolution needed for a 1×3 canvas)
         const thumbSrc = nextImageSrc.replace('_compressed.jpg', '_thumb_compressed.jpg');
         const img = new Image();
@@ -190,7 +203,9 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
                 const rgb2 = `rgb(${c2[0]}, ${c2[1]}, ${c2[2]})`;
                 const rgb3 = `rgb(${c3[0]}, ${c3[1]}, ${c3[2]})`;
                 
-                setGradient(`linear-gradient(to bottom, ${rgb1} 0%, ${rgb2} 50%, ${rgb3} 100%)`);
+                const result = `linear-gradient(to bottom, ${rgb1} 0%, ${rgb2} 50%, ${rgb3} 100%)`;
+                gradientCache.set(nextImageSrc, result);
+                setGradient(result);
             } catch(e) {}
         }
     }, [nextImageSrc]);
@@ -209,18 +224,34 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
             // and shifting the absoluteY coordinate.
             const rect = wrapper.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
-            const gapSize = viewportHeight * 0.3; // 30vh gap exactly as in CSS
             
-            // rect.bottom is the distance from the top of the viewport to the bottom of the image wrapper.
-            // window.innerHeight - rect.bottom is 0 when the bottom of the Image hits the bottom of the screen.
-            const distFromViewportBottom = viewportHeight - rect.bottom;
+            let scale = 1;
             
-            // Calculate progress through the gap
-            const progress = distFromViewportBottom / (gapSize + viewportHeight * 0.8);
-            
-            // Relax the threshold so the line starts scaling earlier, fixing the first couple of items on desktop
-            const rawScale = 1 - Math.max(0, progress - 0.15) * 1.5;
-            const scale = Math.max(0, Math.min(1, rawScale));
+            if (wrapper.classList.contains('intro-divider-wrapper')) {
+                // Top line: starts at scale 1 when at the very top.
+                // Shrink it as the wrapper scrolls up (rect.bottom gets closer to 0).
+                // At scrollY = 0, rect.bottom is roughly 32vh.
+                // When rect.bottom hits 0, it's off screen.
+                // We want it to retract faster so it visually pulls away.
+                const initialBottom = viewportHeight * 0.35; // approximate start
+                const scrollProgress = Math.max(0, initialBottom - rect.bottom) / initialBottom;
+                const rawScale = 1 - (scrollProgress * 1.5);
+                scale = Math.max(0, Math.min(1, rawScale));
+            } else {
+                // Normal lines
+                const gapSize = viewportHeight * 0.3; // 30vh gap exactly as in CSS
+                
+                // rect.bottom is the distance from the top of the viewport to the bottom of the image wrapper.
+                // window.innerHeight - rect.bottom is 0 when the bottom of the Image hits the bottom of the screen.
+                const distFromViewportBottom = viewportHeight - rect.bottom;
+                
+                // Calculate progress through the gap
+                const progress = distFromViewportBottom / (gapSize + viewportHeight * 0.8);
+                
+                // Relax the threshold so the line starts scaling earlier, fixing the first couple of items on desktop
+                const rawScale = 1 - Math.max(0, progress - 0.15) * 1.5;
+                scale = Math.max(0, Math.min(1, rawScale));
+            }
             
             lineRef.current.style.transform = `translate3d(-50%, 0, 0) scaleY(${scale})`;
         };
@@ -249,7 +280,7 @@ const ConnectingLine = ({ nextImageSrc, className = '' }) => {
             }}
         />
     );
-};
+});
 
 // ─── Build a flat gallery of all SHOWCASE images across all projects ───
 const buildGalleryItems = () => {
@@ -277,7 +308,7 @@ const buildGalleryItems = () => {
 const galleryItems = buildGalleryItems();
 
 // ─── Showcase Grid Item with LQIP blur-up loading ───
-const ShowcaseGridItem = ({ item, onClick }) => {
+const ShowcaseGridItem = memo(({ item, onClick }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     
     // Construct the thumb src
@@ -302,7 +333,7 @@ const ShowcaseGridItem = ({ item, onClick }) => {
             />
         </div>
     );
-};
+});
 
 export function Photography() {
     const [selectedProject, setSelectedProject] = useState(null);
@@ -340,6 +371,18 @@ export function Photography() {
         setSelectedShowcaseSrc(null);
     };
 
+    const getProjectImages = () => {
+        if (!selectedProject) return [];
+        const images = [];
+        if (selectedShowcaseSrc) {
+            images.push(selectedShowcaseSrc);
+        }
+        if (selectedProject.detailImages) {
+            images.push(...selectedProject.detailImages.map(img => getImagePath(selectedProject.slug, img)));
+        }
+        return images;
+    };
+
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === 'Escape') {
@@ -349,11 +392,25 @@ export function Photography() {
                     // Use history.back() so the popstate handler fires
                     window.history.back();
                 }
+            } else if (enlargedImage && selectedProject) {
+                if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                    const images = getProjectImages();
+                    const idx = images.indexOf(enlargedImage);
+                    if (idx !== -1 && images.length > 1) {
+                        let newIdx = idx;
+                        if (e.key === 'ArrowRight') {
+                            newIdx = (idx + 1) % images.length;
+                        } else {
+                            newIdx = (idx - 1 + images.length) % images.length;
+                        }
+                        setEnlargedImage(images[newIdx]);
+                    }
+                }
             }
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [enlargedImage, selectedProject]);
+    }, [enlargedImage, selectedProject, selectedShowcaseSrc]);
 
     // Listen for topbar logo click to completely reset to main gallery
     useEffect(() => {
