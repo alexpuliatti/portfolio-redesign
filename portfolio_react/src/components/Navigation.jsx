@@ -6,6 +6,7 @@ export function Navigation({ activeTab, setActiveTab }) {
     const showLogo = !isMenuOpen;
 
     const handleMouseEnter = (e) => {
+        setIsMenuOpen(true);
         const hue1 = Math.floor(Math.random() * 360);
         const hue2 = (hue1 + 30 + Math.floor(Math.random() * 60)) % 360; 
         
@@ -50,6 +51,7 @@ export function Navigation({ activeTab, setActiveTab }) {
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="topbar-nav" 
                 style={{ marginLeft: 'auto' }}
+                onMouseLeave={() => setIsMenuOpen(false)}
             >
                 <AnimatePresence initial={false}>
                     {isMenuOpen && (
