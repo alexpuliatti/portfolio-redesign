@@ -161,7 +161,6 @@ function App() {
         <div className="glass-cursor" ref={cursorRef} style={{ opacity: 1 }} />
         <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
-
         {/* ── Keep-alive page slots ──
              Pages are lazy-mounted on first visit and then stay in the DOM.
              Inactive pages are hidden via CSS (opacity + pointer-events + position).

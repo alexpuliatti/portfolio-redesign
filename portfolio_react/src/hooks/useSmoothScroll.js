@@ -1,13 +1,21 @@
 import { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 
-export function useSmoothScroll(isLocked = false) {
+export function useSmoothScroll(isLocked = false, isEnabled = true) {
     const lenisRef = useRef(null);
 
     useEffect(() => {
+        if (!isEnabled) {
+            if (lenisRef.current) {
+                lenisRef.current.destroy();
+                lenisRef.current = null;
+                if (window.lenis) delete window.lenis;
+            }
+            return;
+        }
+
         const lenis = new Lenis({
-            duration: 1.5,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            lerp: 0.2, // Faster lerp makes it more subtle and closer to native scroll
             direction: 'vertical',
             gestureDirection: 'vertical',
             smooth: true,
@@ -23,21 +31,23 @@ export function useSmoothScroll(isLocked = false) {
         lenisRef.current = lenis;
         window.lenis = lenis;
 
+        let animationFrameId;
         function raf(time) {
             lenis.raf(time);
-            requestAnimationFrame(raf);
+            animationFrameId = requestAnimationFrame(raf);
         }
 
-        requestAnimationFrame(raf);
+        animationFrameId = requestAnimationFrame(raf);
 
         return () => {
+            cancelAnimationFrame(animationFrameId);
             lenis.destroy();
             lenisRef.current = null;
             if (window.lenis === lenis) {
                 delete window.lenis;
             }
         };
-    }, []);
+    }, [isEnabled]);
 
     useEffect(() => {
         if (!lenisRef.current) return;

@@ -212,9 +212,7 @@ const ConnectingLine = memo(({ nextImageSrc, className = '' }) => {
 
     // Scroll-driven retraction effect via the shared scroll manager
     useEffect(() => {
-        if (!revealed || mobile) return;
-
-        // --- DESKTOP LOGIC (JS Scroll-driven Lerp Tween) ---
+        // --- JS Scroll-driven Lerp Tween ---
         const performAnimation = () => {
             if (!lineRef.current) return;
             const wrapper = lineRef.current.parentElement;
@@ -228,28 +226,22 @@ const ConnectingLine = memo(({ nextImageSrc, className = '' }) => {
             let scale = 1;
             
             if (wrapper.classList.contains('intro-divider-wrapper')) {
-                // Top line: starts at scale 1 when at the very top.
-                // Shrink it as the wrapper scrolls up (rect.bottom gets closer to 0).
-                // At scrollY = 0, rect.bottom is roughly 32vh.
-                // When rect.bottom hits 0, it's off screen.
-                // We want it to retract faster so it visually pulls away.
+                // Top line
                 const initialBottom = viewportHeight * 0.35; // approximate start
                 const scrollProgress = Math.max(0, initialBottom - rect.bottom) / initialBottom;
                 const rawScale = 1 - (scrollProgress * 1.5);
                 scale = Math.max(0, Math.min(1, rawScale));
             } else {
-                // Normal lines
-                const gapSize = viewportHeight * 0.3; // 30vh gap exactly as in CSS
+                const gapSize = viewportHeight * 0.6; // 60vh on both mobile and desktop
                 
-                // rect.bottom is the distance from the top of the viewport to the bottom of the image wrapper.
-                // window.innerHeight - rect.bottom is 0 when the bottom of the Image hits the bottom of the screen.
                 const distFromViewportBottom = viewportHeight - rect.bottom;
                 
-                // Calculate progress through the gap
-                const progress = distFromViewportBottom / (gapSize + viewportHeight * 0.8);
+                // Delay the retraction: progress is based on gap + full viewport height
+                const progress = distFromViewportBottom / (gapSize + viewportHeight);
                 
-                // Relax the threshold so the line starts scaling earlier, fixing the first couple of items on desktop
-                const rawScale = 1 - Math.max(0, progress - 0.15) * 1.5;
+                // Line stays at 100% length until progress hits 0.4 (when the next image enters the screen),
+                // then retracts twice as fast so it disappears nicely.
+                const rawScale = 1 - Math.max(0, progress - 0.4) * 2;
                 scale = Math.max(0, Math.min(1, rawScale));
             }
             
@@ -263,7 +255,7 @@ const ConnectingLine = memo(({ nextImageSrc, className = '' }) => {
         return () => {
             unregisterScrollUpdater(performAnimation);
         };
-    }, [revealed, mobile]);
+    }, [mobile]);
 
     return (
         <div
@@ -271,12 +263,8 @@ const ConnectingLine = memo(({ nextImageSrc, className = '' }) => {
             ref={lineRef}
             style={{ 
                 background: gradient,
-                // On mobile, start hidden with clip-path so the CSS transition can reveal it smoothly
-                clipPath: mobile ? (revealed ? 'inset(0px 0px 0% 0px)' : 'inset(0px 0px 100% 0px)') : undefined,
-                // Include both the clip-path animation and the CSS opacity fade
-                transition: mobile ? 'clip-path 2.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease' : undefined,
-                // Ensure desktop scaleY transform origin remains at the bottom
-                transformOrigin: mobile ? undefined : 'bottom center'
+                transformOrigin: 'bottom center',
+                transition: mobile ? 'opacity 0.8s ease' : undefined
             }}
         />
     );
