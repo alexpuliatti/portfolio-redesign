@@ -451,9 +451,22 @@ body.overlay-active .glass-cursor::after {
   height: 60vh; /* Exactly the gap size */
   z-index: 1; 
   opacity: 0; 
-  will-change: transform; 
+  will-change: opacity, transform; 
   /* DO NOT transition transform, JS handles it via requestAnimationFrame */
   transition: opacity 0.8s ease;
+  
+  /* --- OLD DEFAULT STYLES HIDDEN HERE --- */
+  /* (No glow/filter previously applied to connecting line) */
+  
+  /* --- NEW NEON DEFAULT --- */
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 255, 255, 0.15);
+  filter: brightness(1.5) saturate(1.6);
+  animation: neonPulseOpacity 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes neonPulseOpacity {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
 }
 
 .connecting-line.line-revealed {
@@ -949,10 +962,18 @@ body.overlay-active .glass-cursor::after {
   top: 0;
   bottom: 0;
   width: 4px;
-  filter: brightness(1.8) saturate(1.5);
   border-radius: 2px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
   z-index: 10;
+  
+  /* --- OLD DEFAULT STYLES HIDDEN HERE --- */
+  /* filter: brightness(1.8) saturate(1.5); */
+  /* box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); */
+  
+  /* --- NEW NEON DEFAULT --- */
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 255, 255, 0.15);
+  filter: brightness(1.5) saturate(1.6);
+  animation: neonPulseOpacity 2.5s infinite alternate ease-in-out;
+  will-change: opacity, transform;
 }
 
 .grid-vertical-line.left-line {

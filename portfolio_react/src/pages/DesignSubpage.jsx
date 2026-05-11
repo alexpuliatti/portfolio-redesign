@@ -61,21 +61,25 @@ const GridItem = ({ src }) => {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d', { willReadFrequently: true });
             
-            // Downscale to 1x3 to easily get average colors for top, middle, and bottom
+            // Downscale to 1x5 to easily get average colors for segments
             canvas.width = 1;
-            canvas.height = 3;
-            ctx.drawImage(img, 0, 0, 1, 3);
+            canvas.height = 5;
+            ctx.drawImage(img, 0, 0, 1, 5);
             
             const c1 = ctx.getImageData(0, 0, 1, 1).data;
             const c2 = ctx.getImageData(0, 1, 1, 1).data;
             const c3 = ctx.getImageData(0, 2, 1, 1).data;
+            const c4 = ctx.getImageData(0, 3, 1, 1).data;
+            const c5 = ctx.getImageData(0, 4, 1, 1).data;
             
             const rgb1 = `rgb(${c1[0]}, ${c1[1]}, ${c1[2]})`;
             const rgb2 = `rgb(${c2[0]}, ${c2[1]}, ${c2[2]})`;
             const rgb3 = `rgb(${c3[0]}, ${c3[1]}, ${c3[2]})`;
+            const rgb4 = `rgb(${c4[0]}, ${c4[1]}, ${c4[2]})`;
+            const rgb5 = `rgb(${c5[0]}, ${c5[1]}, ${c5[2]})`;
             
-            // Create a gradient that matches the image's vertical color flow
-            setDynamicGradient(`linear-gradient(to bottom, transparent, ${rgb1} 25%, ${rgb2} 60%, ${rgb3} 100%)`);
+            // Create a gradient that matches the image's vertical color flow, with distinct bands
+            setDynamicGradient(`linear-gradient(to bottom, transparent, ${rgb1} 15%, ${rgb2} 30%, ${rgb2} 40%, ${rgb3} 55%, ${rgb3} 65%, ${rgb4} 80%, ${rgb4} 90%, ${rgb5} 100%)`);
         } catch (err) {
             console.error("Failed to extract image colors:", err);
         }

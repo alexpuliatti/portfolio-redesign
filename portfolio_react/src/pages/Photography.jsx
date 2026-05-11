@@ -192,18 +192,22 @@ const ConnectingLine = memo(({ nextImageSrc, className = '' }) => {
                 const canvas = document.createElement('canvas');
                 const ctx = canvas.getContext('2d', { willReadFrequently: true });
                 canvas.width = 1;
-                canvas.height = 3;
-                ctx.drawImage(loadedImg, 0, 0, 1, 3);
+                canvas.height = 5;
+                ctx.drawImage(loadedImg, 0, 0, 1, 5);
                 
                 const c1 = ctx.getImageData(0, 0, 1, 1).data;
                 const c2 = ctx.getImageData(0, 1, 1, 1).data;
                 const c3 = ctx.getImageData(0, 2, 1, 1).data;
+                const c4 = ctx.getImageData(0, 3, 1, 1).data;
+                const c5 = ctx.getImageData(0, 4, 1, 1).data;
                 
                 const rgb1 = `rgb(${c1[0]}, ${c1[1]}, ${c1[2]})`;
                 const rgb2 = `rgb(${c2[0]}, ${c2[1]}, ${c2[2]})`;
                 const rgb3 = `rgb(${c3[0]}, ${c3[1]}, ${c3[2]})`;
+                const rgb4 = `rgb(${c4[0]}, ${c4[1]}, ${c4[2]})`;
+                const rgb5 = `rgb(${c5[0]}, ${c5[1]}, ${c5[2]})`;
                 
-                const result = `linear-gradient(to bottom, ${rgb1} 0%, ${rgb2} 50%, ${rgb3} 100%)`;
+                const result = `linear-gradient(to bottom, ${rgb1} 0%, ${rgb1} 15%, ${rgb2} 25%, ${rgb2} 35%, ${rgb3} 45%, ${rgb3} 55%, ${rgb4} 65%, ${rgb4} 75%, ${rgb5} 85%, ${rgb5} 100%)`;
                 gradientCache.set(nextImageSrc, result);
                 setGradient(result);
             } catch(e) {}
