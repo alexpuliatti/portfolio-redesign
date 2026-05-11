@@ -3,8 +3,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export function Navigation({ activeTab, setActiveTab }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
     const showLogo = !isMenuOpen;
+
+    const handleMouseEnter = (e) => {
+        const hue1 = Math.floor(Math.random() * 360);
+        const hue2 = (hue1 + 30 + Math.floor(Math.random() * 60)) % 360; 
+        
+        // Very low saturation to match the elegant, muted tone of the site's extracted lines
+        const sat = 15 + Math.floor(Math.random() * 15);
+        const light = 65 + Math.floor(Math.random() * 15);
+
+        const c1 = `hsla(${hue1}, ${sat}%, ${light}%, 0.8)`;
+        const c2 = `hsla(${hue2}, ${sat}%, ${light}%, 0.2)`;
+
+        // Radial gradient ensures perfect visual centering behind the dot
+        const gradient = `radial-gradient(circle at center, ${c1} 0%, ${c2} 50%, transparent 100%)`;
+        e.currentTarget.style.setProperty('--glow-bg', gradient);
+    };
 
     return (
         <header className={`site-topbar ${isMenuOpen ? 'menu-open' : ''}`}>
@@ -71,8 +86,9 @@ export function Navigation({ activeTab, setActiveTab }) {
 
                 <motion.button
                     layout="position"
-                    className="mobile-dot-btn"
+                    className="mobile-dot-btn style-glow"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    onMouseEnter={handleMouseEnter}
                     aria-label="Toggle menu"
                 >
                     <span className="dot"></span>

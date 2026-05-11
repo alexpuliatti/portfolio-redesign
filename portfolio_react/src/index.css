@@ -225,6 +225,7 @@ body.overlay-active .glass-cursor::after {
     0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Base Dot Button */
 .mobile-dot-btn {
   width: 24px;
   height: 24px;
@@ -236,10 +237,11 @@ body.overlay-active .glass-cursor::after {
   cursor: pointer;
   border-radius: 50%;
   flex-shrink: 0;
-  transition: background 0.2s ease;
+  transition: background 0.4s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
 }
 .mobile-dot-btn:active {
-  background: rgba(255, 255, 255, 0.1);
+  transform: scale(0.9);
 }
 .mobile-dot-btn .dot {
   width: 4px;
@@ -247,6 +249,40 @@ body.overlay-active .glass-cursor::after {
   background: white;
   border-radius: 50%;
   opacity: 0.8;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 2;
+}
+
+/* Base button background element for effects */
+.mobile-dot-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  pointer-events: none;
+  background: var(--glow-bg, transparent);
+  filter: blur(6px);
+}
+
+/* Glow Effect */
+.mobile-dot-btn.style-glow:hover {
+  background: transparent;
+}
+.mobile-dot-btn.style-glow:hover::before {
+  opacity: 1;
+}
+.mobile-dot-btn.style-glow:hover .dot {
+  transform: scale(1.5);
+  opacity: 1;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 /* Spacer to push content below fixed topbar */
