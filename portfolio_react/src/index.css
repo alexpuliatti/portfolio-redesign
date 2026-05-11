@@ -454,19 +454,6 @@ body.overlay-active .glass-cursor::after {
   will-change: opacity, transform; 
   /* DO NOT transition transform, JS handles it via requestAnimationFrame */
   transition: opacity 0.8s ease;
-  
-  /* --- OLD DEFAULT STYLES HIDDEN HERE --- */
-  /* (No glow/filter previously applied to connecting line) */
-  
-  /* --- NEW NEON DEFAULT --- */
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 255, 255, 0.15);
-  filter: brightness(1.5) saturate(1.6);
-  animation: neonPulseOpacity 2.5s infinite alternate ease-in-out;
-}
-
-@keyframes neonPulseOpacity {
-  0% { opacity: 0.6; }
-  100% { opacity: 1; }
 }
 
 .connecting-line.line-revealed {
