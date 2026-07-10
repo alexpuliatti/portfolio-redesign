@@ -83,8 +83,9 @@ export function About() {
                     className="archive-intro"
                 >
                     <div className="archive-bio">
-                        PHOTOGRAPHER & CREATIVE TECHNOLOGIST<br />
-                        BASED IN LONDON
+                        Neuroscientist in training<br />
+                        Worked as a creative technologist before<br />
+                        Based in London
                     </div>
                     <div className="archive-contact">
                         <a href="mailto:a@puliatti.com" className="hover-link">a@puliatti.com</a>
