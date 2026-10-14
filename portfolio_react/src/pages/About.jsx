@@ -83,8 +83,6 @@ export function About() {
                     className="archive-intro"
                 >
                     <div className="archive-bio">
-                        Neuroscientist in training<br />
-                        Worked as a creative technologist before<br />
                         Based in London
                     </div>
                     <div className="archive-contact">
