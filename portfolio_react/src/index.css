@@ -366,6 +366,14 @@ body.overlay-active .glass-cursor::after {
 }
 
 /* Centralized Image Gallery */
+.responsive-photo {
+  display: contents;
+}
+
+.responsive-photo > img {
+  height: auto;
+}
+
 .image-list {
   display: flex;
   flex-direction: column;
@@ -419,6 +427,7 @@ body.overlay-active .glass-cursor::after {
 }
 
 .fullscreen-overlay img {
+  width: auto;
   max-width: 90vw;
   max-height: 90vh;
   object-fit: contain;
@@ -577,6 +586,10 @@ body.overlay-active .glass-cursor::after {
   color: rgba(255, 255, 255, 0.9);
   font-weight: 300;
   max-width: 600px;
+}
+
+.archive-bio p + p {
+  margin-top: 1em;
 }
 
 .archive-contact {

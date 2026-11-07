@@ -8,8 +8,11 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build && cp dist/index.html dist/404.html",
-    "deploy": "gh-pages -d dist"
+    "photos:prepare": "node scripts/prepare-photography.mjs",
+    "photos:verify-backup": "node scripts/prepare-photography.mjs --verify-backup",
+    "verify:build": "node scripts/verify-build.mjs",
+    "predeploy": "npm run build && cp dist/index.html dist/404.html && npm run verify:build",
+    "deploy": "gh-pages -d dist --nojekyll"
   },
   "dependencies": {
     "framer-motion": "^12.35.0",

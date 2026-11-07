@@ -83,7 +83,9 @@ export function About() {
                     className="archive-intro"
                 >
                     <div className="archive-bio">
-                        Based in London
+                        <p>I've designed garments with some of the greatest brands and worked with some of the greatest musicians of our generation.</p>
+                        <p>I've since taken a slightly different path and have been having a lot of fun with technology.</p>
+                        <p>I'm currently researching neuroscience and working on something new.</p>
                     </div>
                     <div className="archive-contact">
                         <a href="mailto:a@puliatti.com" className="hover-link">a@puliatti.com</a>

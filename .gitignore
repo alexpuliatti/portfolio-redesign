@@ -3,3 +3,5 @@ node_modules/
 dist/
 .env
 minimal-references/retinaa.mov
+/asset-archive/
+/portfolio_react/.photo-staging/

@@ -1,0 +1,6067 @@
+{
+  "photography/alessandro-florio/017_HIGH_01_XXX.jpg": {
+    "width": 2417,
+    "height": 3713,
+    "base": "photography/alessandro-florio/119f3b92e3c1cd04",
+    "avif": [
+      [
+        960,
+        625
+      ],
+      [
+        1920,
+        1250
+      ],
+      [
+        3713,
+        2417
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1250
+      ]
+    ]
+  },
+  "photography/alessandro-florio/022_HIGH_01_XXX.jpg": {
+    "width": 2469,
+    "height": 4000,
+    "base": "photography/alessandro-florio/081da93c072ed003",
+    "avif": [
+      [
+        960,
+        592
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3840,
+        2370
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/alessandro-florio/027_HIGH_01_XXX.jpg": {
+    "width": 2301,
+    "height": 3728,
+    "base": "photography/alessandro-florio/3dfb18672c410664",
+    "avif": [
+      [
+        960,
+        592
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3728,
+        2301
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/alessandro-florio/030_HIGH_01_XXX.jpg": {
+    "width": 2211,
+    "height": 3582,
+    "base": "photography/alessandro-florio/b231bb3c3ebd827a",
+    "avif": [
+      [
+        960,
+        592
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3582,
+        2211
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/alessandro-florio/032_HIGH_01_XXX.jpg": {
+    "width": 3857,
+    "height": 2381,
+    "base": "photography/alessandro-florio/cb0f7eadb21034a4",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/alessandro-florio/036_HIGH_01_XXX.jpg": {
+    "width": 2230,
+    "height": 3613,
+    "base": "photography/alessandro-florio/dc44ef6c22afbe8f",
+    "avif": [
+      [
+        960,
+        593
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3613,
+        2230
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/alessandro-florio/037_HIGH_01_XXX.jpg": {
+    "width": 1894,
+    "height": 3069,
+    "base": "photography/alessandro-florio/9693efdb184e94e5",
+    "avif": [
+      [
+        960,
+        593
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3069,
+        1894
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/alessandro-florio/SHOWCASE_1.jpg": {
+    "width": 2419,
+    "height": 3615,
+    "base": "photography/alessandro-florio/75aa5997a6f3d476",
+    "avif": [
+      [
+        960,
+        642
+      ],
+      [
+        1920,
+        1285
+      ],
+      [
+        3615,
+        2419
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1285
+      ]
+    ]
+  },
+  "photography/apex-magazine/Scansione.jpg": {
+    "width": 1351,
+    "height": 2048,
+    "base": "photography/apex-magazine/53a0b23c8a3e1047",
+    "avif": [
+      [
+        960,
+        633
+      ],
+      [
+        2048,
+        1351
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1267
+      ]
+    ]
+  },
+  "photography/apex-magazine/Scansione%202.jpg": {
+    "width": 1347,
+    "height": 2048,
+    "base": "photography/apex-magazine/cc032858d6f294a2",
+    "avif": [
+      [
+        960,
+        631
+      ],
+      [
+        2048,
+        1347
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1263
+      ]
+    ]
+  },
+  "photography/apex-magazine/Scansione%204.jpg": {
+    "width": 1352,
+    "height": 2048,
+    "base": "photography/apex-magazine/857bd8762a9d818e",
+    "avif": [
+      [
+        960,
+        634
+      ],
+      [
+        2048,
+        1352
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1268
+      ]
+    ]
+  },
+  "photography/apex-magazine/Scansione%205.jpg": {
+    "width": 1356,
+    "height": 2048,
+    "base": "photography/apex-magazine/f4477c6c7cd29edc",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        2048,
+        1356
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1271
+      ]
+    ]
+  },
+  "photography/apex-magazine/Scansione%206.jpg": {
+    "width": 1350,
+    "height": 2048,
+    "base": "photography/apex-magazine/e16a1e78fe058daf",
+    "avif": [
+      [
+        960,
+        633
+      ],
+      [
+        2048,
+        1350
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1266
+      ]
+    ]
+  },
+  "photography/apex-magazine/Scansione%207.jpg": {
+    "width": 1423,
+    "height": 2048,
+    "base": "photography/apex-magazine/64eb7d41d206cd6e",
+    "avif": [
+      [
+        960,
+        667
+      ],
+      [
+        2048,
+        1423
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1334
+      ]
+    ]
+  },
+  "photography/apex-magazine/SHOWCASE_1.jpg": {
+    "width": 1354,
+    "height": 2048,
+    "base": "photography/apex-magazine/b23ddaea465d4827",
+    "avif": [
+      [
+        960,
+        635
+      ],
+      [
+        2048,
+        1354
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1269
+      ]
+    ]
+  },
+  "photography/apex-magazine/SHOWCASE_2.jpg": {
+    "width": 1322,
+    "height": 2048,
+    "base": "photography/apex-magazine/4fe15b04dd52a226",
+    "avif": [
+      [
+        960,
+        620
+      ],
+      [
+        2048,
+        1322
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1239
+      ]
+    ]
+  },
+  "photography/around-asia/DSCF5006_00000000.jpg": {
+    "width": 716,
+    "height": 1080,
+    "base": "photography/around-asia/afdb59da22981037",
+    "avif": [
+      [
+        1080,
+        716
+      ]
+    ],
+    "webp": [
+      [
+        1080,
+        716
+      ]
+    ]
+  },
+  "photography/around-asia/DSCF50132bw00000000.jpg": {
+    "width": 1613,
+    "height": 1080,
+    "base": "photography/around-asia/df631e9050064b7d",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1613,
+        1613
+      ]
+    ],
+    "webp": [
+      [
+        1613,
+        1613
+      ]
+    ]
+  },
+  "photography/around-asia/SHOWCASE_1.jpg": {
+    "width": 1612,
+    "height": 1080,
+    "base": "photography/around-asia/5629bf332d70b875",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1612,
+        1612
+      ]
+    ],
+    "webp": [
+      [
+        1612,
+        1612
+      ]
+    ]
+  },
+  "photography/around-asia/SHOWCASE_2.jpeg": {
+    "width": 3213,
+    "height": 2160,
+    "base": "photography/around-asia/61dcdbe7ae7a3fec",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3213,
+        3213
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/SHOWCASE_3.jpeg": {
+    "width": 3219,
+    "height": 2160,
+    "base": "photography/around-asia/cd5294c5ef26b94f",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3219,
+        3219
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.1.2.jpeg": {
+    "width": 3224,
+    "height": 2160,
+    "base": "photography/around-asia/f97bdda46a3b268a",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3224,
+        3224
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.10.1.jpeg": {
+    "width": 3112,
+    "height": 2079,
+    "base": "photography/around-asia/103029666d9d38c5",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3112,
+        3112
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.11.1.jpeg": {
+    "width": 3167,
+    "height": 2152,
+    "base": "photography/around-asia/8543ada588984384",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3167,
+        3167
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.12.1.jpeg": {
+    "width": 1435,
+    "height": 2160,
+    "base": "photography/around-asia/63f0e0a4c3a3d91b",
+    "avif": [
+      [
+        960,
+        638
+      ],
+      [
+        2160,
+        1435
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1276
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.13.1.jpeg": {
+    "width": 3236,
+    "height": 2160,
+    "base": "photography/around-asia/cc5e05c455bacdf4",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3236,
+        3236
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.14.1.jpeg": {
+    "width": 3244,
+    "height": 2160,
+    "base": "photography/around-asia/a2ee54514789bb4e",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3244,
+        3244
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.16.1.jpeg": {
+    "width": 3236,
+    "height": 2160,
+    "base": "photography/around-asia/6a0a686aabd00166",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3236,
+        3236
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.17.1.jpeg": {
+    "width": 3226,
+    "height": 2160,
+    "base": "photography/around-asia/eef4b7565fdb86cc",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3226,
+        3226
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.18.1.jpeg": {
+    "width": 3253,
+    "height": 2160,
+    "base": "photography/around-asia/fd24df5c123406b1",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3253,
+        3253
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.19.1.jpeg": {
+    "width": 3226,
+    "height": 2160,
+    "base": "photography/around-asia/0c04afa21b3167ed",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3226,
+        3226
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.2.1.jpeg": {
+    "width": 3211,
+    "height": 2160,
+    "base": "photography/around-asia/7deeba3e7ebcb863",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3211,
+        3211
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.20.1.jpeg": {
+    "width": 3249,
+    "height": 2107,
+    "base": "photography/around-asia/356ad7138fcbee1d",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3249,
+        3249
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.21.1.jpeg": {
+    "width": 3232,
+    "height": 2160,
+    "base": "photography/around-asia/86483bf93f7686fe",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3232,
+        3232
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.22.1.jpeg": {
+    "width": 3238,
+    "height": 2160,
+    "base": "photography/around-asia/87f1c6dd3e6a71a9",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3238,
+        3238
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.23.1.jpeg": {
+    "width": 3242,
+    "height": 2160,
+    "base": "photography/around-asia/6012f33e30cbbdde",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3242,
+        3242
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.24.1.jpeg": {
+    "width": 3251,
+    "height": 2160,
+    "base": "photography/around-asia/42817a39e4f4a86b",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3251,
+        3251
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.25.1.jpeg": {
+    "width": 3242,
+    "height": 2160,
+    "base": "photography/around-asia/02012d0def219f67",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3242,
+        3242
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.26.1.jpeg": {
+    "width": 3186,
+    "height": 2160,
+    "base": "photography/around-asia/00300967251d0001",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3186,
+        3186
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.27.1.jpeg": {
+    "width": 3240,
+    "height": 2160,
+    "base": "photography/around-asia/dfae03fe278c949d",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3240,
+        3240
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.28.1.jpeg": {
+    "width": 3238,
+    "height": 2160,
+    "base": "photography/around-asia/d72a58287eb22a08",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3238,
+        3238
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.29.1.jpeg": {
+    "width": 3236,
+    "height": 2160,
+    "base": "photography/around-asia/9d55d255f1af5546",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3236,
+        3236
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.30.1.jpeg": {
+    "width": 3240,
+    "height": 2160,
+    "base": "photography/around-asia/b065a74f7843574a",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3240,
+        3240
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.31.1.jpeg": {
+    "width": 3261,
+    "height": 2160,
+    "base": "photography/around-asia/bce9eb46f0d9433a",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3261,
+        3261
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.4.1.jpeg": {
+    "width": 3200,
+    "height": 2160,
+    "base": "photography/around-asia/bc3458ab622d9f88",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3200,
+        3200
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.5.1.jpeg": {
+    "width": 3242,
+    "height": 2160,
+    "base": "photography/around-asia/3847b3dffb3da8a0",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3242,
+        3242
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.6.1.jpeg": {
+    "width": 3234,
+    "height": 2160,
+    "base": "photography/around-asia/83dac562ee0bd3bd",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3234,
+        3234
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.7.1.jpeg": {
+    "width": 3007,
+    "height": 2009,
+    "base": "photography/around-asia/d6f20f5fc6469380",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3007,
+        3007
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.8.1.jpeg": {
+    "width": 3230,
+    "height": 2160,
+    "base": "photography/around-asia/dbf52e86c432c6cd",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3230,
+        3230
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20211449_1.9.1.jpeg": {
+    "width": 3240,
+    "height": 2160,
+    "base": "photography/around-asia/ceb0f38e69408260",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3240,
+        3240
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20212758_1.1.1.jpeg": {
+    "width": 3249,
+    "height": 2160,
+    "base": "photography/around-asia/36836c12781a23f0",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3249,
+        3249
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20212758_1.2.1.jpeg": {
+    "width": 3242,
+    "height": 2160,
+    "base": "photography/around-asia/793fe33737bf0e47",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3242,
+        3242
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20212758_1.3.1.jpeg": {
+    "width": 3259,
+    "height": 2160,
+    "base": "photography/around-asia/48d96858d9411d3d",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3259,
+        3259
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20212758_1.4.1.jpeg": {
+    "width": 3242,
+    "height": 2160,
+    "base": "photography/around-asia/850f6ba71e4ed6d3",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3242,
+        3242
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20212758_1.5.1.jpeg": {
+    "width": 3152,
+    "height": 2159,
+    "base": "photography/around-asia/ccb1b47e525bcff4",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3152,
+        3152
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20212758_1.6.1.jpeg": {
+    "width": 1452,
+    "height": 2160,
+    "base": "photography/around-asia/605ebef8824719ed",
+    "avif": [
+      [
+        960,
+        645
+      ],
+      [
+        2160,
+        1452
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1291
+      ]
+    ]
+  },
+  "photography/around-asia/Still%202026-02-27%20212758_1.7.1.jpeg": {
+    "width": 3238,
+    "height": 2160,
+    "base": "photography/around-asia/cce1b317bfacc050",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3238,
+        3238
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/around-asia/Timeline%201_00086486.jpg": {
+    "width": 1615,
+    "height": 1080,
+    "base": "photography/around-asia/215444fc4f46e034",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1615,
+        1615
+      ]
+    ],
+    "webp": [
+      [
+        1615,
+        1615
+      ]
+    ]
+  },
+  "photography/around-asia/Timeline%201_00086564.jpg": {
+    "width": 1606,
+    "height": 1080,
+    "base": "photography/around-asia/f7ae199fa11c5cca",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1606,
+        1606
+      ]
+    ],
+    "webp": [
+      [
+        1606,
+        1606
+      ]
+    ]
+  },
+  "photography/around-asia/Timeline%201_00086768.jpg": {
+    "width": 1620,
+    "height": 1080,
+    "base": "photography/around-asia/2af3e1b97bf2e55b",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1620,
+        1620
+      ]
+    ],
+    "webp": [
+      [
+        1620,
+        1620
+      ]
+    ]
+  },
+  "photography/around-asia/Timeline%201_00086949.jpg": {
+    "width": 1585,
+    "height": 1080,
+    "base": "photography/around-asia/eaed6c9588c5933a",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1585,
+        1585
+      ]
+    ],
+    "webp": [
+      [
+        1585,
+        1585
+      ]
+    ]
+  },
+  "photography/around-asia/Timeline%201_00087045.jpg": {
+    "width": 1574,
+    "height": 1056,
+    "base": "photography/around-asia/92eed27985b62666",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1574,
+        1574
+      ]
+    ],
+    "webp": [
+      [
+        1574,
+        1574
+      ]
+    ]
+  },
+  "photography/around-asia/Timeline%201_00087129.jpg": {
+    "width": 1609,
+    "height": 1080,
+    "base": "photography/around-asia/d0e211d32326656b",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1609,
+        1609
+      ]
+    ],
+    "webp": [
+      [
+        1609,
+        1609
+      ]
+    ]
+  },
+  "photography/around-asia/Timeline%201_00087231.jpg": {
+    "width": 1597,
+    "height": 1080,
+    "base": "photography/around-asia/4cf4900ae14b9ce6",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1597,
+        1597
+      ]
+    ],
+    "webp": [
+      [
+        1597,
+        1597
+      ]
+    ]
+  },
+  "photography/around-asia/Timeline%201_00087294.jpg": {
+    "width": 1575,
+    "height": 1045,
+    "base": "photography/around-asia/0baf529f88b57840",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1575,
+        1575
+      ]
+    ],
+    "webp": [
+      [
+        1575,
+        1575
+      ]
+    ]
+  },
+  "photography/around-asia/Timeline%201_00087425.jpg": {
+    "width": 694,
+    "height": 1051,
+    "base": "photography/around-asia/c951fec47a9ca6cf",
+    "avif": [
+      [
+        1051,
+        694
+      ]
+    ],
+    "webp": [
+      [
+        1051,
+        694
+      ]
+    ]
+  },
+  "photography/black-coffee/_3000157440009.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/black-coffee/a9901b8015216a1e",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/black-coffee/000157420004.jpg": {
+    "width": 4016,
+    "height": 6056,
+    "base": "photography/black-coffee/dab2ca2977c1c625",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/black-coffee/000157420006.jpg": {
+    "width": 3744,
+    "height": 5646,
+    "base": "photography/black-coffee/78a1c37e4d68c16c",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/black-coffee/000157430037.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/black-coffee/222cdd73614e2732",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/black-coffee/000157440006.jpg": {
+    "width": 6774,
+    "height": 4492,
+    "base": "photography/black-coffee/611c949f22a8c262",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/black-coffee/8000157430005.jpg": {
+    "width": 3839,
+    "height": 5789,
+    "base": "photography/black-coffee/fd2b1e7e38a1a001",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2547
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/black-coffee/image2.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/black-coffee/06fd087ce9ef2afb",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/black-coffee/SHOWCASE_1.jpg": {
+    "width": 6774,
+    "height": 4492,
+    "base": "photography/black-coffee/0b9e586974f645b8",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/black-coffee/SHOWCASE_2.jpg": {
+    "width": 1024,
+    "height": 768,
+    "base": "photography/black-coffee/4cd6e7488f7dbb8c",
+    "avif": [
+      [
+        1024,
+        1024
+      ]
+    ],
+    "webp": [
+      [
+        1024,
+        1024
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310005_5A.jpg": {
+    "width": 4524,
+    "height": 3000,
+    "base": "photography/charlotte-taylor-small-hours-magazine/a57deae691c854c3",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310007_7A.jpg": {
+    "width": 3000,
+    "height": 4524,
+    "base": "photography/charlotte-taylor-small-hours-magazine/5012f020562f417a",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310009_9A.jpg": {
+    "width": 3000,
+    "height": 4524,
+    "base": "photography/charlotte-taylor-small-hours-magazine/38b99efe6532bbdd",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310010_10A.jpg": {
+    "width": 3000,
+    "height": 4524,
+    "base": "photography/charlotte-taylor-small-hours-magazine/acb71208fd20d711",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310012_12A.jpg": {
+    "width": 4524,
+    "height": 3000,
+    "base": "photography/charlotte-taylor-small-hours-magazine/a19a213690b22a55",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310019_19A.jpg": {
+    "width": 2842,
+    "height": 4286,
+    "base": "photography/charlotte-taylor-small-hours-magazine/80729a5d6dca9158",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310020_20A.jpg": {
+    "width": 3000,
+    "height": 4524,
+    "base": "photography/charlotte-taylor-small-hours-magazine/1ab6422bc5384790",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310022_22A.jpg": {
+    "width": 2987,
+    "height": 4504,
+    "base": "photography/charlotte-taylor-small-hours-magazine/410e5f1877dc474e",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2547
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310023_23A.jpg": {
+    "width": 4524,
+    "height": 3000,
+    "base": "photography/charlotte-taylor-small-hours-magazine/fdbce2977d724189",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310027_27A.jpg": {
+    "width": 2780,
+    "height": 4192,
+    "base": "photography/charlotte-taylor-small-hours-magazine/595d3c0d8c5b67e4",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2547
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310031_31A.jpg": {
+    "width": 4524,
+    "height": 3000,
+    "base": "photography/charlotte-taylor-small-hours-magazine/a083e09edf15987a",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310033_33A.jpg": {
+    "width": 2900,
+    "height": 4373,
+    "base": "photography/charlotte-taylor-small-hours-magazine/b49b13e39008325b",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2547
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060310035_35A.jpg": {
+    "width": 3000,
+    "height": 4468,
+    "base": "photography/charlotte-taylor-small-hours-magazine/28d89e8c4a9cb079",
+    "avif": [
+      [
+        960,
+        645
+      ],
+      [
+        1920,
+        1289
+      ],
+      [
+        3840,
+        2578
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1289
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060330001_XXX.jpg": {
+    "width": 3149,
+    "height": 2514,
+    "base": "photography/charlotte-taylor-small-hours-magazine/d67996cbc89fe4f0",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3149,
+        3149
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060330002_XXX.jpg": {
+    "width": 3149,
+    "height": 2514,
+    "base": "photography/charlotte-taylor-small-hours-magazine/c3413eda2c880055",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3149,
+        3149
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060330003_XXX.jpg": {
+    "width": 3149,
+    "height": 2514,
+    "base": "photography/charlotte-taylor-small-hours-magazine/f89b654cd7424c5d",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3149,
+        3149
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060330005_XXX.jpg": {
+    "width": 3149,
+    "height": 2514,
+    "base": "photography/charlotte-taylor-small-hours-magazine/d84880f9f7be0f72",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3149,
+        3149
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060330006_XXX.jpg": {
+    "width": 3014,
+    "height": 2406,
+    "base": "photography/charlotte-taylor-small-hours-magazine/65c2f9349da26221",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3014,
+        3014
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060330007_XXX.jpg": {
+    "width": 3014,
+    "height": 2406,
+    "base": "photography/charlotte-taylor-small-hours-magazine/c3f5c28287f9fba1",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3014,
+        3014
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060330008_XXX.jpg": {
+    "width": 3010,
+    "height": 2403,
+    "base": "photography/charlotte-taylor-small-hours-magazine/271ee393c71ef831",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3010,
+        3010
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060330009_XXX.jpg": {
+    "width": 3002,
+    "height": 2397,
+    "base": "photography/charlotte-taylor-small-hours-magazine/4609b87aa94b9202",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3002,
+        3002
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060340001_XXX.jpg": {
+    "width": 3027,
+    "height": 2417,
+    "base": "photography/charlotte-taylor-small-hours-magazine/0ec5701b624eab69",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3027,
+        3027
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060340002_XXX.jpg": {
+    "width": 2954,
+    "height": 2358,
+    "base": "photography/charlotte-taylor-small-hours-magazine/33472ef0792ec07a",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        2954,
+        2954
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/Copia%20di%20000060340005_XXX.jpg": {
+    "width": 3020,
+    "height": 2411,
+    "base": "photography/charlotte-taylor-small-hours-magazine/713c19b6a2ee35eb",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3020,
+        3020
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/SHOWCASE_1.jpg": {
+    "width": 3149,
+    "height": 2514,
+    "base": "photography/charlotte-taylor-small-hours-magazine/1180c416f6c6d604",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3149,
+        3149
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/charlotte-taylor-small-hours-magazine/SHOWCASE_2.jpg": {
+    "width": 2962,
+    "height": 2365,
+    "base": "photography/charlotte-taylor-small-hours-magazine/49d51e4de93f9d26",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        2962,
+        2962
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/entourage/SHOWCASE_1.jpg": {
+    "width": 1280,
+    "height": 848,
+    "base": "photography/entourage/bcf67493a2a8fcfa",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/entourage/tumblr_pw8agpcMLf1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 853,
+    "base": "photography/entourage/827e1caaebd092c9",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/entourage/tumblr_pw8aoeNdAQ1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 1920,
+    "base": "photography/entourage/2d5b45a9ea4b449a",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1920,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/entourage/tumblr_pwnf13V08l1walml8o1_1280.jpg": {
+    "width": 884,
+    "height": 1280,
+    "base": "photography/entourage/7639cc1db60e94ae",
+    "avif": [
+      [
+        960,
+        663
+      ],
+      [
+        1280,
+        884
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        884
+      ]
+    ]
+  },
+  "photography/entourage/tumblr_pwnf24kVX11walml8o1_1280.jpg": {
+    "width": 919,
+    "height": 1280,
+    "base": "photography/entourage/d97e45b2552e8895",
+    "avif": [
+      [
+        960,
+        689
+      ],
+      [
+        1280,
+        919
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        919
+      ]
+    ]
+  },
+  "photography/entourage/tumblr_pwnf2bQz8s1walml8o1_1280.jpg": {
+    "width": 848,
+    "height": 1280,
+    "base": "photography/entourage/134ba0c64a5fcf04",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1280,
+        848
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        848
+      ]
+    ]
+  },
+  "photography/entourage/tumblr_pwnf2oHSsZ1walml8o1_1280.jpg": {
+    "width": 848,
+    "height": 1280,
+    "base": "photography/entourage/ab5144e2bb58051c",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1280,
+        848
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        848
+      ]
+    ]
+  },
+  "photography/entourage/tumblr_pwnf2tIhre1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 848,
+    "base": "photography/entourage/5eeaf1363669ee2c",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/entourage/tumblr_pwnf3jWOF31walml8o1_1280.jpg": {
+    "width": 848,
+    "height": 1280,
+    "base": "photography/entourage/a14330c198fb6524",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1280,
+        848
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        848
+      ]
+    ]
+  },
+  "photography/entourage/tumblr_pwnf4zN4zW1walml8o1_1280.jpg": {
+    "width": 848,
+    "height": 1280,
+    "base": "photography/entourage/0ef25dff57983ea8",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1280,
+        848
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        848
+      ]
+    ]
+  },
+  "photography/europa-varie/SHOWCASE_1.jpg": {
+    "width": 1882,
+    "height": 2841,
+    "base": "photography/europa-varie/2816144ee3075e6d",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        2841,
+        1882
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/europa-varie/SHOWCASE_2.jpg": {
+    "width": 2035,
+    "height": 3072,
+    "base": "photography/europa-varie/e3c6582e534099ca",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        3072,
+        2035
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/europa-varie/SHOWCASE_3.jpg": {
+    "width": 2048,
+    "height": 1358,
+    "base": "photography/europa-varie/a1ae34a526474d06",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        2048,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_09f787edec25dad3dfbb3d1cfa022e5c_98257dc1_2048.jpg": {
+    "width": 2048,
+    "height": 1358,
+    "base": "photography/europa-varie/accff020257cec8d",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        2048,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_12863f7572f612d1d87a7ec1c069be0b_c07c9ac6_2048.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "base": "photography/europa-varie/88424046a3ac1d27",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        2400,
+        1600
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_1614f2625aac2424fec241149ed55b79_5b9724d7_2048.jpg": {
+    "width": 1949,
+    "height": 2939,
+    "base": "photography/europa-varie/5e9c300baf8abbe2",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        2939,
+        1949
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_18c178e6081fd9b037dc97858a2b0abc_81e6b31a_2048.jpg": {
+    "width": 2037,
+    "height": 3072,
+    "base": "photography/europa-varie/ea2db1794f4e6253",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3072,
+        2037
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_42ed838eb0a63b91a5079e01591474a8_b302f8a5_2048.jpg": {
+    "width": 2048,
+    "height": 1365,
+    "base": "photography/europa-varie/55aed307adc04fa3",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        2048,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_4305c015ffc64241f209d1e78e7ee626_c978e924_2048.jpg": {
+    "width": 2037,
+    "height": 3072,
+    "base": "photography/europa-varie/86159efbae9481d5",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3072,
+        2037
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_4472cd615eb9b4c4bf8c026b3d4d9b20_894175d9_2048.jpg": {
+    "width": 2048,
+    "height": 2849,
+    "base": "photography/europa-varie/0486fd076b0369de",
+    "avif": [
+      [
+        960,
+        690
+      ],
+      [
+        1920,
+        1380
+      ],
+      [
+        2849,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1380
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_52562a74c2b0983b261b33d2e3b2511a_61d3b1f6_2048.jpg": {
+    "width": 2048,
+    "height": 1357,
+    "base": "photography/europa-varie/e9794e660583e599",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        2048,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_86969a58db3177c4ae4c06a1e3b8a834_3f3b0a10_2048.jpg": {
+    "width": 2048,
+    "height": 1357,
+    "base": "photography/europa-varie/34d4782a4329bcc2",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        2048,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_b674a77b1eaf65aa7e6209ddcc9d10ee_2e5aa132_2048.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "base": "photography/europa-varie/3fd6c2ca4aed518d",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        2400,
+        1600
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_ca12eac56a03314dd27a4edfeaf8032e_0caa1f1a_2048.jpg": {
+    "width": 1904,
+    "height": 2873,
+    "base": "photography/europa-varie/32a3e6eb6af812ff",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        2873,
+        1904
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_dedae0495b9e9b082ac47fd20ba1dbef_562d187a_2048.jpg": {
+    "width": 1717,
+    "height": 2589,
+    "base": "photography/europa-varie/939eb4e05fca32ba",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        2589,
+        1717
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_e5e2e357bbe4fb31396d3230ccbdc164_0c4d9e12_2048.jpg": {
+    "width": 2035,
+    "height": 3072,
+    "base": "photography/europa-varie/8209d4ae12be059b",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        3072,
+        2035
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_e6348e84b6bcbab54b3632c3e6a1cee5_136ccef5_2048.jpg": {
+    "width": 1405,
+    "height": 2046,
+    "base": "photography/europa-varie/a61da3c3d0072043",
+    "avif": [
+      [
+        960,
+        659
+      ],
+      [
+        2046,
+        1405
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1318
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_f6988d73abd9046b41db955bc4bb834e_9eb69008_2048.jpg": {
+    "width": 2048,
+    "height": 1358,
+    "base": "photography/europa-varie/cc8f2380ee9a22a0",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        2048,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/europa-varie/tumblr_f9ac01922289c382134dc3a38a7715cf_05cd6b8c_2048.jpg": {
+    "width": 1535,
+    "height": 2279,
+    "base": "photography/europa-varie/ea73727cb21707c5",
+    "avif": [
+      [
+        960,
+        647
+      ],
+      [
+        2279,
+        1535
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1293
+      ]
+    ]
+  },
+  "photography/girls-in-entourage/SHOWCASE_1.jpg": {
+    "width": 1280,
+    "height": 998,
+    "base": "photography/girls-in-entourage/ecfc93003c89f4aa",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/girls-in-entourage/tumblr_pw8a2gIzZw1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 936,
+    "base": "photography/girls-in-entourage/b19a4d8e8c37f2d3",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/girls-in-entourage/tumblr_pw8a8zNA2e1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 1172,
+    "base": "photography/girls-in-entourage/c690171cef34e9ca",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/girls-in-entourage/tumblr_pw8abkfde61walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 1234,
+    "base": "photography/girls-in-entourage/8c434e53c752c306",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/helora/SHOWCASE_1.jpg": {
+    "width": 912,
+    "height": 1280,
+    "base": "photography/helora/ab0007fa9d345267",
+    "avif": [
+      [
+        960,
+        684
+      ],
+      [
+        1280,
+        912
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        912
+      ]
+    ]
+  },
+  "photography/helora/tumblr_pwnem5iNIP1walml8o1_1280.jpg": {
+    "width": 848,
+    "height": 1280,
+    "base": "photography/helora/fe3fe16715325f28",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1280,
+        848
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        848
+      ]
+    ]
+  },
+  "photography/helora/tumblr_pwnemrMxBX1walml8o1_1280.jpg": {
+    "width": 848,
+    "height": 1280,
+    "base": "photography/helora/9c0d7ad8872c0417",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1280,
+        848
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        848
+      ]
+    ]
+  },
+  "photography/helora/tumblr_pwneo06U7M1walml8o1_1280.jpg": {
+    "width": 848,
+    "height": 1280,
+    "base": "photography/helora/c47bca571c755942",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1280,
+        848
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        848
+      ]
+    ]
+  },
+  "photography/helora/tumblr_pwneodR5L51walml8o1_1280.jpg": {
+    "width": 848,
+    "height": 1280,
+    "base": "photography/helora/055b8888c15bd42a",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1280,
+        848
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        848
+      ]
+    ]
+  },
+  "photography/helora/tumblr_pwnep4O2K01walml8o1_1280.jpg": {
+    "width": 848,
+    "height": 1280,
+    "base": "photography/helora/4541b3f102bfaf49",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1280,
+        848
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        848
+      ]
+    ]
+  },
+  "photography/helora/tumblr_pwneznsY021walml8o1_1280.jpg": {
+    "width": 848,
+    "height": 1280,
+    "base": "photography/helora/8e48e5ebedcd172c",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1280,
+        848
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        848
+      ]
+    ]
+  },
+  "photography/helora/tumblr_pwnf06VgYV1walml8o1_1280.jpg": {
+    "width": 848,
+    "height": 1280,
+    "base": "photography/helora/6dc1c150e2606114",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1280,
+        848
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        848
+      ]
+    ]
+  },
+  "photography/lara/SHOWCASE_1.jpg": {
+    "width": 1066,
+    "height": 1600,
+    "base": "photography/lara/e30d582ce8d7f900",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1600,
+        1066
+      ]
+    ],
+    "webp": [
+      [
+        1600,
+        1066
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppalm9nDb91walml8o1_1280.jpg": {
+    "width": 1066,
+    "height": 1600,
+    "base": "photography/lara/eb4180b820f48703",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1600,
+        1066
+      ]
+    ],
+    "webp": [
+      [
+        1600,
+        1066
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppalmq8mtC1walml8o1_1280.jpg": {
+    "width": 1066,
+    "height": 1600,
+    "base": "photography/lara/0f2e2e9385486a63",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1600,
+        1066
+      ]
+    ],
+    "webp": [
+      [
+        1600,
+        1066
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppaln8QApU1walml8o1_1280.jpg": {
+    "width": 1066,
+    "height": 1600,
+    "base": "photography/lara/84f0bd9c89c192b1",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1600,
+        1066
+      ]
+    ],
+    "webp": [
+      [
+        1600,
+        1066
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppalowakZl1walml8o1_1280.jpg": {
+    "width": 1067,
+    "height": 1600,
+    "base": "photography/lara/8325f1d61b5da670",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1600,
+        1067
+      ]
+    ],
+    "webp": [
+      [
+        1600,
+        1067
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppalpvBz4e1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 853,
+    "base": "photography/lara/3949f61727c933f7",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppalqkvCV41walml8o1_1280.jpg": {
+    "width": 1066,
+    "height": 1600,
+    "base": "photography/lara/e5eecee0a6911bb0",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1600,
+        1066
+      ]
+    ],
+    "webp": [
+      [
+        1600,
+        1066
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppalrgmX771walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 853,
+    "base": "photography/lara/1422d6e05c67c7ce",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppiamcnNtk1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 914,
+    "base": "photography/lara/d39d0b2e9f0b2f69",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppiamp1YbY1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 848,
+    "base": "photography/lara/a5423f361fb78eee",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppian4VJFp1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 848,
+    "base": "photography/lara/26df3241fc40584b",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppiap06SXy1walml8o1_1280.jpg": {
+    "width": 848,
+    "height": 1280,
+    "base": "photography/lara/6a90dd141da1ffb8",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1280,
+        848
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        848
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppiapuj6JF1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 848,
+    "base": "photography/lara/ca341ab37a3cd19a",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppiaqnyfXT1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 848,
+    "base": "photography/lara/c0feb6f1ee4dcf38",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppjh33L12x1walml8o1_1280.jpg": {
+    "width": 1273,
+    "height": 1920,
+    "base": "photography/lara/0a3b869b4e481347",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/lara/tumblr_ppni25LKIh1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 1857,
+    "base": "photography/lara/df4057d0e5127c8d",
+    "avif": [
+      [
+        960,
+        662
+      ],
+      [
+        1857,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1857,
+        1280
+      ]
+    ]
+  },
+  "photography/marquerink/SHOWCASE_1.jpg": {
+    "width": 2048,
+    "height": 3072,
+    "base": "photography/marquerink/05506e3ff3244e4e",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1920,
+        1280
+      ],
+      [
+        3072,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/marquerink/SHOWCASE_2.jpg": {
+    "width": 2048,
+    "height": 1365,
+    "base": "photography/marquerink/55f63e78fa173bce",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        2048,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/marquerink/tumblr_2d2ce6ae3a257e1a0e3bbe5d9486cd70_3092665b_1280.jpg": {
+    "width": 1024,
+    "height": 1544,
+    "base": "photography/marquerink/6e2426973a82990a",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1544,
+        1024
+      ]
+    ],
+    "webp": [
+      [
+        1544,
+        1024
+      ]
+    ]
+  },
+  "photography/marquerink/tumblr_3a2564801c8e511c3aa7b0ed0d925965_4117d52e_2048.jpg": {
+    "width": 2048,
+    "height": 3072,
+    "base": "photography/marquerink/0659a0dedec32b5b",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1920,
+        1280
+      ],
+      [
+        3072,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/marquerink/tumblr_458dd38d2b8195f1b859ec10bdf0eeb8_107497f3_2048.jpg": {
+    "width": 2048,
+    "height": 3072,
+    "base": "photography/marquerink/b76a6395eab5b7aa",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1920,
+        1280
+      ],
+      [
+        3072,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/marquerink/tumblr_5c34bc44bf1c88210eb3be42ed3b1172_860f45cd_2048.jpg": {
+    "width": 2048,
+    "height": 1152,
+    "base": "photography/marquerink/4e3b611f06427971",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        2048,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/marquerink/tumblr_5e296fe718a2816ac055b07b8fc2266b_6fcd39b9_2048.jpg": {
+    "width": 2048,
+    "height": 3072,
+    "base": "photography/marquerink/70d6f38609a89436",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1920,
+        1280
+      ],
+      [
+        3072,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/marquerink/tumblr_6203364982ce01e43b95a0e5196450c4_a69e76e4_2048.jpg": {
+    "width": 2048,
+    "height": 1365,
+    "base": "photography/marquerink/537a7e7955e510ae",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        2048,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/marquerink/tumblr_65511b597dcb348282c05656a630a9ef_8f03dca4_2048.jpg": {
+    "width": 2048,
+    "height": 3072,
+    "base": "photography/marquerink/663b6a3ed948a7ad",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1920,
+        1280
+      ],
+      [
+        3072,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/marquerink/tumblr_6e676a70a1a7838ced18d6e58bae19e7_16a342d3_2048.jpg": {
+    "width": 2048,
+    "height": 1152,
+    "base": "photography/marquerink/c48972b17422b937",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        2048,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/marquerink/tumblr_826d227f46d2474b7661597653e7b40e_d16fa3a8_2048.jpg": {
+    "width": 2048,
+    "height": 3072,
+    "base": "photography/marquerink/d01f3a329d9768f6",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1920,
+        1280
+      ],
+      [
+        3072,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/marquerink/tumblr_91aaf13c257d180c13318600e88f65ae_18f267cf_2048.jpg": {
+    "width": 2048,
+    "height": 3072,
+    "base": "photography/marquerink/f96251a662f01fbe",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1920,
+        1280
+      ],
+      [
+        3072,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/marquerink/tumblr_933f0a4c3495245590d688c14820613e_2f411d22_2048.jpg": {
+    "width": 2048,
+    "height": 3072,
+    "base": "photography/marquerink/96e965e7ca83e700",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1920,
+        1280
+      ],
+      [
+        3072,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/marquerink/tumblr_b3e6ae8f9ec279db34d38aa724adedc0_f80a6b18_1280.jpg": {
+    "width": 1024,
+    "height": 1544,
+    "base": "photography/marquerink/8c4dfa5047f46e93",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1544,
+        1024
+      ]
+    ],
+    "webp": [
+      [
+        1544,
+        1024
+      ]
+    ]
+  },
+  "photography/mochakk/000137560003.jpg": {
+    "width": 2048,
+    "height": 3089,
+    "base": "photography/mochakk/f60e5b57d3e1e951",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3089,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/mochakk/000137560004.jpg": {
+    "width": 2048,
+    "height": 3089,
+    "base": "photography/mochakk/b69ca2d91b6cac59",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3089,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/mochakk/000137560005.jpg": {
+    "width": 2048,
+    "height": 3089,
+    "base": "photography/mochakk/550fbf8c0e557e58",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3089,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/mochakk/000137560015.jpg": {
+    "width": 2048,
+    "height": 3089,
+    "base": "photography/mochakk/daa5b96a33f7afe1",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3089,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/mochakk/000137580008.jpg": {
+    "width": 2048,
+    "height": 3089,
+    "base": "photography/mochakk/a2aaae65312322b6",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3089,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/mochakk/000137580011.jpg": {
+    "width": 2048,
+    "height": 3089,
+    "base": "photography/mochakk/daf20ae7ef26a4c2",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3089,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/mochakk/SHOWCASE_1.jpg": {
+    "width": 2048,
+    "height": 3089,
+    "base": "photography/mochakk/c390b6a73c3d3935",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3089,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/mochakk/SHOWCASE_2.jpg": {
+    "width": 2048,
+    "height": 3089,
+    "base": "photography/mochakk/aaf5af832ff3bb69",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3089,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/peggy-gou/10.jpg": {
+    "width": 2480,
+    "height": 3740,
+    "base": "photography/peggy-gou/dc0f6c5576296957",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3740,
+        2480
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/peggy-gou/11.jpg": {
+    "width": 4078,
+    "height": 6150,
+    "base": "photography/peggy-gou/549f4728b04c9d97",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/peggy-gou/7.jpg": {
+    "width": 6774,
+    "height": 4492,
+    "base": "photography/peggy-gou/3fe23fb676c45358",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/peggy-gou/SHOWCASE_1.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/peggy-gou/eb14b0be61dac690",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/rkomi-irama-umgwmg/IMG_1302.jpg": {
+    "width": 2400,
+    "height": 1600,
+    "base": "photography/rkomi-irama-umgwmg/bd87a26b0e16798f",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        2400,
+        2400
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/rkomi-irama-umgwmg/IMG_1312.jpg": {
+    "width": 1600,
+    "height": 2400,
+    "base": "photography/rkomi-irama-umgwmg/7cf09554bd7e121f",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        2400,
+        1600
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/rkomi-irama-umgwmg/IMG_1323.jpg": {
+    "width": 1315,
+    "height": 1972,
+    "base": "photography/rkomi-irama-umgwmg/0adf6c9ec536225b",
+    "avif": [
+      [
+        960,
+        640
+      ],
+      [
+        1972,
+        1315
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1280
+      ]
+    ]
+  },
+  "photography/rkomi-irama-umgwmg/Scansione.jpeg": {
+    "width": 2246,
+    "height": 3363,
+    "base": "photography/rkomi-irama-umgwmg/751d9e6fbfdb3230",
+    "avif": [
+      [
+        960,
+        641
+      ],
+      [
+        1920,
+        1282
+      ],
+      [
+        3363,
+        2246
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1282
+      ]
+    ]
+  },
+  "photography/rkomi-irama-umgwmg/Scansione%203.jpeg": {
+    "width": 2248,
+    "height": 3323,
+    "base": "photography/rkomi-irama-umgwmg/6441cc294edfad95",
+    "avif": [
+      [
+        960,
+        650
+      ],
+      [
+        1920,
+        1299
+      ],
+      [
+        3323,
+        2248
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1299
+      ]
+    ]
+  },
+  "photography/rkomi-irama-umgwmg/Scansione%204.jpeg": {
+    "width": 1967,
+    "height": 2879,
+    "base": "photography/rkomi-irama-umgwmg/b4e77b11e24da949",
+    "avif": [
+      [
+        960,
+        656
+      ],
+      [
+        1920,
+        1312
+      ],
+      [
+        2879,
+        1967
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1312
+      ]
+    ]
+  },
+  "photography/rkomi-irama-umgwmg/Scansione%205.jpeg": {
+    "width": 2258,
+    "height": 3238,
+    "base": "photography/rkomi-irama-umgwmg/cb37efe6490b2a7e",
+    "avif": [
+      [
+        960,
+        669
+      ],
+      [
+        1920,
+        1339
+      ],
+      [
+        3238,
+        2258
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1339
+      ]
+    ]
+  },
+  "photography/rkomi-irama-umgwmg/Scansione%206.jpeg": {
+    "width": 3443,
+    "height": 2480,
+    "base": "photography/rkomi-irama-umgwmg/ecb8b89e54f73496",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3443,
+        3443
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/rkomi-irama-umgwmg/SHOWCASE_1.jpeg": {
+    "width": 2053,
+    "height": 2972,
+    "base": "photography/rkomi-irama-umgwmg/d05631e9b04c06b6",
+    "avif": [
+      [
+        960,
+        663
+      ],
+      [
+        1920,
+        1326
+      ],
+      [
+        2972,
+        2053
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1326
+      ]
+    ]
+  },
+  "photography/rkomi-irama-umgwmg/SHOWCASE_2.jpg": {
+    "width": 3392,
+    "height": 2331,
+    "base": "photography/rkomi-irama-umgwmg/4b9e290029d2b5e6",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3392,
+        3392
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/saint-levant/0000308-R1-10-11.JPG": {
+    "width": 1818,
+    "height": 1228,
+    "base": "photography/saint-levant/1d2f07f188733dc1",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1818,
+        1818
+      ]
+    ],
+    "webp": [
+      [
+        1818,
+        1818
+      ]
+    ]
+  },
+  "photography/saint-levant/0000308-R1-11-12.JPG": {
+    "width": 1818,
+    "height": 1228,
+    "base": "photography/saint-levant/8252d57324cb6d1e",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1818,
+        1818
+      ]
+    ],
+    "webp": [
+      [
+        1818,
+        1818
+      ]
+    ]
+  },
+  "photography/saint-levant/1.JPG": {
+    "width": 1839,
+    "height": 2775,
+    "base": "photography/saint-levant/93a2e40e8ce62eae",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        2775,
+        1839
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/saint-levant/69910009.JPG": {
+    "width": 2048,
+    "height": 3091,
+    "base": "photography/saint-levant/4ddba60f5035d857",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        3091,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/saint-levant/69910010.JPG": {
+    "width": 2048,
+    "height": 3091,
+    "base": "photography/saint-levant/6da21487fe062a4b",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        3091,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/saint-levant/69910015.JPG": {
+    "width": 1808,
+    "height": 2728,
+    "base": "photography/saint-levant/94b47652a628abb4",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        2728,
+        1808
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/saint-levant/69910020.JPG": {
+    "width": 1972,
+    "height": 2976,
+    "base": "photography/saint-levant/5dc2d5a6a3281309",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        2976,
+        1972
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/saint-levant/69910021.JPG": {
+    "width": 1750,
+    "height": 2640,
+    "base": "photography/saint-levant/30d47e59630e0853",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        2640,
+        1750
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/saint-levant/69910022.JPG": {
+    "width": 2924,
+    "height": 1937,
+    "base": "photography/saint-levant/c159e0ec13eb1d16",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        2924,
+        2924
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/saint-levant/69910023.JPG": {
+    "width": 1894,
+    "height": 2858,
+    "base": "photography/saint-levant/d3ce4cddfda59c12",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        2858,
+        1894
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/saint-levant/69910029.JPG": {
+    "width": 2048,
+    "height": 3091,
+    "base": "photography/saint-levant/e6d0b49821b8be8f",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        3091,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/saint-levant/69910033.JPG": {
+    "width": 3091,
+    "height": 2048,
+    "base": "photography/saint-levant/abc2d33a6ed37046",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3091,
+        3091
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/saint-levant/69910037.JPG": {
+    "width": 2048,
+    "height": 3091,
+    "base": "photography/saint-levant/48e45ff249fa3bc7",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        3091,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/saint-levant/SHOWCASE_1.JPG": {
+    "width": 1864,
+    "height": 2814,
+    "base": "photography/saint-levant/9e1d90cb1fb6a6ea",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1272
+      ],
+      [
+        2814,
+        1864
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1272
+      ]
+    ]
+  },
+  "photography/sebastian-konrad/000071190003_XXX%20(1).jpg": {
+    "width": 2015,
+    "height": 3000,
+    "base": "photography/sebastian-konrad/8d7679ad7d72d357",
+    "avif": [
+      [
+        960,
+        644
+      ],
+      [
+        1920,
+        1290
+      ],
+      [
+        3000,
+        2015
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1290
+      ]
+    ]
+  },
+  "photography/sebastian-konrad/000071190033_XXX.jpg": {
+    "width": 4524,
+    "height": 3000,
+    "base": "photography/sebastian-konrad/56b39f4c630d6818",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/sebastian-konrad/000071200005_32.jpg": {
+    "width": 3000,
+    "height": 4524,
+    "base": "photography/sebastian-konrad/245573a7ddafaf44",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/sebastian-konrad/000071200024_13.jpg": {
+    "width": 3000,
+    "height": 4524,
+    "base": "photography/sebastian-konrad/4a64d26d01bebcd3",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/sebastian-konrad/SHOWCASE_1.jpg": {
+    "width": 4524,
+    "height": 3000,
+    "base": "photography/sebastian-konrad/8ef588599e71feef",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/sebastian-konrad/SHOWCASE_2.png": {
+    "width": 2931,
+    "height": 4420,
+    "base": "photography/sebastian-konrad/298ab633b5f41b15",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/sergio-fiorentino/003_HIGH_01_XXX.jpg": {
+    "width": 3796,
+    "height": 2343,
+    "base": "photography/sergio-fiorentino/7811a4a563cc0126",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3796,
+        3796
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/sergio-fiorentino/SHOWCASE_1.jpg": {
+    "width": 3531,
+    "height": 2180,
+    "base": "photography/sergio-fiorentino/5faf4eb160db0246",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3531,
+        3531
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/seven-sisters/074_HIGH_01_XXX.jpg": {
+    "width": 2469,
+    "height": 4000,
+    "base": "photography/seven-sisters/576c65a848828fed",
+    "avif": [
+      [
+        960,
+        592
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3840,
+        2370
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/seven-sisters/076_HIGH_01_XXX.jpg": {
+    "width": 2469,
+    "height": 4000,
+    "base": "photography/seven-sisters/e338c5efc58c5968",
+    "avif": [
+      [
+        960,
+        592
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3840,
+        2370
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/seven-sisters/089_HIGH_01_XXX.jpg": {
+    "width": 4000,
+    "height": 2469,
+    "base": "photography/seven-sisters/da0593008b4c7033",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/seven-sisters/092_HIGH_01_XXX.jpg": {
+    "width": 2469,
+    "height": 4000,
+    "base": "photography/seven-sisters/8d68a01219107442",
+    "avif": [
+      [
+        960,
+        592
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3840,
+        2370
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/seven-sisters/093_HIGH_01_XXX.jpg": {
+    "width": 2469,
+    "height": 4000,
+    "base": "photography/seven-sisters/6a86bd2cf4737ca4",
+    "avif": [
+      [
+        960,
+        592
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3840,
+        2370
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/seven-sisters/107_HIGH_01_XXX.jpg": {
+    "width": 2469,
+    "height": 4000,
+    "base": "photography/seven-sisters/f56e85d758ae1b7d",
+    "avif": [
+      [
+        960,
+        592
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3840,
+        2370
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/seven-sisters/108_HIGH_01_XXX.jpg": {
+    "width": 2469,
+    "height": 4000,
+    "base": "photography/seven-sisters/de1bbbadf2662a0a",
+    "avif": [
+      [
+        960,
+        592
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3840,
+        2370
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/seven-sisters/Alex-High-01-(1).jpg": {
+    "width": 2221,
+    "height": 3600,
+    "base": "photography/seven-sisters/987821dea950296f",
+    "avif": [
+      [
+        960,
+        592
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3600,
+        2221
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/seven-sisters/SHOWCASE_1.jpg": {
+    "width": 3608,
+    "height": 2227,
+    "base": "photography/seven-sisters/3b57fa7e60330b31",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3608,
+        3608
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/seven-sisters/SHOWCASE_2.jpg": {
+    "width": 2207,
+    "height": 3577,
+    "base": "photography/seven-sisters/23ee0854772dd40e",
+    "avif": [
+      [
+        960,
+        592
+      ],
+      [
+        1920,
+        1185
+      ],
+      [
+        3577,
+        2207
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1185
+      ]
+    ]
+  },
+  "photography/sveva/SHOWCASE_1.jpg": {
+    "width": 1273,
+    "height": 1920,
+    "base": "photography/sveva/b37bb225918a37c4",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/sveva/SHOWCASE_2.jpg": {
+    "width": 1273,
+    "height": 1920,
+    "base": "photography/sveva/60238f2701ea72ec",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/sveva/tumblr_ptcfruFsu81walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 788,
+    "base": "photography/sveva/04cd18af3e1937c5",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/sveva/tumblr_ptcfvwIaKa1walml8o1_1280.jpg": {
+    "width": 1280,
+    "height": 898,
+    "base": "photography/sveva/1bb73ac6f36bc6ad",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1280,
+        1280
+      ]
+    ],
+    "webp": [
+      [
+        1280,
+        1280
+      ]
+    ]
+  },
+  "photography/talia-goddess/000194900008.jpg": {
+    "width": 4099,
+    "height": 6182,
+    "base": "photography/talia-goddess/a1627b1200b4a397",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/talia-goddess/000194900011.jpg": {
+    "width": 4467,
+    "height": 6737,
+    "base": "photography/talia-goddess/4a8d06183124a5f7",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/talia-goddess/000194900012.jpg": {
+    "width": 4296,
+    "height": 6479,
+    "base": "photography/talia-goddess/cd857df692bfde0a",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/talia-goddess/000194900014.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/talia-goddess/0848749588639166",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/talia-goddess/000194900018.jpg": {
+    "width": 3710,
+    "height": 5595,
+    "base": "photography/talia-goddess/ff7eb125859f2bc4",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/talia-goddess/000194900020.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/talia-goddess/51c15184e1e0e0f1",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/talia-goddess/000194900024.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/talia-goddess/5b05639f8b830b7c",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/talia-goddess/000194900028.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/talia-goddess/9686185282b6adb2",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/talia-goddess/SHOWCASE_1.jpg": {
+    "width": 4088,
+    "height": 6165,
+    "base": "photography/talia-goddess/e699d0e77412db3a",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/talia-goddess/SHOWCASE_2.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/talia-goddess/9406aae7912ee1c3",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brother-chaos-magazine/1.jpg": {
+    "width": 4211,
+    "height": 6350,
+    "base": "photography/the-martinez-brother-chaos-magazine/affa50dd159dd839",
+    "avif": [
+      [
+        960,
+        636
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brother-chaos-magazine/11.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/the-martinez-brother-chaos-magazine/767f7a4b28b3f0f3",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brother-chaos-magazine/16.jpg": {
+    "width": 6774,
+    "height": 4492,
+    "base": "photography/the-martinez-brother-chaos-magazine/f514b5e89b997bf8",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/the-martinez-brother-chaos-magazine/21.jpg": {
+    "width": 6774,
+    "height": 4492,
+    "base": "photography/the-martinez-brother-chaos-magazine/9645e8947634aafb",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3840,
+        3840
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/the-martinez-brother-chaos-magazine/22.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/the-martinez-brother-chaos-magazine/89c422b6c7ec4028",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brother-chaos-magazine/5.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/the-martinez-brother-chaos-magazine/7f0210205980e163",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brother-chaos-magazine/6.jpg": {
+    "width": 4106,
+    "height": 6191,
+    "base": "photography/the-martinez-brother-chaos-magazine/adebd19b6b9ce86d",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1274
+      ],
+      [
+        3840,
+        2547
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1274
+      ]
+    ]
+  },
+  "photography/the-martinez-brother-chaos-magazine/7.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/the-martinez-brother-chaos-magazine/2cfefa00501eca02",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brother-chaos-magazine/SHOWCASE_1.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/the-martinez-brother-chaos-magazine/c33b3a6cf7ab2c80",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brother-chaos-magazine/SHOWCASE_2.jpg": {
+    "width": 4492,
+    "height": 6774,
+    "base": "photography/the-martinez-brother-chaos-magazine/10051cd8b5648efe",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3840,
+        2546
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brothers/1.JPG": {
+    "width": 2048,
+    "height": 3088,
+    "base": "photography/the-martinez-brothers/57c5533683f5245f",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3088,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brothers/10.jpg": {
+    "width": 2048,
+    "height": 3088,
+    "base": "photography/the-martinez-brothers/e74335352f46c9f7",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3088,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brothers/11.jpg": {
+    "width": 2048,
+    "height": 3088,
+    "base": "photography/the-martinez-brothers/2ad08ffb10c02dc2",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3088,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brothers/13.jpg": {
+    "width": 1443,
+    "height": 2176,
+    "base": "photography/the-martinez-brothers/a7004d3b7e02c367",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        2176,
+        1443
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brothers/14.jpg": {
+    "width": 3088,
+    "height": 2048,
+    "base": "photography/the-martinez-brothers/42c17da0f421fe04",
+    "avif": [
+      [
+        960,
+        960
+      ],
+      [
+        1920,
+        1920
+      ],
+      [
+        3088,
+        3088
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1920
+      ]
+    ]
+  },
+  "photography/the-martinez-brothers/9.jpg": {
+    "width": 2048,
+    "height": 3088,
+    "base": "photography/the-martinez-brothers/3fad5fa1ed44c26b",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3088,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  },
+  "photography/the-martinez-brothers/SHOWCASE_1.JPG": {
+    "width": 2048,
+    "height": 3088,
+    "base": "photography/the-martinez-brothers/da53e74e6d96454e",
+    "avif": [
+      [
+        960,
+        637
+      ],
+      [
+        1920,
+        1273
+      ],
+      [
+        3088,
+        2048
+      ]
+    ],
+    "webp": [
+      [
+        1920,
+        1273
+      ]
+    ]
+  }
+}

@@ -1,20 +1,8 @@
 import React, { useState, useEffect, useRef, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import photographyProjects, { getImagePath } from '../photographyData';
-
-// Helper to compute the thumbnail path from a full image path
-const getThumbPath = (src) => {
-    const dotIdx = src.lastIndexOf('.');
-    if (dotIdx === -1) return src;
-    return src.substring(0, dotIdx) + '_thumb.jpg';
-};
-
-// Helper to compute the mobile-optimised path from a full image path
-const getMobilePath = (src) => {
-    const dotIdx = src.lastIndexOf('.');
-    if (dotIdx === -1) return src;
-    return src.substring(0, dotIdx) + '_mobile.jpg';
-};
+import { ResponsivePhoto } from '../components/ResponsivePhoto';
+import { getPhoto } from '../photographyImages';
 
 const isMobile = () => typeof window !== 'undefined' && window.innerWidth <= 900;
 
@@ -26,10 +14,7 @@ const DetailGridItem = memo(({ src, onClick }) => {
     const [visible, setVisible] = useState(false);
     const [imageLoaded, setImageLoaded] = useState(false);
 
-    const thumbSrc = getThumbPath(src);
-    // Load the lightweight _mobile.jpg (1200px width) variant for all grid items 
-    // to optimize load time on both desktop and mobile.
-    const displaySrc = getMobilePath(src);
+    const thumbSrc = getPhoto(src).thumb;
 
     useEffect(() => {
         const el = containerRef.current;
@@ -80,11 +65,10 @@ const DetailGridItem = memo(({ src, onClick }) => {
                         aria-hidden="true"
                     />
                     {visible && (
-                        <img
-                            src={`${import.meta.env.BASE_URL}${displaySrc}`}
+                        <ResponsivePhoto
+                            src={src}
+                            usage="detail"
                             alt="Project detail"
-                            loading="lazy"
-                            decoding="async"
                             className={`lqip-full ${imageLoaded ? 'lqip-visible' : ''}`}
                             onLoad={() => setImageLoaded(true)}
                         />
@@ -173,16 +157,16 @@ const ConnectingLine = memo(({ nextImageSrc, className = '' }) => {
             return;
         }
 
-        // Use the tiny _thumb_compressed version for color sampling (no resolution needed for a 1×3 canvas)
-        const thumbSrc = nextImageSrc.replace('_compressed.jpg', '_thumb_compressed.jpg');
+        // Colour sampling needs only the existing tiny thumbnail.
+        const thumbSrc = getPhoto(nextImageSrc).thumb;
         const img = new Image();
         img.crossOrigin = 'anonymous';
         img.src = `${import.meta.env.BASE_URL}${thumbSrc}`;
         img.onerror = () => {
-            // Fallback to the original source if thumb doesn't exist
+            // Keep the fallback small rather than downloading a fullscreen image.
             const fallback = new Image();
             fallback.crossOrigin = 'anonymous';
-            fallback.src = `${import.meta.env.BASE_URL}${nextImageSrc}`;
+            fallback.src = `${import.meta.env.BASE_URL}${getPhoto(nextImageSrc).webp[0].src}`;
             fallback.onload = () => extractColors(fallback);
         };
         img.onload = () => extractColors(img);
@@ -284,9 +268,8 @@ const buildGalleryItems = () => {
                 projectId: project.id,
                 title: project.title,
                 slug: project.slug,
-                // Compressed image generated via sharp for the main gallery fast loading
-                src: getImagePath(project.slug, img.replace(/\.(jpg|jpeg|png)$/i, '_compressed.jpg')),
-                // Original massive image kept for the expanded view
+                // Stable source keys select prepared responsive files for each view.
+                src: getImagePath(project.slug, img),
                 originalSrc: getImagePath(project.slug, img),
                 order: project.order,
                 showcaseIdx: idx,
@@ -303,8 +286,7 @@ const galleryItems = buildGalleryItems();
 const ShowcaseGridItem = memo(({ item, onClick }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     
-    // Construct the thumb src
-    const thumbSrc = item.src.replace('_compressed.jpg', '_thumb_compressed.jpg');
+    const thumbSrc = getPhoto(item.src).thumb;
 
     return (
         <div className="lqip-container showcase-lqip" onClick={() => onClick(item)}>
@@ -314,11 +296,10 @@ const ShowcaseGridItem = memo(({ item, onClick }) => {
                 className={`lqip-thumb ${imageLoaded ? 'lqip-hidden' : ''}`}
                 aria-hidden="true"
             />
-            <img
-                src={`${import.meta.env.BASE_URL}${item.src}`}
+            <ResponsivePhoto
+                src={item.src}
+                usage="gallery"
                 alt={item.title}
-                loading="lazy"
-                decoding="async"
                 className={`lqip-full ${imageLoaded ? 'lqip-visible' : ''}`}
                 onLoad={() => setImageLoaded(true)}
                 onContextMenu={(e) => e.preventDefault()}
@@ -532,8 +513,10 @@ export function Photography() {
                             {/* Left: Main showcase image, sticky */}
                             <div className="project-showcase-side">
                                 <div className="project-showcase-sticky">
-                                    <img
-                                        src={`${import.meta.env.BASE_URL}${selectedShowcaseSrc}`}
+                                    <ResponsivePhoto
+                                        src={selectedShowcaseSrc}
+                                        usage="project"
+                                        loading="eager"
                                         alt={selectedProject.title}
                                         className="project-showcase-image"
                                         onClick={() => setEnlargedImage(selectedShowcaseSrc)}
@@ -573,8 +556,10 @@ export function Photography() {
                     className="fullscreen-overlay"
                     onClick={() => setEnlargedImage(null)}
                 >
-                    <img
-                        src={`${import.meta.env.BASE_URL}${enlargedImage}`}
+                    <ResponsivePhoto
+                        src={enlargedImage}
+                        usage="fullscreen"
+                        loading="eager"
                         alt="Expanded detail"
                         onClick={(e) => e.stopPropagation()}
                     />
