@@ -3,21 +3,18 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { Navigation } from './components/Navigation';
 import { Photography } from './pages/Photography';
-import { Design } from './pages/Design';
-import { DesignSubpage } from './pages/DesignSubpage';
 import { About } from './pages/About';
 import { LoadingScreen } from './components/LoadingScreen';
 
-// Resolve the initial tab from the URL path
+const isDesignPath = () => /^\/+design(?:\/|$)/i.test(window.location.pathname);
+
+// Resolve the initial tab from the URL path.
+// Keep hidden Design pages out of direct visits and browser history navigation.
 const resolveTabFromPath = () => {
   const path = window.location.pathname.replace(/^\/+/g, '');
-  if (!path) return 'Photography';
+  if (!path || isDesignPath()) return 'Photography';
   const segments = path.split('/');
-  let baseTab = segments[0].charAt(0).toUpperCase() + segments[0].slice(1);
-  if (baseTab.toLowerCase() === 'design' && segments.length > 1) {
-    return `Design-${segments[1]}`;
-  }
-  return baseTab;
+  return segments[0].charAt(0).toUpperCase() + segments[0].slice(1);
 };
 
 function App() {
@@ -87,18 +84,10 @@ function App() {
   // Sync state to URL path and listen for browser back/forward navigation
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname.replace(/^\/+/g, '');
-      if (!path) {
-        setActiveTab('Photography');
-        return;
+      if (isDesignPath()) {
+        window.history.replaceState(null, '', '/photography');
       }
-      const segments = path.split('/');
-      let baseTab = segments[0].charAt(0).toUpperCase() + segments[0].slice(1);
-      if (baseTab.toLowerCase() === 'design' && segments.length > 1) {
-          setActiveTab(`Design-${segments[1]}`);
-      } else {
-          setActiveTab(baseTab);
-      }
+      setActiveTab(resolveTabFromPath());
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -108,12 +97,13 @@ function App() {
   // Update path when tab changes
   useEffect(() => {
     if (activeTab) {
-      let newPath = `/${activeTab.toLowerCase()}`;
-      if (activeTab.startsWith('Design-')) {
-          newPath = `/design/${activeTab.split('-')[1].toLowerCase()}`;
-      }
+      const newPath = `/${activeTab.toLowerCase()}`;
       if (window.location.pathname !== newPath) {
-        window.history.pushState(null, '', newPath);
+        if (isDesignPath()) {
+          window.history.replaceState(null, '', newPath);
+        } else {
+          window.history.pushState(null, '', newPath);
+        }
       }
     }
   }, [activeTab]);
@@ -136,10 +126,7 @@ function App() {
     });
   }, [activeTab]);
 
-  // Derive which "base" category group is active for the Design sub-pages
-  const isDesignSub = activeTab?.startsWith('Design-');
   const isPhotography = activeTab === 'Photography';
-  const isDesign = activeTab === 'Design';
   const isAbout = activeTab === 'About';
 
   return (
@@ -175,25 +162,6 @@ function App() {
           >
             <div className="page-spacer" />
             <Photography />
-          </div>
-        )}
-
-        {visitedTabs.has('Design') && (
-          <div
-            className={`page-slot ${isDesign ? 'page-slot--active' : 'page-slot--hidden'}`}
-          >
-            <Design setActiveTab={setActiveTab} />
-          </div>
-        )}
-
-        {visitedTabs.has(activeTab) && isDesignSub && (
-          <div
-            className={`page-slot ${isDesignSub ? 'page-slot--active' : 'page-slot--hidden'}`}
-          >
-            <DesignSubpage 
-              type={activeTab.split('-')[1]} 
-              setActiveTab={setActiveTab} 
-            />
           </div>
         )}
 

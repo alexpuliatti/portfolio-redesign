@@ -71,12 +71,6 @@ export function Navigation({ activeTab, setActiveTab }) {
                                 Photography
                             </button>
                             <button
-                                className={`nav-pill ${activeTab?.startsWith('Design') ? 'active' : ''}`}
-                                onClick={() => { setActiveTab('Design'); setIsMenuOpen(false); }}
-                            >
-                                Design
-                            </button>
-                            <button
                                 className={`nav-pill ${activeTab === 'About' ? 'active' : ''}`}
                                 onClick={() => { setActiveTab('About'); setIsMenuOpen(false); }}
                             >
